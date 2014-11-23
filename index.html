@@ -5,14 +5,15 @@
 <script type="text/javascript" src="js/paper.js"></script>
 <script type="text/javascript" src="js/imagesloaded.js"></script>
 <script type="text/javascript" src="js/images.js"></script>
+<script type="text/javascript" src="js/underscore.js"></script>
+
 <script type="text/javascript" src="typed.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
-<script type="text/paperscript" canvas="myCanvas" src="js/app12.js">
-</script>
-<link rel="stylesheet" type="text/css" href="css/emojicomic.css">
+<script type="text/paperscript" canvas="myCanvas" src="js/app12.js"></script>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-  <canvas id="myCanvas" width="1000" height="400" keepalive="true"></canvas>
+  <canvas id="myCanvas" width="1000" height="310" keepalive="true"></canvas>
   <div id="speech">
     <input id="textInput" type="text">
     <button id="textGo">go</button>
@@ -25,6 +26,9 @@
   <div id="emojiChooser"></div>
 
   <div id='images'>
+    <img id='trash' src='emojis/trash.png'>
+    <img id='clouds' src='emojis/722.png'>
+
     <img id='speechleft' src='emojis/speechleft.png'>
     <img id='speechright' src='emojis/speechright.png'>
     <img id='thoughtleft' src='emojis/thoughtleft.png'>

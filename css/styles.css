@@ -1,0 +1,16 @@
+#images {
+  display: none;
+}
+
+#emojiChooser {
+  width: 900px;
+  height: 100px;
+  border: 2px solid black;
+  overflow: scroll;
+}
+
+.emojiIcon {
+  height: 32px;
+  width: 32px;
+  padding: 10px;
+}

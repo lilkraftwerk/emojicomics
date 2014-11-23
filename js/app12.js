@@ -1,3 +1,8 @@
+var utilities = project.activeLayer;
+var layer1 = new Layer();
+layer1.activate()
+
+
 function makeEmoji(id){
   var raster = new Raster(id)
   raster.position = [Math.floor(Math.random() * view.viewSize.width), Math.floor(Math.random() * view.viewSize.height), ];
@@ -37,6 +42,16 @@ $("#textGo").on("click", function(){
 })
 
 
+var makeTrash = function(){
+  utilities.activate()
+  var raster = new Raster("trash")
+  raster.position = new Point(945, 275)
+  layer1.activate()
+  return raster
+}
+
+var trash = makeTrash()
+
 
 var makeSpeechBubble = function(inputText){
   var speechDirection = $('input:radio[name=speechtype]:checked').val();
@@ -58,10 +73,17 @@ var makeSpeechBubble = function(inputText){
 
 var currentEmoji;
 
-makeEmoji('img656')
 
 function onMouseDown(event){
-  currentEmoji = event.item
+  if(event.item){
+    if(!isUtility(event.item)){
+      currentEmoji = event.item;
+    }
+  }
+}
+
+function isUtility(item){
+  return utilities.isChild(item)
 }
 
 function onMouseDrag(event) {
@@ -69,5 +91,73 @@ function onMouseDrag(event) {
 }
 
 function onMouseUp(event){
+  if(checkForTrash(currentEmoji)){
+    removeAndDrawCloud(currentEmoji)
+  }
   currentEmoji = null;
 }
+
+function removeAndDrawCloud(item){
+  clouds.push(new Cloud(item.position))
+  item.remove()
+}
+
+function checkForTrash(item){
+  if(item.position.isInside(trash.bounds)){
+    return true
+  } else {
+    return false
+  }
+}
+
+function loadAllEmojis(){
+  for(var i = 1; i < 600; i++)
+    loadEmoji(i)
+}
+
+function loadEmoji(id){
+$("#emojiChooser").append("<img id='img" + id + "' class='emojiIcon' src='emojis/" + id + ".png'>")
+}
+
+loadAllEmojis()
+
+
+$(".emojiIcon").on("click", function(){
+  var raster = new Raster($(this).attr('id'))
+  raster.position = view.center
+})
+
+function Cloud(position){
+  this.raster = new Raster("clouds")
+  this.raster.position = position
+  this.lifespan = 10;
+  this.draw = function(){
+    this.raster.scale(1.1)
+    this.raster.position.y -= 1;
+    this.lifespan -= 1;
+  }
+}
+
+function makeCloud(position){
+  clouds.push(new Cloud(position))
+}
+
+clouds = []
+
+function drawClouds(){
+  for(var i = 0; i < clouds.length; i++){
+    var thisCloud = clouds[i]
+    thisCloud.draw()
+    if(thisCloud.lifespan === 0){
+      thisCloud.raster.remove()
+      clouds.splice(i, 1)
+    }
+  }
+}
+
+function onFrame(event){
+  drawClouds()
+}
+
+
+console.log()
