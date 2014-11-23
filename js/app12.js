@@ -15,6 +15,8 @@ var randomEmojis = function(){
   makeEmoji(id)
 }
 
+
+
 var makeLines = function(){
 var rect = new Path.Rectangle([5, 5], [900, 300])
 rect.strokeColor = 'black';
@@ -50,7 +52,16 @@ var makeTrash = function(){
   return raster
 }
 
+var makeRotate = function(){
+  utilities.activate()
+  var raster = new Raster("rotate")
+  raster.position = new Point(945, (275 - 64))
+  layer1.activate()
+  return raster
+}
+
 var trash = makeTrash()
+var rotate = makeRotate()
 
 
 var makeSpeechBubble = function(inputText){
@@ -155,8 +166,17 @@ function drawClouds(){
   }
 }
 
+function rotateEmoji(){
+  if(currentEmoji){
+    if(currentEmoji.position.isInside(rotate)){
+    currentEmoji.rotate(3)
+    }
+  }
+}
+
 function onFrame(event){
   drawClouds()
+  rotateEmoji()
 }
 
 
