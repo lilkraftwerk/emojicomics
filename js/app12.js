@@ -33,11 +33,15 @@ path.strokeColor = 'black';
 path.strokeWidth = 5;
 }
 
-makeLines()
 
-randomEmojis()
-randomEmojis()
+function loadAllEmojis(){
+  for(var i = 1; i < 600; i++)
+    loadEmoji(i)
+}
 
+function loadEmoji(id){
+$("#emojiChooser").append("<img id='img" + id + "' class='emojiIcon' src='emojis/" + id + ".png'>")
+}
 
 $("#textGo").on("click", function(){
   makeSpeechBubble($("#textInput").val())
@@ -55,13 +59,31 @@ var makeTrash = function(){
 var makeRotate = function(){
   utilities.activate()
   var raster = new Raster("rotate")
-  raster.position = new Point(945, (275 - 64))
+  raster.position = new Point(945, 211)
+  layer1.activate()
+  return raster
+}
+
+var makeDown = function(){
+    utilities.activate()
+  var raster = new Raster("down")
+  raster.position = new Point(945, 147)
+  layer1.activate()
+  return raster
+}
+
+var makeUp = function(){
+  utilities.activate()
+  var raster = new Raster("up")
+  raster.position = new Point(945, 83)
   layer1.activate()
   return raster
 }
 
 var trash = makeTrash()
 var rotate = makeRotate()
+var up = makeUp()
+var down = makeDown()
 
 
 var makeSpeechBubble = function(inputText){
@@ -121,14 +143,7 @@ function checkForTrash(item){
   }
 }
 
-function loadAllEmojis(){
-  for(var i = 1; i < 600; i++)
-    loadEmoji(i)
-}
 
-function loadEmoji(id){
-$("#emojiChooser").append("<img id='img" + id + "' class='emojiIcon' src='emojis/" + id + ".png'>")
-}
 
 loadAllEmojis()
 
@@ -170,14 +185,31 @@ function rotateEmoji(){
   if(currentEmoji){
     if(currentEmoji.position.isInside(rotate)){
     currentEmoji.rotate(3)
+    currentEmoji.scale(1.01)
+    console.log(currentEmoji.getBounds().height)
+
     }
   }
 }
 
+function scaleEmoji(){
+  if(currentEmoji){
+    if(currentEmoji.position.isInside(up) && currentEmoji.getBounds().height < 125){
+    currentEmoji.scale(1.01)
+    }
+    if(currentEmoji.position.isInside(down) && currentEmoji.getBounds().height > 25){
+    currentEmoji.scale(.99)
+    }
+  }
+
+}
+
+
 function onFrame(event){
   drawClouds()
+  scaleEmoji()
   rotateEmoji()
 }
 
 
-console.log()
+makeLines()

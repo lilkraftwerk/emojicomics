@@ -4,7 +4,7 @@
 
 #emojiChooser {
   width: 900px;
-  height: 100px;
+  height: 200px;
   border: 2px solid black;
   overflow: scroll;
 }
@@ -12,5 +12,5 @@
 .emojiIcon {
   height: 32px;
   width: 32px;
-  padding: 10px;
+  padding: 3px;
 }
