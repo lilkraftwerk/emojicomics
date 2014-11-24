@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/paper.js"></script>
-  <script type="text/javascript" src="js/images.js"></script>
-  <script type="text/javascript" src="js/jquery.imgpreload.js"></script>
+  <script type="text/javascript" src="js/vendor.js"></script>
+  <script type="text/paperscript" canvas="myCanvas" src="js/scripts.js"></script>
 
-  <script type="text/javascript" src="js/underscore.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
-  <script type="text/paperscript" canvas="myCanvas" src="js/app12.js"></script>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
@@ -24,7 +20,7 @@
         </div>
         <div id="optionsbar">
           <div class="optionicon" data-click="speech">SP</div>
-          <div class="optionicon" data-click="speech">SYO</div>
+          <div class="optionicon" data-click="backgroundsoption">BG</div>
           <div class="optionicon" data-click="speech">HI</div>
         </div>
         <div id="options">
@@ -44,6 +40,16 @@
       <input type="radio" name="speechtype" value="speechright">Speech (R)
       <input type="radio" name="speechtype" value="thoughtleft">Thought (L)
       <input type="radio" name="speechtype" value="thoughtright">Thought (R)
+  </div>
+
+  <div id="backgroundsoption">
+      <h3>backgrounds</h3>
+      <select id="bg1">
+      </select>
+      <select id="bg2">
+      </select>
+      <select id="bg3">
+      </select>
   </div>
 
 </div>
