@@ -1,6 +1,8 @@
 var utilities = project.activeLayer;
-var layer1 = new Layer();
-layer1.activate()
+var backgroundLayer = new Layer();
+var emojiLayer = new Layer();
+var boardLayer = new Layer();
+emojiLayer.activate()
 
 
 function makeEmoji(id){
@@ -15,7 +17,11 @@ var randomEmojis = function(){
   makeEmoji(id)
 }
 
-
+var setUpBoard = function(){
+  boardLayer.activate()
+  makeLines()
+  emojiLayer.activate()
+}
 
 var makeLines = function(){
 var rect = new Path.Rectangle([5, 5], [900, 300])
@@ -40,7 +46,7 @@ function loadAllEmojis(){
 }
 
 function loadEmoji(id){
-$("#emojiChooser").append("<img id='img" + id + "' class='emojiIcon' src='emojis/" + id + ".png'>")
+$("#emojiChooser").append("<img id='" + id + "' class='emojiIcon' src='emojis/icons/" + id + ".png'>")
 }
 
 $("#textGo").on("click", function(){
@@ -52,7 +58,7 @@ var makeTrash = function(){
   utilities.activate()
   var raster = new Raster("trash")
   raster.position = new Point(945, 275)
-  layer1.activate()
+  emojiLayer.activate()
   return raster
 }
 
@@ -60,7 +66,7 @@ var makeRotate = function(){
   utilities.activate()
   var raster = new Raster("rotate")
   raster.position = new Point(945, 211)
-  layer1.activate()
+  emojiLayer.activate()
   return raster
 }
 
@@ -68,7 +74,7 @@ var makeDown = function(){
     utilities.activate()
   var raster = new Raster("down")
   raster.position = new Point(945, 147)
-  layer1.activate()
+  emojiLayer.activate()
   return raster
 }
 
@@ -76,7 +82,7 @@ var makeUp = function(){
   utilities.activate()
   var raster = new Raster("up")
   raster.position = new Point(945, 83)
-  layer1.activate()
+  emojiLayer.activate()
   return raster
 }
 
@@ -109,7 +115,7 @@ var currentEmoji;
 
 function onMouseDown(event){
   if(event.item){
-    if(!isUtility(event.item)){
+    if(isOnEmojiLayer(event.item)){
       currentEmoji = event.item;
     }
   }
@@ -117,6 +123,10 @@ function onMouseDown(event){
 
 function isUtility(item){
   return utilities.isChild(item)
+}
+
+function isOnEmojiLayer(item){
+  return emojiLayer.isChild(item)
 }
 
 function onMouseDrag(event) {
@@ -149,7 +159,11 @@ loadAllEmojis()
 
 
 $(".emojiIcon").on("click", function(){
-  var raster = new Raster($(this).attr('id'))
+  var thisID = $(this).attr('id')
+  var newID = "img" + thisID
+  var imgString = "<img id='" + newID + "' src='emojis/" + thisID + ".png'>"
+  $("#images").append(imgString)
+  var raster = new Raster(newID)
   raster.position = view.center
 })
 
@@ -185,8 +199,6 @@ function rotateEmoji(){
   if(currentEmoji){
     if(currentEmoji.position.isInside(rotate)){
     currentEmoji.rotate(3)
-    currentEmoji.scale(1.01)
-    console.log(currentEmoji.getBounds().height)
 
     }
   }
@@ -211,5 +223,20 @@ function onFrame(event){
   rotateEmoji()
 }
 
+var BG_LOCATIONS = [[152, 155],[450, 155],[752, 155]]
+var BACKGROUNDS = ['bgStatic', 'bgSpace', 'bgJungle', 'bgWave']
 
-makeLines()
+function makeBackground(panel, image){
+  backgroundLayer.activate()
+  var raster = new Raster(image)
+  raster.position = BG_LOCATIONS[panel - 1]
+  emojiLayer.activate()
+}
+
+setUpBoard()
+for(var i = 1; i < 4; i++){
+console.log(BACKGROUNDS)
+  var index = Math.floor(Math.random() * BACKGROUNDS.length)
+  makeBackground(i, BACKGROUNDS[index])
+}
+
