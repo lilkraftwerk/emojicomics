@@ -5,6 +5,43 @@ var boardLayer = new Layer();
 emojiLayer.activate()
 
 
+
+testImages = []
+
+for(var i = 1; i < 846; i ++){
+  var thisEmoji = String(i) + ".png"
+  testImages.push("emojis/" + thisEmoji)
+}
+
+
+
+function loadAllEmojis(){
+
+$.imgpreload(testImages,
+{
+    each: function()
+    {
+      var thisImage = $(this)
+      var number = thisImage.attr('src').split('.')[0].split("/")[1]
+      thisImage.addClass('emojiIcon').attr('id', "img" + String(number))
+      $("#emojiChooser").append(thisImage).hide().fadeIn()
+        // this = dom image object
+        // check for success with: $(this).data('loaded')
+        // callback executes on every image load
+
+
+    },
+    all: function()
+    {
+        // this = array of dom image objects
+        // check for success with: $(this[i]).data('loaded')
+        // callback executes when all images are loaded
+    }
+});
+}
+
+
+
 function makeEmoji(id){
   var raster = new Raster(id)
   raster.position = [Math.floor(Math.random() * view.viewSize.width), Math.floor(Math.random() * view.viewSize.height), ];
@@ -40,16 +77,16 @@ path.strokeWidth = 5;
 }
 
 
-function loadAllEmojis(){
-  for(var i = 1; i < 600; i++)
-    loadEmoji(i)
-}
+// function loadAllEmojis(){
+//   for(var i = 1; i < 600; i++)
+//     loadEmoji(i)
+// }
 
-function loadEmoji(id){
-$("#emojiChooser").append("<img id='" + id + "' class='emojiIcon' src='emojis/icons/" + id + ".png'>")
-}
+// function loadEmoji(id){
+// $("#emojiChooser").append("<img id='" + id + "' class='emojiIcon' src='emojis/icons/" + id + ".png'>")
+// }
 
-$("#textGo").on("click", function(){
+$(document).on("click", '#textGo', function(){
   makeSpeechBubble($("#textInput").val())
 })
 
@@ -93,6 +130,7 @@ var down = makeDown()
 
 
 var makeSpeechBubble = function(inputText){
+  console.log('hi')
   var speechDirection = $('input:radio[name=speechtype]:checked').val();
   var position = new Point(100, 100)
   console.log(speechDirection)
@@ -102,6 +140,7 @@ var makeSpeechBubble = function(inputText){
   var text = new PointText();
   text.justification = 'center';
   text.fontSize = 15;
+  text.fontFamily = 'Pacifico'
   text.fillColor = 'black';
   text.content = inputText;
   var group = new Group([speechRaster, text])
@@ -153,17 +192,19 @@ function checkForTrash(item){
   }
 }
 
+$(".optionicon").on('click', function(){
+  var optionsToUse = $(this).attr("data-click")
+  $("#options").html($("#" + optionsToUse).html())
+})
 
 
 loadAllEmojis()
 
 
-$(".emojiIcon").on("click", function(){
+
+$("#emojiChooser").on("click", '.emojiIcon', function(){
   var thisID = $(this).attr('id')
-  var newID = "img" + thisID
-  var imgString = "<img id='" + newID + "' src='emojis/" + thisID + ".png'>"
-  $("#images").append(imgString)
-  var raster = new Raster(newID)
+  var raster = new Raster(thisID)
   raster.position = view.center
 })
 
@@ -224,7 +265,7 @@ function onFrame(event){
 }
 
 var BG_LOCATIONS = [[152, 155],[450, 155],[752, 155]]
-var BACKGROUNDS = ['bgStatic', 'bgSpace', 'bgJungle', 'bgWave']
+var BACKGROUNDS = ['bgStatic', 'bgSpace', 'bgJungle', 'bgWave', 'bgPinkBlue']
 
 function makeBackground(panel, image){
   backgroundLayer.activate()
@@ -235,8 +276,8 @@ function makeBackground(panel, image){
 
 setUpBoard()
 for(var i = 1; i < 4; i++){
-console.log(BACKGROUNDS)
-  var index = Math.floor(Math.random() * BACKGROUNDS.length)
+  // var index = Math.floor(Math.random() * BACKGROUNDS.length)
+  var index = 4
   makeBackground(i, BACKGROUNDS[index])
 }
 

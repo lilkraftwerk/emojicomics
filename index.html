@@ -1,51 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/paper.js"></script>
-<script type="text/javascript" src="js/imagesloaded.js"></script>
-<script type="text/javascript" src="js/images.js"></script>
-<script type="text/javascript" src="js/underscore.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/paper.js"></script>
+  <script type="text/javascript" src="js/images.js"></script>
+  <script type="text/javascript" src="js/jquery.imgpreload.js"></script>
 
-<script type="text/javascript" src="typed.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
-<script type="text/paperscript" canvas="myCanvas" src="js/app12.js"></script>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
+  <script type="text/javascript" src="js/underscore.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <script type="text/paperscript" canvas="myCanvas" src="js/app12.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-  <canvas id="myCanvas" width="1000" height="310" keepalive="true"></canvas>
+  <div id="container">
+    <div class="wrapper">
+      <div id="title">emoji comic generator</div>
+      <canvas id="myCanvas" width="1000" height="310" keepalive="true"></canvas>
+
+      <div id="controls">
+        <div id="emojiChooser">
+
+        </div>
+        <div id="optionsbar">
+          <div class="optionicon" data-click="speech">SP</div>
+          <div class="optionicon" data-click="speech">SYO</div>
+          <div class="optionicon" data-click="speech">HI</div>
+        </div>
+        <div id="options">
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="hiddenoptions">
   <div id="speech">
+      <h3>speech</h3>
     <input id="textInput" type="text">
-    <button id="textGo">go</button>
-    <input type="radio" name="speechtype" value="speechleft">Speech (Left)
-    <input type="radio" name="speechtype" value="speechright">Speech (Right)
-    <input type="radio" name="speechtype" value="thoughtleft">Thought (Left)
-    <input type="radio" name="speechtype" value="thoughtright">Thought (Right)
-
-  </div>
-  <div id="emojiChooser">
-    <img class="emojiIcon" id="656" src='emojis/icons/656.png'>
-
+      <button id="textGo">make speech bubble</button><br>
+      <input type="radio" name="speechtype" checked="checked" value="speechleft">Speech (L)
+      <input type="radio" name="speechtype" value="speechright">Speech (R)
+      <input type="radio" name="speechtype" value="thoughtleft">Thought (L)
+      <input type="radio" name="speechtype" value="thoughtright">Thought (R)
   </div>
 
-  <div id='images'>
-    <img id='bgStatic' src='backgrounds/static.png'>
-    <img id='bgSpace' src='backgrounds/space.jpg'>
-    <img id='bgJungle' src='backgrounds/jungle.jpg'>
-    <img id='bgWave' src='backgrounds/bgwave.jpg'>
+</div>
+
+<div id='images'>
+  <img id='bgPinkBlue' src='backgrounds/pinkblue.jpg'>
+
+  <img id='bgStatic' src='backgrounds/static.png'>
+  <img id='bgSpace' src='backgrounds/space.jpg'>
+  <img id='bgJungle' src='backgrounds/jungle.jpg'>
+  <img id='bgWave' src='backgrounds/bgwave.jpg'>
 
 
-    <img id='trash' src='emojis/trash.png'>
-    <img id='clouds' src='emojis/722.png'>
-    <img id='rotate' src='emojis/rotate.png'>
-    <img id='up' src='emojis/up.png'>
-    <img id='down' src='emojis/down.png'>
+  <img id='trash' src='emojis/trash.png'>
+  <img id='clouds' src='emojis/722.png'>
+  <img id='rotate' src='emojis/rotate.png'>
+  <img id='up' src='emojis/up.png'>
+  <img id='down' src='emojis/down.png'>
 
-    <img id='speechleft' src='emojis/speechleft.png'>
-    <img id='speechright' src='emojis/speechright.png'>
-    <img id='thoughtleft' src='emojis/thoughtleft.png'>
-    <img id='thoughtright' src='emojis/thoughtright.png'>
+  <img id='speechleft' src='emojis/speechleft.png'>
+  <img id='speechright' src='emojis/speechright.png'>
+  <img id='thoughtleft' src='emojis/thoughtleft.png'>
+  <img id='thoughtright' src='emojis/thoughtright.png'>
 
-  </div>
+</div>
 </body>
 </html>
