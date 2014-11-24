@@ -19,7 +19,13 @@ clouds = []
 
 // background constants
 var BG_LOCATIONS = [[152, 155],[450, 155],[752, 155]]
-var BACKGROUNDS = ['bgStatic', 'bgSpace', 'bgJungle', 'bgWave', 'bgPinkBlue']
+var BACKGROUNDS = [
+  {id: 'bgStatic', name: "Static"},
+  {id: 'bgSpace', name: "Space"},
+  {id: 'bgJungle', name: "Jungle"},
+  {id: 'bgWave', name: "Beach"},
+  {id: 'bgPinkBlue', name: "Cat Hate Monday"}
+  ]
 
 // set everything up
 setUpBoard()
@@ -29,20 +35,18 @@ function setUpBoard(){
   makeLines()
   emojiLayer.activate()
   loadAllEmojis()
+  populateBackgroundOptions()
 }
 
 
 function loadAllEmojis(){
 
-$.imgpreload(allImages,
+$.imgpreload(someImages,
 {
     each: function()
     {
       var thisImage = $(this)
-      console.log(thisImage)
-      console.log('sup')
       var number = thisImage.attr('src').split('.')[0].split("/")[1]
-      console.log(number)
       thisImage.addClass('emojiIcon').attr('id', number)
       $("#emojiChooser").append(thisImage).hide().fadeIn()
         // this = dom image object

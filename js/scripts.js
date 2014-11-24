@@ -77,7 +77,10 @@ function makeSpeechBubble(inputText){
 }
 
 
-
+$(document).on('change', 'select', function(){
+  thisPanel = $(this).attr('id').split("bg")[1]
+  makeBackground(thisPanel, $(this).val())
+});
 
 // create multiple layers for paper.js
 var utilities = project.activeLayer;
@@ -100,7 +103,13 @@ clouds = []
 
 // background constants
 var BG_LOCATIONS = [[152, 155],[450, 155],[752, 155]]
-var BACKGROUNDS = ['bgStatic', 'bgSpace', 'bgJungle', 'bgWave', 'bgPinkBlue']
+var BACKGROUNDS = [
+  {id: 'bgStatic', name: "Static"},
+  {id: 'bgSpace', name: "Space"},
+  {id: 'bgJungle', name: "Jungle"},
+  {id: 'bgWave', name: "Beach"},
+  {id: 'bgPinkBlue', name: "Cat Hate Monday"}
+  ]
 
 // set everything up
 setUpBoard()
@@ -110,20 +119,18 @@ function setUpBoard(){
   makeLines()
   emojiLayer.activate()
   loadAllEmojis()
+  populateBackgroundOptions()
 }
 
 
 function loadAllEmojis(){
 
-$.imgpreload(allImages,
+$.imgpreload(someImages,
 {
     each: function()
     {
       var thisImage = $(this)
-      console.log(thisImage)
-      console.log('sup')
       var number = thisImage.attr('src').split('.')[0].split("/")[1]
-      console.log(number)
       thisImage.addClass('emojiIcon').attr('id', number)
       $("#emojiChooser").append(thisImage).hide().fadeIn()
         // this = dom image object
@@ -214,7 +221,11 @@ function randomEmojis(){
 
 function populateBackgroundOptions(){
   for(var i = 1; i < 4; i++){
-
+    var thisMenu = $("#bg" + String(i))
+    for(var bg = 0; bg < BACKGROUNDS.length; bg++){
+      var thisBackground = BACKGROUNDS[bg]
+      thisMenu.append("<option class='bgoption' value='" + thisBackground.id + "'>" + thisBackground.name + "</option>")
+    }
   }
 }
 

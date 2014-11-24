@@ -18,4 +18,7 @@ function makeSpeechBubble(inputText){
 }
 
 
-
+$(document).on('change', 'select', function(){
+  thisPanel = $(this).attr('id').split("bg")[1]
+  makeBackground(thisPanel, $(this).val())
+});
