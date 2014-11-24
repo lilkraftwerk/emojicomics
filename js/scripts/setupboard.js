@@ -36,8 +36,19 @@ function setUpBoard(){
   emojiLayer.activate()
   loadAllEmojis()
   populateBackgroundOptions()
+  setupRandomBackground()
 }
 
+
+function setupRandomBackground(){
+  var index = Math.floor(Math.random() * BACKGROUNDS.length)
+    thisBackground = BACKGROUNDS[index].id
+ for(var i = 1; i < 4; i++){
+
+    makeBackground(i, thisBackground)
+    $("#bg" + i).val(thisBackground)
+  }
+}
 
 function loadAllEmojis(){
 

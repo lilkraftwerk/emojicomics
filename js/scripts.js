@@ -82,6 +82,23 @@ $(document).on('change', 'select', function(){
   makeBackground(thisPanel, $(this).val())
 });
 
+$(document).on('click', '#randombg', function(){
+  randomBackgrounds()
+})
+
+$(document).on('click', '#onerandombg', function(){
+  setupRandomBackground()
+})
+
+
+function randomBackgrounds(){
+  for(var i = 1; i < 4; i++){
+    var index = Math.floor(Math.random() * BACKGROUNDS.length)
+    thisBackground = BACKGROUNDS[index].id
+    makeBackground(i, thisBackground)
+    $("#bg" + i).val(thisBackground)
+  }
+}
 // create multiple layers for paper.js
 var utilities = project.activeLayer;
 var backgroundLayer = new Layer();
@@ -120,8 +137,19 @@ function setUpBoard(){
   emojiLayer.activate()
   loadAllEmojis()
   populateBackgroundOptions()
+  setupRandomBackground()
 }
 
+
+function setupRandomBackground(){
+  var index = Math.floor(Math.random() * BACKGROUNDS.length)
+    thisBackground = BACKGROUNDS[index].id
+ for(var i = 1; i < 4; i++){
+
+    makeBackground(i, thisBackground)
+    $("#bg" + i).val(thisBackground)
+  }
+}
 
 function loadAllEmojis(){
 
