@@ -158,7 +158,13 @@ var BACKGROUNDS = [
   {id: 'bgSpace', name: "Space"},
   {id: 'bgJungle', name: "Jungle"},
   {id: 'bgWave', name: "Beach"},
-  {id: 'bgPinkBlue', name: "Cat Hate Monday"}
+  {id: 'bgPinkBlue', name: "Cat Hate Monday"},
+  {id: 'bgBarbershop', name: "Barbershop"},
+  {id: 'bgTatooine', name: "Tatooine"},
+  {id: 'bgBridge', name: "The Bridge"}
+
+
+
   ]
 
 // set everything up
@@ -201,7 +207,7 @@ function loadMoreEmojis(){
 }
 
 function showNumberOfLoadedEmojis(){
-  $("#numberLoaded").html(String($('#emojiChooser').children('img').length) + "/845 emojis loaded")
+  $("#numberLoaded").html(String($('#emojiChooser').children('img').length) + "/846 emojis loaded")
 }
 
 function loadRemainingEmojis(){
