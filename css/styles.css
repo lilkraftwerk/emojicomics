@@ -103,16 +103,16 @@ width: 910px;
 }
 
 .optionicon {
+  /*margin: 0 auto;*/
   background-color: gray;
   background-image: url('../img/stripes.png');
   border-left: 2px solid black;
+  border-radius: 10px 10px 0px 0px;
   border-right: 2px solid black;
   border-top: 2px solid black;
   display: inline-block;
-  border-radius: 10px 10px 0px 0px;
   margin-left: 2px;
   padding: 5px;
-  /*margin: 0 auto;*/
 }
 
 .optionicon img {
