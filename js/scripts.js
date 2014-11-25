@@ -143,6 +143,10 @@ var down = makeDown()
 
 // global current emoji var
 var currentEmoji;
+var emojiCount = 1;
+
+// storage for recent emojis
+var recents = []
 
 // storage for all current clouds
 clouds = []
@@ -164,7 +168,8 @@ function setUpBoard(){
   boardLayer.activate()
   makeLines()
   emojiLayer.activate()
-  loadAllEmojis()
+  loadMoreEmojis()
+  // loadAllEmojis()
   populateBackgroundOptions()
   setupRandomBackground()
 }
@@ -179,6 +184,45 @@ function setupRandomBackground(){
     $("#bg" + i).val(thisBackground)
   }
 }
+
+
+function loadMoreEmojis(){
+  for(var i = 0; i < 50; i++){
+  if(emojiCount < 846){
+    var thisEmojiLocation = "emojis/" + String(emojiCount) + ".png"
+    var thisImg = $('<img>').attr('src', thisEmojiLocation)
+    thisImg.attr('id', String(emojiCount))
+     $("#emojiChooser").append(thisImg)
+     emojiCount += 1
+    }
+  }
+  $("#loadButtons").append($("#moreEmojis"))
+  $("#loadButtons").append($("#allEmojis"))
+}
+
+function showNumberOfLoadedEmojis(){
+  $("#numberLoaded").html(String($('#emojiChooser').children('img').length) + "/845 emojis loaded")
+}
+
+function loadRemainingEmojis(){
+  for(var i = emojiCount; i < 846; i++){
+    var thisEmojiLocation = "emojis/" + String(emojiCount) + ".png"
+    var thisImg = $('<img>').attr('src', thisEmojiLocation)
+    thisImg.attr('id', String(emojiCount))
+     $("#emojiChooser").append(thisImg)
+     emojiCount += 1
+  }
+  $("#moreEmojis").hide()
+  $("#allEmojis").hide()
+}
+
+$("#moreEmojis").on("click", function(){
+  loadMoreEmojis()
+})
+
+$("#allEmojis").on("click", function(){
+  loadRemainingEmojis()
+})
 
 function loadAllEmojis(){
 
@@ -336,19 +380,50 @@ function onFrame(event){
   drawClouds()
   scaleEmoji()
   rotateEmoji()
+  showNumberOfLoadedEmojis()
 }
 
 
 
 
 
-$("#emojiChooser").on("click", '.emojiIcon', function(){
+$("#emojiChooser").on("click", 'img', function(){
   var thisID = $(this).attr('id')
   var raster = new Raster(thisID)
   raster.position = view.center
+  addRecent(thisID)
+  makeCloud(raster.position)
+
+})
+
+$("#recent").on("click", 'img', function(){
+  var thisID = $(this).attr('data-recent')
+  var raster = new Raster(thisID)
+  raster.position = view.center
+  makeCloud(raster.position)
 })
 
 
+
+function addRecent(id){
+  if(!_.contains(recents, id)){
+    if(recents.length < 10){
+      addImageToRecents(id)
+    } else {
+      $("#recent").children('img').first().fadeOut().remove()
+      recents.shift
+      addImageToRecents(id)
+    }
+  }
+}
+
+function addImageToRecents(id){
+  recents.push(id)
+  imageCopy = $("<img>").attr('data-recent', id)
+  imageCopy.attr('src', 'emojis/' + id + '.png')
+  imageCopy.addClass('recentMoji')
+  $("#recent").append($(imageCopy))
+}
 
 $(".optionicon").on('click', function(){
   var optionsToUse = $(this).attr("data-click")

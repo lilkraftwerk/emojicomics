@@ -48,19 +48,50 @@ function onFrame(event){
   drawClouds()
   scaleEmoji()
   rotateEmoji()
+  showNumberOfLoadedEmojis()
 }
 
 
 
 
 
-$("#emojiChooser").on("click", '.emojiIcon', function(){
+$("#emojiChooser").on("click", 'img', function(){
   var thisID = $(this).attr('id')
   var raster = new Raster(thisID)
   raster.position = view.center
+  addRecent(thisID)
+  makeCloud(raster.position)
+
+})
+
+$("#recent").on("click", 'img', function(){
+  var thisID = $(this).attr('data-recent')
+  var raster = new Raster(thisID)
+  raster.position = view.center
+  makeCloud(raster.position)
 })
 
 
+
+function addRecent(id){
+  if(!_.contains(recents, id)){
+    if(recents.length < 10){
+      addImageToRecents(id)
+    } else {
+      $("#recent").children('img').first().fadeOut().remove()
+      recents.shift
+      addImageToRecents(id)
+    }
+  }
+}
+
+function addImageToRecents(id){
+  recents.push(id)
+  imageCopy = $("<img>").attr('data-recent', id)
+  imageCopy.attr('src', 'emojis/' + id + '.png')
+  imageCopy.addClass('recentMoji')
+  $("#recent").append($(imageCopy))
+}
 
 $(".optionicon").on('click', function(){
   var optionsToUse = $(this).attr("data-click")

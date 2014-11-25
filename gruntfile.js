@@ -10,10 +10,10 @@ module.exports = function(grunt) {
     },
     concat: {
       options: {
-        seperator: "\n",
+        seperator: "\n; \n",
       },
       vendor: {
-        src: ['js/vendor/jquery.min.js', 'js/vendor/jquery.imgpreload.js', 'js/vendor/paper.js', 'js/vendor/underscore.js', 'js/vendor/FileSaver.js', 'js/vendor/canvastoblob.js'],
+        src: ['js/vendor/jquery.min.js', 'js/vendor/jquery.imgpreload.js', 'js/vendor/underscore.js', 'js/vendor/FileSaver.js', 'js/vendor/canvastoblob.js'],
         dest: 'js/vendor.js'
       },
       scripts: {

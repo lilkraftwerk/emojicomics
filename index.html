@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script type="text/javascript" src="js/vendor/paper.js"></script>
   <script type="text/javascript" src="js/vendor.js"></script>
+
   <script type="text/paperscript" canvas="myCanvas" src="js/scripts.js"></script>
 
   <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
@@ -16,8 +18,21 @@
       <canvas id="myCanvas" width="1000" height="310" keepalive="true"></canvas>
 
       <div id="controls">
-        <!-- <div id="recent"></div> -->
+        <div id="stats">
+          <span id="numberLoaded"></span>
+
+          <span id="loadButtons">
+            <button id="moreEmojis">load more emojis</button>
+            <button id="allEmojis">load all emojis</button>
+          </span>
+          <span id="recent">recently used:</span>
+
+        </div>
+        <div id="recent"></div>
+
         <div id="emojiChooser">
+
+
 
         </div>
         <div id="optionsbar">

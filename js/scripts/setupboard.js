@@ -13,6 +13,10 @@ var down = makeDown()
 
 // global current emoji var
 var currentEmoji;
+var emojiCount = 1;
+
+// storage for recent emojis
+var recents = []
 
 // storage for all current clouds
 clouds = []
@@ -34,7 +38,8 @@ function setUpBoard(){
   boardLayer.activate()
   makeLines()
   emojiLayer.activate()
-  loadAllEmojis()
+  loadMoreEmojis()
+  // loadAllEmojis()
   populateBackgroundOptions()
   setupRandomBackground()
 }
@@ -49,6 +54,45 @@ function setupRandomBackground(){
     $("#bg" + i).val(thisBackground)
   }
 }
+
+
+function loadMoreEmojis(){
+  for(var i = 0; i < 50; i++){
+  if(emojiCount < 846){
+    var thisEmojiLocation = "emojis/" + String(emojiCount) + ".png"
+    var thisImg = $('<img>').attr('src', thisEmojiLocation)
+    thisImg.attr('id', String(emojiCount))
+     $("#emojiChooser").append(thisImg)
+     emojiCount += 1
+    }
+  }
+  $("#loadButtons").append($("#moreEmojis"))
+  $("#loadButtons").append($("#allEmojis"))
+}
+
+function showNumberOfLoadedEmojis(){
+  $("#numberLoaded").html(String($('#emojiChooser').children('img').length) + "/845 emojis loaded")
+}
+
+function loadRemainingEmojis(){
+  for(var i = emojiCount; i < 846; i++){
+    var thisEmojiLocation = "emojis/" + String(emojiCount) + ".png"
+    var thisImg = $('<img>').attr('src', thisEmojiLocation)
+    thisImg.attr('id', String(emojiCount))
+     $("#emojiChooser").append(thisImg)
+     emojiCount += 1
+  }
+  $("#moreEmojis").hide()
+  $("#allEmojis").hide()
+}
+
+$("#moreEmojis").on("click", function(){
+  loadMoreEmojis()
+})
+
+$("#allEmojis").on("click", function(){
+  loadRemainingEmojis()
+})
 
 function loadAllEmojis(){
 

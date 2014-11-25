@@ -2,11 +2,26 @@ body, html {
   margin: 0;
   padding: 0;
   background: url('../img/giftly.png');
+  font-family: 'Inconsolata';
 }
 
 
 #images {
   display: none;
+}
+
+
+
+
+#stats {
+  display: inline-block;
+  border: 2px solid black;
+  width: 900px;
+  line-height: auto;
+  padding: 0px 10px;
+  background-color: white;
+  margin-bottom: 10px;
+  line-height: 50px;
 }
 
 #test {
@@ -15,15 +30,28 @@ body, html {
   background-color: 'white';
 }
 
+#moreEmojis {
+  width: 10%;
+
+}
+
+#allEmojis {
+  width: 10%;
+}
+
+
 #controls {
 width: 910px;
 }
 
-#recent {
-  clear: left;
-  height: 32px;
-  width: 450px;
-  background-color: black;
+
+#loadButtons button {
+  height: 30px;
+  margin-top: 10px;
+  width: 120px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  font-family: 'Inconsolata';
 }
 
 #emojiChooser {
@@ -50,8 +78,6 @@ width: 910px;
   width: 100%;
 }
 
-input[type=radio]{
-}
 
 #textcontainer {
   overflow: hidden;
@@ -126,9 +152,13 @@ input[type=radio]{
   padding: 3px;
 }
 
-.recent {
+#recent {
+  float: right;
+}
+
+.recentMoji {
   height: 30px;
-  width: 30px;
+  margin-top: 4px;
 }
 
 #container {
