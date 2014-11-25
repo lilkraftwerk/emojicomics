@@ -52,7 +52,7 @@ function setupRandomBackground(){
 
 function loadAllEmojis(){
 
-$.imgpreload(someImages,
+$.imgpreload(allImages,
 {
     each: function()
     {

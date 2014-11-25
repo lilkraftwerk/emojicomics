@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         seperator: "\n",
       },
       vendor: {
-        src: ['js/vendor/jquery.min.js', 'js/vendor/jquery.imgpreload.js', 'js/vendor/paper.js', 'js/vendor/underscore.js',],
+        src: ['js/vendor/jquery.min.js', 'js/vendor/jquery.imgpreload.js', 'js/vendor/paper.js', 'js/vendor/underscore.js', 'js/vendor/FileSaver.js', 'js/vendor/canvastoblob.js'],
         dest: 'js/vendor.js'
       },
       scripts: {

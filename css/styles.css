@@ -20,15 +20,16 @@ width: 910px;
 }
 
 #recent {
+  clear: left;
   height: 32px;
-  width: 100%;
+  width: 450px;
   background-color: black;
 }
 
 #emojiChooser {
   float: left;
   width: 450px;
-  height: 200px;
+  height: 239px;
   border: 2px solid black;
   background-color: white;
   overflow-y: scroll;
@@ -36,13 +37,29 @@ width: 910px;
 }
 
 #options {
-  float: right;
-  width: 450px;
-  height: 200px;
-  border: 2px solid black;
   background-color: white;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  float: right;
+  height: 200px;
+  overflow: hidden;
+  width: 450px;
+}
+#textInput {
+  width: 100%;
+}
+
+input[type=radio]{
+}
+
+#textcontainer {
+  overflow: hidden;
+  padding: 0em .5em;
+}
+
+#textGo {
+  float: right;
 }
 
 #emojiChooser img {
@@ -51,15 +68,37 @@ width: 910px;
   padding: 3px;
 }
 
+#options h3 {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Pacifico';
+  font-size: 1.5em;
+}
+
 .optionicon {
-  display: inline;
-  width: 32px;
-  height: 32px;
-  border-top: 2px solid black;
+  background-color: gray;
+  background-image: url('../img/stripes.png');
   border-left: 2px solid black;
   border-right: 2px solid black;
-  padding: 2px;
+  border-top: 2px solid black;
+  display: inline-block;
+  border-radius: 10px 10px 0px 0px;
+  margin-left: 2px;
+  padding: 5px;
+  /*margin: 0 auto;*/
+}
+
+.optionicon img {
+  width: 50%;
+  height: 25px;
+  width: 25px;
+  margin: 0 auto;
+}
+
+.optionicon.active {
   background-color: white;
+  background-image: none;
 }
 
 #hiddenoptions {
@@ -67,8 +106,8 @@ width: 910px;
 }
 
 #optionsbar {
-  padding-left: 5px;
-  padding-top: 3px;
+  /*padding-left: 5px;*/
+  /*padding-top: 3px;*/
 }
 
 .oneoption {

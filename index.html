@@ -6,6 +6,7 @@
 
   <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
@@ -15,16 +16,30 @@
       <canvas id="myCanvas" width="1000" height="310" keepalive="true"></canvas>
 
       <div id="controls">
+        <!-- <div id="recent"></div> -->
         <div id="emojiChooser">
 
         </div>
         <div id="optionsbar">
-          <div class="optionicon" data-click="speech">SP</div>
-          <div class="optionicon" data-click="backgroundsoption">BG</div>
-          <div class="optionicon" data-click="speech">HI</div>
+          <div class="optionicon" data-click="speech">
+            <img src='emojis/speechleft.png'>
+            <img src='emojis/speechleft.png'>
+            <img src='emojis/speechleft.png'>
+            <img src='emojis/speechleft.png'>
+          </div>
+          <div class="optionicon" data-click="backgroundsoption">
+            <img src='emojis/backgroundicon1.png'>
+            <img src='emojis/backgroundicon2.png'>
+            <img src='emojis/backgroundicon3.png'>
+            <img src='emojis/backgroundicon4.png'>
+          </div>
+          <div class="optionicon" data-click="save">
+            <img src='emojis/down.png'>
+            <img src='emojis/downloadicon2.png'>
+          </div>
         </div>
         <div id="options">
-
+        <h3> click a tab 2 c options</h3>
       </div>
     </div>
   </div>
@@ -33,17 +48,28 @@
 
 <div id="hiddenoptions">
   <div id="speech">
-      <h3>speech</h3>
-    <input id="textInput" type="text">
-      <button id="textGo">make speech bubble</button><br>
+      <h3>Speech Bubbles</h3>
+      <button id="textGo">make speech bubble</button>
+    <div id="textcontainer">
+    <input id="textInput" placeholder="type here" type="text"><br>
+      </div>
+      <hr>
       <input type="radio" name="speechtype" checked="checked" value="speechleft">Speech (L)
       <input type="radio" name="speechtype" value="speechright">Speech (R)
       <input type="radio" name="speechtype" value="thoughtleft">Thought (L)
       <input type="radio" name="speechtype" value="thoughtright">Thought (R)
+      <hr>SIZE:
+      <input type="radio" name="fontsize" value="10">small
+      <input type="radio" name="fontsize" checked="checked" value="20">normal
+      <input type="radio" name="fontsize" value="30">big
+      <hr>FONT FACE:
+      <input type="radio" name="fontface" value="Inconsolata">robot
+      <input type="radio" name="fontface" checked="checked" value="Open Sans">normal
+      <input type="radio" name="fontface" value="Pacifico">cursive
   </div>
 
   <div id="backgroundsoption">
-      <h3>backgrounds</h3>
+      <h3>Backgrounds</h3>
       Panel 1
       <select id="bg1">
       </select>
@@ -55,6 +81,13 @@
       </select>
       <button id="randombg">totally random backgrounds</button>
       <button id="onerandombg">one random background</button>
+
+  </div>
+
+  <div id="save">
+      <button id="savetofile">save to file</button>
+<a id="download">Download as image</a>
+<button id="download33">Download as image</button>
 
   </div>
 

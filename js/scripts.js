@@ -1,26 +1,13 @@
 
 
 $(".optionicon").on('click', function(){
+  $('.optionicon').removeClass("active")
+  $(this).addClass('active')
   var optionsToUse = $(this).attr("data-click")
   $("#options").html($("#" + optionsToUse).html())
 })
 
 
-function makeSpeechBubble(inputText){
-  var speechDirection = $('input:radio[name=speechtype]:checked').val();
-  var position = new Point(100, 100)
-  console.log(speechDirection)
-  var speechRaster = new Raster(speechDirection)
-  speechRaster.scale(2)
-  var text = new PointText();
-  text.justification = 'center';
-  text.fontSize = 15;
-  text.fontFamily = 'Pacifico'
-  text.fillColor = 'black';
-  text.content = inputText;
-  var group = new Group([speechRaster, text])
-  group.position = view.center;
-}
 
 
 function scaleEmoji(){
@@ -62,20 +49,28 @@ someImages = ["emojis/1.png", "emojis/2.png", "emojis/3.png", "emojis/4.png", "e
 
 function makeSpeechBubble(inputText){
   var speechDirection = $('input:radio[name=speechtype]:checked').val();
-  var position = new Point(100, 100)
-  console.log(speechDirection)
   var speechRaster = new Raster(speechDirection)
   speechRaster.scale(2)
   var text = new PointText();
   text.justification = 'center';
-  text.fontSize = 15;
-  text.fontFamily = 'Pacifico'
+  text.fontSize = getFontSize()
+  text.fontFamily = getFontFace()
   text.fillColor = 'black';
   text.content = inputText;
   var group = new Group([speechRaster, text])
   group.position = view.center;
 }
 
+function getFontSize(){
+  var fontSize = $('input[name=fontsize]:checked').val();
+  return parseInt(fontSize)
+}
+
+function getFontFace(){
+  var fontFace = $('input:radio[name=fontface]:checked').val();
+  console.log(fontFace)
+  return fontFace
+}
 
 $(document).on('change', 'select', function(){
   thisPanel = $(this).attr('id').split("bg")[1]
@@ -99,6 +94,40 @@ function randomBackgrounds(){
     $("#bg" + i).val(thisBackground)
   }
 }
+
+
+
+
+$(document).on('click', '#btn-download', function(){
+  var thisCanvas = saveCanvasToFile()
+  downloadCanvas(this, thisCanvas, "sup.png")
+})
+
+function saveCanvasToFile(){
+  var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
+  var newCanvas = document.createElement("canvas")
+  var newContext = newCanvas.getContext("2d")
+  newCanvas.height = 310;
+  newCanvas.width = 910;
+  newContext.drawImage(canvas, 0, 0);
+  newCanvas.toBlob(function(blob) {
+    saveAs(blob, "prettyimage.png");
+  }, "image/png");
+
+}
+
+
+$(document).on('click', '#download', function(e){
+  e.preventDefault()
+  console.log("sup")
+  downloadCanvas(document.getElementById('download'), 'myCanvas', 'sup.png')
+})
+
+function downloadCanvas(link, canvasId, filename) {
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
+}
+
 // create multiple layers for paper.js
 var utilities = project.activeLayer;
 var backgroundLayer = new Layer();
@@ -153,7 +182,7 @@ function setupRandomBackground(){
 
 function loadAllEmojis(){
 
-$.imgpreload(someImages,
+$.imgpreload(allImages,
 {
     each: function()
     {
