@@ -1491,370 +1491,268 @@ if ('undefined' != typeof jQuery)
   }
 }.call(this));
 
-/* FileSaver.js
- * A saveAs() FileSaver implementation.
- * 2014-08-29
- *
- * By Eli Grey, http://eligrey.com
- * License: X11/MIT
- *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
+/**
+ * covert canvas to image
+ * and save the image file
  */
 
-/*global self */
-/*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
+var Canvas2Image = function () {
 
-/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
+  // check if support sth.
+  var $support = function () {
+    var canvas = document.createElement('canvas'),
+      ctx = canvas.getContext('2d');
 
-var saveAs = saveAs
-  // IE 10+ (native saveAs)
-  || (typeof navigator !== "undefined" &&
-      navigator.msSaveOrOpenBlob && navigator.msSaveOrOpenBlob.bind(navigator))
-  // Everyone else
-  || (function(view) {
-  "use strict";
-  // IE <10 is explicitly unsupported
-  if (typeof navigator !== "undefined" &&
-      /MSIE [1-9]\./.test(navigator.userAgent)) {
-    return;
+    return {
+      canvas: !!ctx,
+      imageData: !!ctx.getImageData,
+      dataURL: !!canvas.toDataURL,
+      btoa: !!window.btoa
+    };
+  }();
+
+  var downloadMime = 'image/octet-stream';
+
+  function scaleCanvas (canvas, width, height) {
+    var w = canvas.width,
+      h = canvas.height;
+    if (width == undefined) {
+      width = w;
+    }
+    if (height == undefined) {
+      height = h;
+    }
+
+    var retCanvas = document.createElement('canvas');
+    var retCtx = retCanvas.getContext('2d');
+    retCanvas.width = width;
+    retCanvas.height = height;
+    retCtx.drawImage(canvas, 0, 0, w, h, 0, 0, width, height);
+    return retCanvas;
   }
-  var
-      doc = view.document
-      // only get URL when necessary in case Blob.js hasn't overridden it yet
-    , get_URL = function() {
-      return view.URL || view.webkitURL || view;
-    }
-    , save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a")
-    , can_use_save_link = "download" in save_link
-    , click = function(node) {
-      var event = doc.createEvent("MouseEvents");
-      event.initMouseEvent(
-        "click", true, false, view, 0, 0, 0, 0, 0
-        , false, false, false, false, 0, null
-      );
-      node.dispatchEvent(event);
-    }
-    , webkit_req_fs = view.webkitRequestFileSystem
-    , req_fs = view.requestFileSystem || webkit_req_fs || view.mozRequestFileSystem
-    , throw_outside = function(ex) {
-      (view.setImmediate || view.setTimeout)(function() {
-        throw ex;
-      }, 0);
-    }
-    , force_saveable_type = "application/octet-stream"
-    , fs_min_size = 0
-    // See https://code.google.com/p/chromium/issues/detail?id=375297#c7 for
-    // the reasoning behind the timeout and revocation flow
-    , arbitrary_revoke_timeout = 10
-    , revoke = function(file) {
-      var revoker = function() {
-        if (typeof file === "string") { // file is an object URL
-          get_URL().revokeObjectURL(file);
-        } else { // file is a File
-          file.remove();
-        }
-      };
-      if (view.chrome) {
-        revoker();
-      } else {
-        setTimeout(revoker, arbitrary_revoke_timeout);
-      }
-    }
-    , dispatch = function(filesaver, event_types, event) {
-      event_types = [].concat(event_types);
-      var i = event_types.length;
-      while (i--) {
-        var listener = filesaver["on" + event_types[i]];
-        if (typeof listener === "function") {
-          try {
-            listener.call(filesaver, event || filesaver);
-          } catch (ex) {
-            throw_outside(ex);
-          }
-        }
-      }
-    }
-    , FileSaver = function(blob, name) {
-      // First try a.download, then web filesystem, then object URLs
-      var
-          filesaver = this
-        , type = blob.type
-        , blob_changed = false
-        , object_url
-        , target_view
-        , dispatch_all = function() {
-          dispatch(filesaver, "writestart progress write writeend".split(" "));
-        }
-        // on any filesys errors revert to saving with object URLs
-        , fs_error = function() {
-          // don't create more object URLs than needed
-          if (blob_changed || !object_url) {
-            object_url = get_URL().createObjectURL(blob);
-          }
-          if (target_view) {
-            target_view.location.href = object_url;
-          } else {
-            var new_tab = view.open(object_url, "_blank");
-            if (new_tab == undefined && typeof safari !== "undefined") {
-              //Apple do not allow window.open, see http://bit.ly/1kZffRI
-              view.location.href = object_url
-            }
-          }
-          filesaver.readyState = filesaver.DONE;
-          dispatch_all();
-          revoke(object_url);
-        }
-        , abortable = function(func) {
-          return function() {
-            if (filesaver.readyState !== filesaver.DONE) {
-              return func.apply(this, arguments);
-            }
-          };
-        }
-        , create_if_not_found = {create: true, exclusive: false}
-        , slice
-      ;
-      filesaver.readyState = filesaver.INIT;
-      if (!name) {
-        name = "download";
-      }
-      if (can_use_save_link) {
-        object_url = get_URL().createObjectURL(blob);
-        save_link.href = object_url;
-        save_link.download = name;
-        click(save_link);
-        filesaver.readyState = filesaver.DONE;
-        dispatch_all();
-        revoke(object_url);
-        return;
-      }
-      // Object and web filesystem URLs have a problem saving in Google Chrome when
-      // viewed in a tab, so I force save with application/octet-stream
-      // http://code.google.com/p/chromium/issues/detail?id=91158
-      // Update: Google errantly closed 91158, I submitted it again:
-      // https://code.google.com/p/chromium/issues/detail?id=389642
-      if (view.chrome && type && type !== force_saveable_type) {
-        slice = blob.slice || blob.webkitSlice;
-        blob = slice.call(blob, 0, blob.size, force_saveable_type);
-        blob_changed = true;
-      }
-      // Since I can't be sure that the guessed media type will trigger a download
-      // in WebKit, I append .download to the filename.
-      // https://bugs.webkit.org/show_bug.cgi?id=65440
-      if (webkit_req_fs && name !== "download") {
-        name += ".download";
-      }
-      if (type === force_saveable_type || webkit_req_fs) {
-        target_view = view;
-      }
-      if (!req_fs) {
-        fs_error();
-        return;
-      }
-      fs_min_size += blob.size;
-      req_fs(view.TEMPORARY, fs_min_size, abortable(function(fs) {
-        fs.root.getDirectory("saved", create_if_not_found, abortable(function(dir) {
-          var save = function() {
-            dir.getFile(name, create_if_not_found, abortable(function(file) {
-              file.createWriter(abortable(function(writer) {
-                writer.onwriteend = function(event) {
-                  target_view.location.href = file.toURL();
-                  filesaver.readyState = filesaver.DONE;
-                  dispatch(filesaver, "writeend", event);
-                  revoke(file);
-                };
-                writer.onerror = function() {
-                  var error = writer.error;
-                  if (error.code !== error.ABORT_ERR) {
-                    fs_error();
-                  }
-                };
-                "writestart progress write abort".split(" ").forEach(function(event) {
-                  writer["on" + event] = filesaver["on" + event];
-                });
-                writer.write(blob);
-                filesaver.abort = function() {
-                  writer.abort();
-                  filesaver.readyState = filesaver.DONE;
-                };
-                filesaver.readyState = filesaver.WRITING;
-              }), fs_error);
-            }), fs_error);
-          };
-          dir.getFile(name, {create: false}, abortable(function(file) {
-            // delete file if it already exists
-            file.remove();
-            save();
-          }), abortable(function(ex) {
-            if (ex.code === ex.NOT_FOUND_ERR) {
-              save();
-            } else {
-              fs_error();
-            }
-          }));
-        }), fs_error);
-      }), fs_error);
-    }
-    , FS_proto = FileSaver.prototype
-    , saveAs = function(blob, name) {
-      return new FileSaver(blob, name);
-    }
-  ;
-  FS_proto.abort = function() {
-    var filesaver = this;
-    filesaver.readyState = filesaver.DONE;
-    dispatch(filesaver, "abort");
-  };
-  FS_proto.readyState = FS_proto.INIT = 0;
-  FS_proto.WRITING = 1;
-  FS_proto.DONE = 2;
 
-  FS_proto.error =
-  FS_proto.onwritestart =
-  FS_proto.onprogress =
-  FS_proto.onwrite =
-  FS_proto.onabort =
-  FS_proto.onerror =
-  FS_proto.onwriteend =
-    null;
-
-  return saveAs;
-}(
-     typeof self !== "undefined" && self
-  || typeof window !== "undefined" && window
-  || this.content
-));
-// `self` is undefined in Firefox for Android content script context
-// while `this` is nsIContentFrameMessageManager
-// with an attribute `content` that corresponds to the window
-
-if (typeof module !== "undefined" && module !== null) {
-  module.exports = saveAs;
-} else if ((typeof define !== "undefined" && define !== null) && (define.amd != null)) {
-  define([], function() {
-    return saveAs;
-  });
-}
-/* canvas-toBlob.js
- * A canvas.toBlob() implementation.
- * 2013-12-27
- *
- * By Eli Grey, http://eligrey.com and Devin Samarin, https://github.com/eboyjr
- * License: X11/MIT
- *   See https://github.com/eligrey/canvas-toBlob.js/blob/master/LICENSE.md
- */
-
-/*global self */
-/*jslint bitwise: true, regexp: true, confusion: true, es5: true, vars: true, white: true,
-  plusplus: true */
-
-/*! @source http://purl.eligrey.com/github/canvas-toBlob.js/blob/master/canvas-toBlob.js */
-
-(function(view) {
-"use strict";
-var
-    Uint8Array = view.Uint8Array
-  , HTMLCanvasElement = view.HTMLCanvasElement
-  , canvas_proto = HTMLCanvasElement && HTMLCanvasElement.prototype
-  , is_base64_regex = /\s*;\s*base64\s*(?:;|$)/i
-  , to_data_url = "toDataURL"
-  , base64_ranks
-  , decode_base64 = function(base64) {
-    var
-        len = base64.length
-      , buffer = new Uint8Array(len / 4 * 3 | 0)
-      , i = 0
-      , outptr = 0
-      , last = [0, 0]
-      , state = 0
-      , save = 0
-      , rank
-      , code
-      , undef
-    ;
-    while (len--) {
-      code = base64.charCodeAt(i++);
-      rank = base64_ranks[code-43];
-      if (rank !== 255 && rank !== undef) {
-        last[1] = last[0];
-        last[0] = code;
-        save = (save << 6) | rank;
-        state++;
-        if (state === 4) {
-          buffer[outptr++] = save >>> 16;
-          if (last[1] !== 61 /* padding character */) {
-            buffer[outptr++] = save >>> 8;
-          }
-          if (last[0] !== 61 /* padding character */) {
-            buffer[outptr++] = save;
-          }
-          state = 0;
-        }
-      }
-    }
-    // 2/3 chance there's going to be some null bytes at the end, but that
-    // doesn't really matter with most image formats.
-    // If it somehow matters for you, truncate the buffer up outptr.
-    return buffer;
+  function getDataURL (canvas, type, width, height) {
+    canvas = scaleCanvas(canvas, width, height);
+    return canvas.toDataURL(type);
   }
-;
-if (Uint8Array) {
-  base64_ranks = new Uint8Array([
-      62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1
-    , -1, -1,  0, -1, -1, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9
-    , 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
-    , -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35
-    , 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51
-  ]);
-}
-if (HTMLCanvasElement && !canvas_proto.toBlob) {
-  canvas_proto.toBlob = function(callback, type /*, ...args*/) {
-      if (!type) {
-      type = "image/png";
-    } if (this.mozGetAsFile) {
-      callback(this.mozGetAsFile("canvas", type));
-      return;
-    } if (this.msToBlob && /^\s*image\/png\s*(?:$|;)/i.test(type)) {
-      callback(this.msToBlob());
-      return;
+
+  function saveFile (strData) {
+    document.location.href = strData;
+  }
+
+  function genImage(strData) {
+    var img = document.createElement('img');
+    img.src = strData;
+    return img;
+  }
+  function fixType (type) {
+    type = type.toLowerCase().replace(/jpg/i, 'jpeg');
+    var r = type.match(/png|jpeg|bmp|gif/)[0];
+    return 'image/' + r;
+  }
+  function encodeData (data) {
+    if (!window.btoa) { throw 'btoa undefined' }
+    var str = '';
+    if (typeof data == 'string') {
+      str = data;
+    } else {
+      for (var i = 0; i < data.length; i ++) {
+        str += String.fromCharCode(data[i]);
+      }
     }
 
-    var
-        args = Array.prototype.slice.call(arguments, 1)
-      , dataURI = this[to_data_url].apply(this, args)
-      , header_end = dataURI.indexOf(",")
-      , data = dataURI.substring(header_end + 1)
-      , is_base64 = is_base64_regex.test(dataURI.substring(0, header_end))
-      , blob
-    ;
-    if (Blob.fake) {
-      // no reason to decode a data: URI that's just going to become a data URI again
-      blob = new Blob
-      if (is_base64) {
-        blob.encoding = "base64";
-      } else {
-        blob.encoding = "URI";
+    return btoa(str);
+  }
+  function getImageData (canvas) {
+    var w = canvas.width,
+      h = canvas.height;
+    return canvas.getContext('2d').getImageData(0, 0, w, h);
+  }
+  function makeURI (strData, type) {
+    return 'data:' + type + ';base64,' + strData;
+  }
+
+
+  /**
+   * create bitmap image
+   * 按照规则生成图片响应头和响应体
+   */
+  var genBitmapImage = function (oData) {
+
+    //
+    // BITMAPFILEHEADER: http://msdn.microsoft.com/en-us/library/windows/desktop/dd183374(v=vs.85).aspx
+    // BITMAPINFOHEADER: http://msdn.microsoft.com/en-us/library/dd183376.aspx
+    //
+
+    var biWidth  = oData.width;
+    var biHeight  = oData.height;
+    var biSizeImage = biWidth * biHeight * 3;
+    var bfSize  = biSizeImage + 54; // total header size = 54 bytes
+
+    //
+    //  typedef struct tagBITMAPFILEHEADER {
+    //    WORD bfType;
+    //    DWORD bfSize;
+    //    WORD bfReserved1;
+    //    WORD bfReserved2;
+    //    DWORD bfOffBits;
+    //  } BITMAPFILEHEADER;
+    //
+    var BITMAPFILEHEADER = [
+      // WORD bfType -- The file type signature; must be "BM"
+      0x42, 0x4D,
+      // DWORD bfSize -- The size, in bytes, of the bitmap file
+      bfSize & 0xff, bfSize >> 8 & 0xff, bfSize >> 16 & 0xff, bfSize >> 24 & 0xff,
+      // WORD bfReserved1 -- Reserved; must be zero
+      0, 0,
+      // WORD bfReserved2 -- Reserved; must be zero
+      0, 0,
+      // DWORD bfOffBits -- The offset, in bytes, from the beginning of the BITMAPFILEHEADER structure to the bitmap bits.
+      54, 0, 0, 0
+    ];
+
+    //
+    //  typedef struct tagBITMAPINFOHEADER {
+    //    DWORD biSize;
+    //    LONG  biWidth;
+    //    LONG  biHeight;
+    //    WORD  biPlanes;
+    //    WORD  biBitCount;
+    //    DWORD biCompression;
+    //    DWORD biSizeImage;
+    //    LONG  biXPelsPerMeter;
+    //    LONG  biYPelsPerMeter;
+    //    DWORD biClrUsed;
+    //    DWORD biClrImportant;
+    //  } BITMAPINFOHEADER, *PBITMAPINFOHEADER;
+    //
+    var BITMAPINFOHEADER = [
+      // DWORD biSize -- The number of bytes required by the structure
+      40, 0, 0, 0,
+      // LONG biWidth -- The width of the bitmap, in pixels
+      biWidth & 0xff, biWidth >> 8 & 0xff, biWidth >> 16 & 0xff, biWidth >> 24 & 0xff,
+      // LONG biHeight -- The height of the bitmap, in pixels
+      biHeight & 0xff, biHeight >> 8  & 0xff, biHeight >> 16 & 0xff, biHeight >> 24 & 0xff,
+      // WORD biPlanes -- The number of planes for the target device. This value must be set to 1
+      1, 0,
+      // WORD biBitCount -- The number of bits-per-pixel, 24 bits-per-pixel -- the bitmap
+      // has a maximum of 2^24 colors (16777216, Truecolor)
+      24, 0,
+      // DWORD biCompression -- The type of compression, BI_RGB (code 0) -- uncompressed
+      0, 0, 0, 0,
+      // DWORD biSizeImage -- The size, in bytes, of the image. This may be set to zero for BI_RGB bitmaps
+      biSizeImage & 0xff, biSizeImage >> 8 & 0xff, biSizeImage >> 16 & 0xff, biSizeImage >> 24 & 0xff,
+      // LONG biXPelsPerMeter, unused
+      0,0,0,0,
+      // LONG biYPelsPerMeter, unused
+      0,0,0,0,
+      // DWORD biClrUsed, the number of color indexes of palette, unused
+      0,0,0,0,
+      // DWORD biClrImportant, unused
+      0,0,0,0
+    ];
+
+    var iPadding = (4 - ((biWidth * 3) % 4)) % 4;
+
+    var aImgData = oData.data;
+
+    var strPixelData = '';
+    var biWidth4 = biWidth<<2;
+    var y = biHeight;
+    var fromCharCode = String.fromCharCode;
+
+    do {
+      var iOffsetY = biWidth4*(y-1);
+      var strPixelRow = '';
+      for (var x = 0; x < biWidth; x++) {
+        var iOffsetX = x<<2;
+        strPixelRow += fromCharCode(aImgData[iOffsetY+iOffsetX+2]) +
+                 fromCharCode(aImgData[iOffsetY+iOffsetX+1]) +
+                 fromCharCode(aImgData[iOffsetY+iOffsetX]);
       }
-      blob.data = data;
-      blob.size = data.length;
-    } else if (Uint8Array) {
-      if (is_base64) {
-        blob = new Blob([decode_base64(data)], {type: type});
-      } else {
-        blob = new Blob([decodeURIComponent(data)], {type: type});
+
+      for (var c = 0; c < iPadding; c++) {
+        strPixelRow += String.fromCharCode(0);
       }
-    }
-    callback(blob);
+
+      strPixelData += strPixelRow;
+    } while (--y);
+
+    var strEncoded = encodeData(BITMAPFILEHEADER.concat(BITMAPINFOHEADER)) + encodeData(strPixelData);
+
+    return strEncoded;
   };
 
-  if (canvas_proto.toDataURLHD) {
-    canvas_proto.toBlobHD = function() {
-      to_data_url = "toDataURLHD";
-      var blob = this.toBlob();
-      to_data_url = "toDataURL";
-      return blob;
+  /**
+   * saveAsImage
+   * @param canvasElement
+   * @param {String} image type
+   * @param {Number} [optional] png width
+   * @param {Number} [optional] png height
+   */
+  var saveAsImage = function (canvas, width, height, type) {
+    if ($support.canvas && $support.dataURL) {
+      if (typeof canvas == "string") { canvas = document.getElementById(canvas); }
+      if (type == undefined) { type = 'png'; }
+      type = fixType(type);
+      if (/bmp/.test(type)) {
+        var data = getImageData(scaleCanvas(canvas, width, height));
+        var strData = genBitmapImage(data);
+        saveFile(makeURI(strData, downloadMime));
+      } else {
+        var strData = getDataURL(canvas, type, width, height);
+        saveFile(strData.replace(type, downloadMime));
+      }
     }
-  } else {
-    canvas_proto.toBlobHD = canvas_proto.toBlob;
-  }
-}
-}(typeof self !== "undefined" && self || typeof window !== "undefined" && window || this.content || this));
+  };
+
+  var convertToImage = function (canvas, width, height, type) {
+    if ($support.canvas && $support.dataURL) {
+      if (typeof canvas == "string") { canvas = document.getElementById(canvas); }
+      if (type == undefined) { type = 'png'; }
+      type = fixType(type);
+
+      if (/bmp/.test(type)) {
+        var data = getImageData(scaleCanvas(canvas, width, height));
+        var strData = genBitmapImage(data);
+        return genImage(makeURI(strData, 'image/bmp'));
+      } else {
+        var strData = getDataURL(canvas, type, width, height);
+        return genImage(strData);
+      }
+    }
+  };
+
+
+
+  return {
+    saveAsImage: saveAsImage,
+    saveAsPNG: function (canvas, width, height) {
+      return saveAsImage(canvas, width, height, 'png');
+    },
+    saveAsJPEG: function (canvas, width, height) {
+      return saveAsImage(canvas, width, height, 'jpeg');
+    },
+    saveAsGIF: function (canvas, width, height) {
+      return saveAsImage(canvas, width, height, 'gif');
+    },
+    saveAsBMP: function (canvas, width, height) {
+      return saveAsImage(canvas, width, height, 'bmp');
+    },
+
+    convertToImage: convertToImage,
+    convertToPNG: function (canvas, width, height) {
+      return convertToImage(canvas, width, height, 'png');
+    },
+    convertToJPEG: function (canvas, width, height) {
+      return convertToImage(canvas, width, height, 'jpeg');
+    },
+    convertToGIF: function (canvas, width, height) {
+      return convertToImage(canvas, width, height, 'gif');
+    },
+    convertToBMP: function (canvas, width, height) {
+      return convertToImage(canvas, width, height, 'bmp');
+    }
+  };
+
+}();

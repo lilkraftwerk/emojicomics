@@ -52,10 +52,6 @@ function randomBackgrounds(){
 
 
 
-$(document).on('click', '#btn-download', function(){
-  var thisCanvas = saveCanvasToFile()
-  downloadCanvas(this, thisCanvas, "sup.png")
-})
 
 function saveCanvasToFile(){
   var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
@@ -64,20 +60,15 @@ function saveCanvasToFile(){
   newCanvas.height = 310;
   newCanvas.width = 910;
   newContext.drawImage(canvas, 0, 0);
-  newCanvas.toBlob(function(blob) {
-    saveAs(blob, "prettyimage.png");
-  }, "image/png");
+  // newCanvas.toBlob(function(blob) {
+  //   saveAs(blob, "prettyimage.png");
+  // }, "image/png");
+Canvas2Image.saveAsPNG(newCanvas, 900, 300)
 
 }
 
 
 $(document).on('click', '#download', function(e){
-  e.preventDefault()
-  console.log("sup")
-  downloadCanvas(document.getElementById('download'), 'myCanvas', 'sup.png')
+  saveCanvasToFile()
 })
 
-function downloadCanvas(link, canvasId, filename) {
-    link.href = document.getElementById(canvasId).toDataURL();
-    link.download = filename;
-}

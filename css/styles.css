@@ -11,12 +11,18 @@ body, html {
 }
 
 
-
+.downloadbutton {
+  height: 75%;
+  width: 90%;
+  margin: 5%;
+  font-size: 2em;
+  background-image: url('../img/stripes2.png');
+}
 
 #stats {
   display: inline-block;
   border: 2px solid black;
-  width: 900px;
+  width: 885px;
   line-height: auto;
   padding: 0px 10px;
   background-color: white;
@@ -41,7 +47,7 @@ body, html {
 
 
 #controls {
-width: 910px;
+  width: 910px;
 }
 
 
@@ -70,7 +76,8 @@ width: 910px;
   border-left: 2px solid black;
   border-right: 2px solid black;
   float: right;
-  height: 200px;
+  height: 190px;
+  padding-top: 10px;
   overflow: hidden;
   width: 450px;
 }
@@ -138,13 +145,29 @@ width: 910px;
 #options h3 {
   text-align: center;
   margin: 0;
-  padding: 20px;
+  padding: 10px;
   font-family: 'Inconsolata';
   font-size: 1.5em;
 }
 
+.robotfont {
+  font-family: 'Inconsolata';
+}
+
+.cursivefont {
+  font-family: 'Pacifico';
+}
+
+.speechselect {
+  height: 32px;
+  margin-left: 15px;
+}
+
+.normalfont {
+  font-family: 'Open Sans';
+}
+
 .optionicon {
-  /*margin: 0 auto;*/
   background-color: gray;
   background-image: url('../img/stripes.png');
   border-left: 2px solid black;
@@ -156,12 +179,30 @@ width: 910px;
   padding: 5px;
 }
 
+input[type=radio]{
+  display: none;
+}
+
+#theradio label {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 0 auto;
+  display: inline-block;
+  height: 30px;
+  width: 75px;
+  margin-top: 3px;
+}
+
+input[type="radio"]:checked + label {
+  background-color: gray;
+}
+
 .optionicon img {
-  width: 50%;
   height: 25px;
   width: 25px;
   margin: 0 auto;
 }
+
 
 .optionicon.active {
   background-color: white;
@@ -204,20 +245,20 @@ width: 910px;
 
 #container {
   width: 100%;
-     /* Firefox */
-    display:-moz-box;
-    -moz-box-pack:center;
-    -moz-box-align:center;
+  /* Firefox */
+  display:-moz-box;
+  -moz-box-pack:center;
+  -moz-box-align:center;
 
-    /* Safari and Chrome */
-    display:-webkit-box;
-    -webkit-box-pack:center;
-    -webkit-box-align:center;
+  /* Safari and Chrome */
+  display:-webkit-box;
+  -webkit-box-pack:center;
+  -webkit-box-align:center;
 
-    /* W3C */
-    display:box;
-    box-pack:center;
-    box-align:center;
+  /* W3C */
+  display:box;
+  box-pack:center;
+  box-align:center;
 }
 
 .wrapper {
