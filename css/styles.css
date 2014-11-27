@@ -106,9 +106,17 @@ body, html {
   display: inline-block;
 }
 
+
+.helpimg {
+   height: 20px;
+  display: inline-block;
+  margin-top: 10px;
+}
 .options-container {
   margin-bottom: 10px;
 }
+
+
 
 .bgbutton {
  width: 80%;
@@ -142,12 +150,18 @@ body, html {
   font-style: italic;
 }
 
+#options p {
+  text-align: center;
+  font-size: 1.3em;
+}
+
 #options h3 {
   text-align: center;
   margin: 0;
-  padding: 10px;
+  /*padding: 10px;*/
   font-family: 'Inconsolata';
   font-size: 1.5em;
+  /*margin-bottom: 10px;*/
 }
 
 .robotfont {
