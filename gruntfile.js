@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       js:{
-        files:'js/scripts/*.js',
+        files:'public/js/scripts/*.js',
         tasks: ['concat']      }
     },
     concat: {
@@ -13,16 +13,16 @@ module.exports = function(grunt) {
         seperator: "\n; \n",
       },
       vendor: {
-        src: ['js/vendor/jquery.min.js', 'js/vendor/jquery.imgpreload.js', 'js/vendor/underscore.js', 'js/vendor/canvas2image.js'],
-        dest: 'js/vendor.js'
+        src: ['public/js/vendor/jquery.min.js', 'public/js/vendor/jquery.imgpreload.js', 'public/js/vendor/underscore.js', 'public/js/vendor/canvas2image.js'],
+        dest: 'public/js/vendor.js'
       },
       scripts: {
-        src: ['js/scripts/*.js'],
-        dest: 'js/scripts.js'
+        src: ['public/js/scripts/*.js'],
+        dest: 'public/js/scripts.js'
       }
     },
     jshint: {
-      all: ['Gruntfile.js', 'js/scripts/*.js']
+      all: ['Gruntfile.js', 'public/js/scripts/*.js']
   }
   });
 

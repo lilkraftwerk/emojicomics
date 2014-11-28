@@ -1,5 +1,4 @@
 
-
 $(".optionicon").on('click', function(){
   $('.optionicon').removeClass("active")
   $(this).addClass('active')
@@ -133,17 +132,42 @@ function downloadCanvas(link, canvasId, filename) {
 }
 
 
-$(document).on('click', '#download', function(e){
-  var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
+// $(document).on('click', '#download', function(e){
+//   var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
+//   var newCanvas = document.getElementById("newCanvas")
+//   var newContext = newCanvas.getContext("2d")
+//   newCanvas.height = 310;
+//   newCanvas.width = 910;
+//   newContext.drawImage(canvas, 0, 0);
+//   console.log(newCanvas)
+//   downloadCanvas(this, 'newCanvas', 'emojicomic.png')
+// })
+function trimCanvas(){
+    var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
   var newCanvas = document.getElementById("newCanvas")
   var newContext = newCanvas.getContext("2d")
   newCanvas.height = 310;
   newCanvas.width = 910;
   newContext.drawImage(canvas, 0, 0);
-  console.log(newCanvas)
-  downloadCanvas(this, 'newCanvas', 'emojicomic.png')
-})
+}
 
+
+$(document).on('click', '#download', function(e){
+  trimCanvas()
+  var hi = {
+    "swag": "sup"
+  }
+  var pngURL = newCanvas.toDataURL()
+  var jsonData = JSON.stringify({author: 'swag', img: pngURL});
+
+  $.ajax({
+      url: '/comic',
+      type: 'POST',
+      contentType: 'application/json',
+      dataType: 'json',
+      data: jsonData
+    })
+})
 
 // create multiple layers for paper.js
 var utilities = project.activeLayer;
