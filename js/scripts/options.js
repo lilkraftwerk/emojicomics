@@ -1,5 +1,35 @@
 
 
+function splitTextIntoSmallerPieces(sentence){
+  var splitSentence = sentence.split(" ")
+  var counter = 0
+  for(var i = 0; i < splitSentence.length; i++){
+    counter += splitSentence[i].length
+    if (counter > 8 && i != splitSentence.length - 1) {
+      splitSentence.splice(i, 0, '\n')
+      counter = 0;
+    }
+  }
+  return splitSentence.join(" ")
+}
+
+function splitTextIntoSmallerPieces(sentence){
+  var newSentence = []
+  var splitOrigSentence = sentence.split(" ")
+  var timeSinceLineSplit = 0
+  for(var i = 0; i < splitOrigSentence.length; i++){
+    var thisWord = splitOrigSentence[i]
+    newSentence.push(thisWord)
+    timeSinceLineSplit += thisWord.length
+    if (timeSinceLineSplit > 6){
+      timeSinceLineSplit = 0
+      newSentence.push('\n')
+    }
+  }
+  return newSentence.join(" ")
+
+}
+
 
 function makeSpeechBubble(inputText){
   var speechDirection = $('input:radio[name=speechtype]:checked').val();
@@ -10,9 +40,11 @@ function makeSpeechBubble(inputText){
   text.fontSize = getFontSize()
   text.fontFamily = getFontFace()
   text.fillColor = 'black';
-  text.content = inputText;
+  var newText = splitTextIntoSmallerPieces(inputText)
+  text.content = newText;
   var group = new Group([speechRaster, text])
   group.position = view.center;
+  text.position.y -= 15
 }
 
 function getFontSize(){
@@ -22,7 +54,6 @@ function getFontSize(){
 
 function getFontFace(){
   var fontFace = $('input:radio[name=fontface]:checked').val();
-  console.log(fontFace)
   return fontFace
 }
 
@@ -50,25 +81,20 @@ function randomBackgrounds(){
 }
 
 
-
-
-
-function saveCanvasToFile(){
-  var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
-  var newCanvas = document.createElement("canvas")
-  var newContext = newCanvas.getContext("2d")
-  newCanvas.height = 310;
-  newCanvas.width = 910;
-  newContext.drawImage(canvas, 0, 0);
-  // newCanvas.toBlob(function(blob) {
-  //   saveAs(blob, "prettyimage.png");
-  // }, "image/png");
-Canvas2Image.saveAsPNG(newCanvas, 900, 300)
-
+function downloadCanvas(link, canvasId, filename) {
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
 }
 
 
 $(document).on('click', '#download', function(e){
-  saveCanvasToFile()
+  var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
+  var newCanvas = document.getElementById("newCanvas")
+  var newContext = newCanvas.getContext("2d")
+  newCanvas.height = 310;
+  newCanvas.width = 910;
+  newContext.drawImage(canvas, 0, 0);
+  console.log(newCanvas)
+  downloadCanvas(this, 'newCanvas', 'emojicomic.png')
 })
 
