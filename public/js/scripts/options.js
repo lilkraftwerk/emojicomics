@@ -107,15 +107,17 @@ function checkForHeroku(){
     url: '/servertest',
     type: 'GET'
   }).success(function(data){
+      var data = data
       return data
   })
+  return data
 }
 
 function FormatShortUrl(data){
   var check = checkForHeroku()
-  if(check === false){
+  if(check === true){
   var url = "https://emojicomic.herokuapp.com/comics/" + data.shortID
-  } else {
+  } else if (check === false)
     var url = "http://localhost:3000/comics/" + data.shortID
   }
   var newURL = $("<a>Check Out Yr Comic</a>").attr("href", url).addClass('deliverylink')
