@@ -6,7 +6,10 @@ var bodyParser = require('body-parser')
 var comicController = require('./server/controllers/control')
 var Comic = require('./server/models/comic')
 
-mongoose.connect('mongodb://localhost/test');
+var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/test'
+var theport = process.env.PORT || 3000;
+
+mongoose.connect(uristring);
 
 app.use(express.static(__dirname + '/public'));
 
@@ -72,6 +75,6 @@ app.get('/weirdroute', function(req, res){
 });
 
 
-app.listen(3000, function(){
-  console.log("listening on 3000")
+app.listen(theport, function(){
+  console.log("listening on " + theport)
 })

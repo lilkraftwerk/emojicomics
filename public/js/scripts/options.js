@@ -87,7 +87,6 @@ function downloadCanvas(link, canvasId, filename) {
 }
 
 function sendCanvasToServer(){
-
   var canvas = document.getElementById('newCanvas');
   var dataURL = canvas.toDataURL();
   var jsonData = JSON.stringify({author: $("#authorname").val(), img: dataURL});
@@ -141,7 +140,6 @@ $(document).on('click', '.downloadbutton', function(e){
   $("#optionsbar").html("<div class='optionicon'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'></div>")
   } else
   {
-
     $("#authorname").attr("placeholder", "enter a name you big dummy")
   }
 
