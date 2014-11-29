@@ -107,6 +107,10 @@ body, html {
   background-color: 'white';
 }
 
+#loadingcomic {
+  display: none;
+}
+
 #moreEmojis {
   width: 10%;
 

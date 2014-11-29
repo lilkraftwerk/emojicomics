@@ -174,7 +174,7 @@ function isArtistNameEmpty(){
 }
 
 function trimCanvas(){
-    var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
+  var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
   var newCanvas = document.getElementById("newCanvas")
   var newContext = newCanvas.getContext("2d")
   newCanvas.height = 310;
@@ -436,6 +436,7 @@ $.ajax({
 
 
 $(document).on('click', '#anotherRandom', function(){
+  $("#comic").html("<img src='/img/loadingcomic.png'>")
 $.ajax({
    url: '/comics/randomcomic',
    type: 'GET'

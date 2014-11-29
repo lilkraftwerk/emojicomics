@@ -18,6 +18,7 @@ $.ajax({
 
 
 $(document).on('click', '#anotherRandom', function(){
+  $("#comic").html("<img src='/img/loadingcomic.png'>")
 $.ajax({
    url: '/comics/randomcomic',
    type: 'GET'
