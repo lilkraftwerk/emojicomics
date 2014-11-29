@@ -103,23 +103,13 @@ function sendCanvasToServer(){
 }
 
 function checkForHeroku(){
-  $.ajax({
-    url: '/servertest',
-    type: 'GET'
-  }).success(function(data){
-      var data = data
-      return data
-  })
-  return data
-}
+  var full = window.location.protocol + "//" + window.location.host
+  return full
+ }
 
 function FormatShortUrl(data){
   var check = checkForHeroku()
-  if(check === true){
-  var url = "https://emojicomic.herokuapp.com/comics/" + data.shortID
-  } else if (check === false)
-    var url = "http://localhost:3000/comics/" + data.shortID
-  }
+  var url = checkForHeroku() + '/comics/' + data.shortID
   var newURL = $("<a>Check Out Yr Comic</a>").attr("href", url).addClass('deliverylink')
   var textURL = $("<input type='text'>").attr("value", url).addClass('deliverytextbox')
   return [newURL, textURL]

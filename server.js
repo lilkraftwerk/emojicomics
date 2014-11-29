@@ -70,14 +70,6 @@ app.get('/comics/:id', function(req, res){
   });
 });
 
-app.get('/servertest', function(req, res){
-  if(process.env.ON_HEROKU === undefined){
-    res.send(false)
-  } else {
-    res.send(true)
-  }
-})
-
 app.get('/weirdroute', function(req, res){
     var searchedID = req.params.id
     Comic.find({shortID: searchedID}, function (err, docs) {
