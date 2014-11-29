@@ -87,9 +87,7 @@ function downloadCanvas(link, canvasId, filename) {
 }
 
 function sendCanvasToServer(){
-  // var canvas = document.getElementById('newCanvas');
-
-  var canvas = document.getElementById('myCanvas');
+  var canvas = document.getElementById('newCanvas');
   var dataURL = canvas.toDataURL();
   var jsonData = JSON.stringify({author: $("#authorname").val(), img: dataURL});
   console.log("here")
@@ -130,12 +128,29 @@ function isArtistNameEmpty(){
   return ($("#authorname").val().length > 0)
 }
 
+function enhanceContext(canvas, context) {
+    var ratio = window.devicePixelRatio || 1,
+        width = canvas.width,
+        height = canvas.height;
+
+    if (ratio > 1) {
+        canvas.width = width * ratio;
+        canvas.height = height * ratio;
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        context.scale(ratio, ratio);
+    }
+}
+
 function trimCanvas(){
+  var ratio = (devicePixelRatio / 1)
   var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
   var newCanvas = document.getElementById("newCanvas")
   var newContext = newCanvas.getContext("2d")
   newCanvas.height = 310;
   newCanvas.width = 910;
+  enhanceContext(canvas, ctx)
+  enhanceContext(newCanvas, newContext)
   newContext.drawImage(canvas, 0, 0);
 }
 
@@ -143,7 +158,7 @@ function trimCanvas(){
 $(document).on('click', '.downloadbutton', function(e){
   if (isArtistNameEmpty() === true){
   $("#download").html('<img src="/img/moonspin.gif">')
-  // trimCanvas()
+  trimCanvas()
   sendCanvasToServer()
   $("#optionsbar").html("<div class='optionicon'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'></div>")
   } else

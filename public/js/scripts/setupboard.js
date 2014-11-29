@@ -41,11 +41,13 @@ var BACKGROUNDS = [
 setUpBoard()
 
 function setUpBoard(){
+  var canvas = document.getElementById("myCanvas")
+  canvas.height = 310
+  canvas.width = 1000
   boardLayer.activate()
   makeLines()
   emojiLayer.activate()
   loadMoreEmojis()
-  // loadAllEmojis()
   populateBackgroundOptions()
   setupRandomBackground()
 }
