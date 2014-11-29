@@ -143,7 +143,7 @@ function trimCanvas(){
 $(document).on('click', '.downloadbutton', function(e){
   if (isArtistNameEmpty() === true){
   $("#download").html('<img src="/img/moonspin.gif">')
-  trimCanvas()
+  // trimCanvas()
   sendCanvasToServer()
   $("#optionsbar").html("<div class='optionicon'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'></div>")
   } else
