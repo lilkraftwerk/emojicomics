@@ -107,7 +107,7 @@ function checkForHeroku(){
     url: '/servertest',
     type: 'GET'
   }).success(function(data){
-    console.log(data)
+      return data
   })
 }
 
