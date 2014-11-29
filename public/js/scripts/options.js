@@ -128,20 +128,6 @@ function isArtistNameEmpty(){
   return ($("#authorname").val().length > 0)
 }
 
-function enhanceContext(canvas, context) {
-    var ratio = window.devicePixelRatio || 1,
-        width = canvas.width,
-        height = canvas.height;
-
-    if (ratio > 1) {
-        canvas.width = width * ratio;
-        canvas.height = height * ratio;
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
-        context.scale(ratio, ratio);
-    }
-}
-
 function trimCanvas(){
   var ratio = (devicePixelRatio / 1)
   var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
@@ -149,8 +135,6 @@ function trimCanvas(){
   var newContext = newCanvas.getContext("2d")
   newCanvas.height = 310;
   newCanvas.width = 910;
-  enhanceContext(canvas, ctx)
-  enhanceContext(newCanvas, newContext)
   newContext.drawImage(canvas, 0, 0);
 }
 
