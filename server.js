@@ -6,8 +6,12 @@ var bodyParser = require('body-parser')
 var comicController = require('./server/controllers/control')
 var Comic = require('./server/models/comic')
 
+
 var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/test'
 var theport = process.env.PORT || 3000;
+
+console.log(uristring)
+console.log(!process.env.ON_HEROKU === undefined)
 
 mongoose.connect(uristring);
 
@@ -66,6 +70,13 @@ app.get('/comics/:id', function(req, res){
   });
 });
 
+app.get('/servertest', function(req, res){
+  if(process.env.ON_HEROKU === undefined){
+    res.send(false)
+  } else {
+    res.send(true)
+  }
+})
 
 app.get('/weirdroute', function(req, res){
     var searchedID = req.params.id

@@ -135,6 +135,7 @@ function sendCanvasToServer(){
   var canvas = document.getElementById('newCanvas');
   var dataURL = canvas.toDataURL();
   var jsonData = JSON.stringify({author: $("#authorname").val(), img: dataURL});
+  console.log("here")
   $.ajax({
       url: '/comics',
       type: 'POST',
@@ -146,8 +147,22 @@ function sendCanvasToServer(){
     })
 }
 
+function checkForHeroku(){
+  $.ajax({
+    url: '/servertest',
+    type: 'GET'
+  }).success(function(data){
+    console.log(data)
+  })
+}
+
 function FormatShortUrl(data){
+  var check = checkForHeroku()
+  if(check === false){
   var url = "https://emojicomic.herokuapp.com/comics/" + data.shortID
+  } else {
+    var url = "http://localhost:3000/comics/" + data.shortID
+  }
   var newURL = $("<a>Check Out Yr Comic</a>").attr("href", url).addClass('deliverylink')
   var textURL = $("<input type='text'>").attr("value", url).addClass('deliverytextbox')
   return [newURL, textURL]
@@ -177,7 +192,6 @@ function trimCanvas(){
 
 
 $(document).on('click', '.downloadbutton', function(e){
-  console.log(isArtistNameEmpty())
   if (isArtistNameEmpty() === true){
   $("#download").html('<img src="/img/moonspin.gif">')
   trimCanvas()
@@ -187,7 +201,6 @@ $(document).on('click', '.downloadbutton', function(e){
   {
     $("#authorname").attr("placeholder", "enter a name you big dummy")
   }
-
 })
 
 
