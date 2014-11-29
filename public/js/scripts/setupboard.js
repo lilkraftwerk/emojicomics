@@ -65,7 +65,7 @@ function setupRandomBackground(){
 function loadMoreEmojis(){
   for(var i = 0; i < 50; i++){
   if(emojiCount < 846){
-    var thisEmojiLocation = "emojis/" + String(emojiCount) + ".png"
+    var thisEmojiLocation = "/emojis/" + String(emojiCount) + ".png"
     var thisImg = $('<img>').attr('src', thisEmojiLocation)
     thisImg.attr('id', String(emojiCount))
      $("#emojiChooser").append(thisImg)
@@ -82,7 +82,7 @@ function showNumberOfLoadedEmojis(){
 
 function loadRemainingEmojis(){
   for(var i = emojiCount; i < 846; i++){
-    var thisEmojiLocation = "emojis/" + String(emojiCount) + ".png"
+    var thisEmojiLocation = "/emojis/" + String(emojiCount) + ".png"
     var thisImg = $('<img>').attr('src', thisEmojiLocation)
     thisImg.attr('id', String(emojiCount))
      $("#emojiChooser").append(thisImg)

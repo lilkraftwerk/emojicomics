@@ -1,30 +1,75 @@
 var express = require ('express');
 var app = express();
 var mongoose = require('mongoose');
+var ShortId = require('mongoose-shortid');
 var bodyParser = require('body-parser')
+var comicController = require('./server/controllers/control')
+var Comic = require('./server/models/comic')
 
-// mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds063859.mongolab.com:63859/lukey')
+mongoose.connect('mongodb://localhost/test');
+
 app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json({
   limit: 1000000000000
 }));
+app.set('view engine', 'ejs');
+
 
 
 app.get('/', function(req, res){
-  console.log("rget get")
-  res.sendFile(__dirname + '/index.html');
+  res.render('index')
 });
 
-// app.use('/js', express.static(__dirname + '/client/js'));
+app.get('/comics/create', function(req, res){
+  res.render('create')
+});
+
+app.get('/apitest', function(req, res){
+  Comic.find({shortID: 'X10AOBsg'}, function (err, docs) {
+        res.json(docs);
+  });
+});
+
+app.post('/comics', function(req, res){
+  var body = comicController.createTwo(req)
+  res.send(body)
+});
+
+app.get('/comics/random', function(req, res){
+      Comic.findOneRandom(function(err, docs) {
+        if (!err) {
+          var thisComic = docs
+          res.render('random', {author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID})
+        }
+      });
+});
+
+app.get('/comics/randomcomic', function(req, res){
+      Comic.findOneRandom(function(err, docs) {
+        if (!err) {
+          var thisComic = docs
+          res.send({author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID})
+        }
+      });
+});
+
+app.get('/comics/:id', function(req, res){
+    var searchedID = req.params.id
+    Comic.find({shortID: searchedID}, function (err, docs) {
+      var thisComic = docs[0]
+      res.render('comicshow', {author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID})
+  });
+});
 
 
-// app.get('/api/meetups', meetupsController.list);
-
-app.post('/comic', function(req, res){
-  console.log(req.body)
-})
-
+app.get('/weirdroute', function(req, res){
+    var searchedID = req.params.id
+    Comic.find({shortID: searchedID}, function (err, docs) {
+        res.json(docs);
+  });
+});
 
 
 app.listen(3000, function(){

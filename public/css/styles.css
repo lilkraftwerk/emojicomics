@@ -11,13 +11,84 @@ body, html {
 }
 
 
+#comic-container {
+  width: 100%;
+}
+
+#authorname {
+  margin: 0 15%;
+  width: 70%;
+  font-size: 1.5em;
+}
+
+#downloadlinks {
+  width: 100%;
+  text-align: center;
+}
+
+.deliverytextbox {
+  display: block;
+  font-size: 1em;
+  width: 75%;
+  margin: 20px auto;
+}
+
+.deliverylink {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2em;
+}
+
+#welcomeimage {
+  display: inline-block;
+  width: 60%;
+  margin: 10px 20%;
+}
+
+#anotherRandom {
+  height: 100px;
+  width: 40%;
+  margin: 10px 30%;
+}
+
+#maintitle {
+  font-size: 2em;
+  text-align: center;
+}
+
+.indexbutton {
+  width: 100%;
+  display: inline-block;
+  font-size: 1.5em;
+  height: 100px;
+  margin: 0 auto;
+}
+
+#comic {
+  margin: 20px auto;
+  height: 300px;
+  width: 900px;
+}
+
+#comicauthor {
+  font-family: 'Pacifico';
+  text-align: center;
+  margin-top: 10px;
+  font-size: 2em;
+}
+
 .downloadbutton {
-  height: 75%;
+  outline: none;
+  height: 55%;
   width: 90%;
   margin: 5%;
-  font-size: 2em;
-  background-image: url('../img/stripes2.png');
+  font-size: 1.5em;
 }
+
+.inactive {
+  background-image: url('../img/stripes.png');
+}
+
 
 #stats {
   display: inline-block;

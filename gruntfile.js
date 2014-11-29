@@ -19,6 +19,10 @@ module.exports = function(grunt) {
       scripts: {
         src: ['public/js/scripts/*.js'],
         dest: 'public/js/scripts.js'
+      },
+      displaycomics: {
+        src: ['public/js/scripts/showComic.js'],
+        dest: 'public/js/display.js'
       }
     },
     jshint: {

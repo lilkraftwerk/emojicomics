@@ -131,17 +131,42 @@ function downloadCanvas(link, canvasId, filename) {
     link.download = filename;
 }
 
+function sendCanvasToServer(){
 
-// $(document).on('click', '#download', function(e){
-//   var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
-//   var newCanvas = document.getElementById("newCanvas")
-//   var newContext = newCanvas.getContext("2d")
-//   newCanvas.height = 310;
-//   newCanvas.width = 910;
-//   newContext.drawImage(canvas, 0, 0);
-//   console.log(newCanvas)
-//   downloadCanvas(this, 'newCanvas', 'emojicomic.png')
-// })
+  var canvas = document.getElementById('newCanvas');
+  var dataURL = canvas.toDataURL();
+  var jsonData = JSON.stringify({author: $("#authorname").val(), img: dataURL});
+  $.ajax({
+      url: '/comics',
+      type: 'POST',
+      contentType: 'application/json',
+      dataType: 'json',
+      data: jsonData
+    }).success(function(data){
+      showShortUrl(data)
+    })
+}
+
+function FormatShortUrl(data){
+  var url = "http://localhost:3000/comics/" + data.shortID
+  var newURL = $("<a>Check Out Yr Comic</a>").attr("href", url).addClass('deliverylink')
+  var textURL = $("<input type='text'>").attr("value", url).addClass('deliverytextbox')
+  return [newURL, textURL]
+}
+
+function showShortUrl(data){
+  var newURL = FormatShortUrl(data)[0]
+  var url = FormatShortUrl(data)[1]
+  $("#download").html("<div id='downloadlinks'></div>")
+  $("#downloadlinks").prepend(newURL)
+  $("#downloadlinks").append(url)
+  $("#authorname").hide()
+}
+
+function isArtistNameEmpty(){
+  return ($("#authorname").val().length > 0)
+}
+
 function trimCanvas(){
     var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
   var newCanvas = document.getElementById("newCanvas")
@@ -152,22 +177,33 @@ function trimCanvas(){
 }
 
 
-$(document).on('click', '#download', function(e){
+$(document).on('click', '.downloadbutton', function(e){
+  console.log(isArtistNameEmpty())
+  if (isArtistNameEmpty() === true){
+  $("#download").html('<img src="/img/moonspin.gif">')
   trimCanvas()
-  var hi = {
-    "swag": "sup"
-  }
-  var pngURL = newCanvas.toDataURL()
-  var jsonData = JSON.stringify({author: 'swag', img: pngURL});
+  sendCanvasToServer()
+  $("#optionsbar").html("<div class='optionicon'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'></div>")
+  } else
+  {
 
-  $.ajax({
-      url: '/comic',
-      type: 'POST',
-      contentType: 'application/json',
-      dataType: 'json',
-      data: jsonData
-    })
+    $("#authorname").attr("placeholder", "enter a name you big dummy")
+  }
+
 })
+
+
+function checkAuthorName(){
+  if (isArtistNameEmpty() === true){
+    $(".downloadbutton").removeClass('inactive')
+  } else {
+    $(".downloadbutton").addClass('inactive')
+  }
+}
+
+var timer = setInterval(checkAuthorName, 10)
+
+
 
 // create multiple layers for paper.js
 var utilities = project.activeLayer;
@@ -236,7 +272,7 @@ function setupRandomBackground(){
 function loadMoreEmojis(){
   for(var i = 0; i < 50; i++){
   if(emojiCount < 846){
-    var thisEmojiLocation = "emojis/" + String(emojiCount) + ".png"
+    var thisEmojiLocation = "/emojis/" + String(emojiCount) + ".png"
     var thisImg = $('<img>').attr('src', thisEmojiLocation)
     thisImg.attr('id', String(emojiCount))
      $("#emojiChooser").append(thisImg)
@@ -253,7 +289,7 @@ function showNumberOfLoadedEmojis(){
 
 function loadRemainingEmojis(){
   for(var i = emojiCount; i < 846; i++){
-    var thisEmojiLocation = "emojis/" + String(emojiCount) + ".png"
+    var thisEmojiLocation = "/emojis/" + String(emojiCount) + ".png"
     var thisImg = $('<img>').attr('src', thisEmojiLocation)
     thisImg.attr('id', String(emojiCount))
      $("#emojiChooser").append(thisImg)
@@ -377,6 +413,34 @@ function populateBackgroundOptions(){
   }
 }
 
+$("#showme").on("click", function(){
+  console.log("clicked show a comic")
+})
+
+
+
+$(document).on('click', '#showme', function(){
+$.ajax({
+   url: '/comics/' + comicID,
+   type: 'GET'
+ }).done(function(data){
+   $('#comic').html('<img src="' + data[0].img + '" />');
+ })
+})
+
+
+
+
+
+$(document).on('click', '#anotherRandom', function(){
+$.ajax({
+   url: '/comics/randomcomic',
+   type: 'GET'
+ }).done(function(data){
+   $('#comic').html('<img src="' + data.img + '" />');
+   $("#author").text(data.author)
+ })
+})
 $(document).on("click", '#textGo', function(){
   makeSpeechBubble($("#textInput").val())
 })
@@ -467,7 +531,7 @@ function addRecent(id){
 function addImageToRecents(id){
   recents.push(id)
   imageCopy = $("<img>").attr('data-recent', id)
-  imageCopy.attr('src', 'emojis/' + id + '.png')
+  imageCopy.attr('src', '/emojis/' + id + '.png')
   imageCopy.addClass('recentMoji')
   $("#recent").append($(imageCopy))
 }
@@ -507,3 +571,4 @@ function drawClouds(){
     }
   }
 }
+

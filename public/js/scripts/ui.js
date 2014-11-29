@@ -88,7 +88,7 @@ function addRecent(id){
 function addImageToRecents(id){
   recents.push(id)
   imageCopy = $("<img>").attr('data-recent', id)
-  imageCopy.attr('src', 'emojis/' + id + '.png')
+  imageCopy.attr('src', '/emojis/' + id + '.png')
   imageCopy.addClass('recentMoji')
   $("#recent").append($(imageCopy))
 }
@@ -128,3 +128,4 @@ function drawClouds(){
     }
   }
 }
+

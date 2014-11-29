@@ -1,7 +1,17 @@
 var mongoose = require('mongoose');
+var ShortId = require('mongoose-shortid');
+var random = require('mongoose-simple-random');
 
-module.exports = mongoose.model('Comic', {
+var comicSchema = new mongoose.Schema({
   author: String,
   date: { type: Date, default: Date.now },
-  img: { data: Buffer, contentType: String }
-});
+  img: String,
+  shortID: String
+})
+
+comicSchema.plugin(random)
+
+var Comic = mongoose.model('Comic', comicSchema);
+
+
+module.exports = Comic
