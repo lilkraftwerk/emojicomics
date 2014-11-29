@@ -147,7 +147,7 @@ function sendCanvasToServer(){
 }
 
 function FormatShortUrl(data){
-  var url = "http://localhost:3000/comics/" + data.shortID
+  var url = "https://emojicomic.herokuapp.com/comics/" + data.shortID
   var newURL = $("<a>Check Out Yr Comic</a>").attr("href", url).addClass('deliverylink')
   var textURL = $("<input type='text'>").attr("value", url).addClass('deliverytextbox')
   return [newURL, textURL]
