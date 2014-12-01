@@ -107,6 +107,32 @@ body, html {
   font-size: 2em;
 }
 
+.loadingscreen {
+  width: 100%;
+  text-align: center;
+}
+.loadingscreen img{
+  margin: 0 auto;
+}
+
+.loadingscreen p {
+  font-size: 3em;
+}
+
+#download {
+  width: 100%;
+  text-align: center;
+}
+
+#download p {
+  text-align: center;
+}
+
+#download img {
+  display: inline-block;
+  margin: auto;
+}
+
 .downloadbutton {
   outline: none;
   height: 55%;
