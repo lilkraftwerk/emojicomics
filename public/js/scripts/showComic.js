@@ -24,6 +24,7 @@ $.ajax({
    type: 'GET'
  }).done(function(data){
    $('#comic').html('<img src="' + data.img + '" />');
-   $("#author").text(data.author)
+   $("#author").html(data.author)
+   $('.randomdeliverylink').val("http://localhost:3000/comics/" + data.shortid)
  })
 })

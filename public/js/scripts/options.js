@@ -27,7 +27,6 @@ function splitTextIntoSmallerPieces(sentence){
     }
   }
   return newSentence.join(" ")
-
 }
 
 
@@ -44,7 +43,17 @@ function makeSpeechBubble(inputText){
   text.content = newText;
   var group = new Group([speechRaster, text])
   group.position = view.center;
-  text.position.y -= 15
+  console.log(speechRaster.bounds)
+  console.log(text.bounds)
+  text.position.y -= 10
+  while(speechRaster.bounds.height < text.bounds.height+ 40){
+    speechRaster.scale(1, 1.2)
+
+  }
+    while(speechRaster.bounds.width < text.bounds.width + 20){
+    speechRaster.scale(1.2, 1)
+  }
+
 }
 
 function getFontSize(){
@@ -129,12 +138,11 @@ function isArtistNameEmpty(){
 }
 
 function trimCanvas(){
-  var ratio = (devicePixelRatio / 1)
   var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
   var newCanvas = document.getElementById("newCanvas")
   var newContext = newCanvas.getContext("2d")
-  newCanvas.height = 310;
-  newCanvas.width = 910;
+  newCanvas.height = 310 * devicePixelRatio;
+  newCanvas.width = 910 * devicePixelRatio;
   newContext.drawImage(canvas, 0, 0);
 }
 
