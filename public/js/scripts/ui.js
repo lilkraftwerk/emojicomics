@@ -54,6 +54,7 @@ function onFrame(event){
 
 
 $("#flipEmojis").on('click', function(){
+  $("#recent").children('img').toggleClass('flipped')
   if(flipped === false){
     flipped = true;
     $("#emojiChooser").children('img').addClass('flipped')
@@ -62,7 +63,6 @@ $("#flipEmojis").on('click', function(){
     flipped = false;
     $("#emojiChooser").children('img').removeClass('flipped')
     $("#flipEmojis").children('img').attr("src", "/emojis/rightarrow.png")
-
   }
 })
 
@@ -72,7 +72,7 @@ $("#emojiChooser").on("click", 'img', function(){
   var thisID = $(this).attr('id')
   var raster = new Raster(thisID)
   if(flipped === true){
-  raster.scale(-1, 1)
+    raster.scale(-1, 1)
   }
   raster.position = view.center
   addRecent(thisID)
@@ -82,6 +82,9 @@ $("#emojiChooser").on("click", 'img', function(){
 $("#recent").on("click", 'img', function(){
   var thisID = $(this).attr('data-recent')
   var raster = new Raster(thisID)
+  if($(this).hasClass('flipped')){
+    raster.scale(-1, 1)
+  }
   raster.position = view.center
   makeCloud(raster.position)
 })
@@ -105,6 +108,9 @@ function addImageToRecents(id){
   imageCopy = $("<img>").attr('data-recent', id)
   imageCopy.attr('src', '/emojis/' + id + '.png')
   imageCopy.addClass('recentMoji')
+  if(flipped === true){
+    imageCopy.addClass("flipped")
+  }
   $("#recent").append($(imageCopy))
 }
 
