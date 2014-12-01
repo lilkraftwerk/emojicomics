@@ -31,6 +31,7 @@ var BACKGROUNDS = [
 {id: 'bgPinkBlue', name: "Cat Hate Monday"},
 {id: 'bgBarbershop', name: "Barbershop"},
 {id: 'bgTatooine', name: "Tatooine"},
+{id: 'bgBar', name: "Bar"},
 {id: 'bgBridge', name: "The Bridge"}
 ]
 
