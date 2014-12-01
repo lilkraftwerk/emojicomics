@@ -186,8 +186,10 @@ function trimCanvas(){
   var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
   var newCanvas = document.getElementById("newCanvas")
   var newContext = newCanvas.getContext("2d")
-  newCanvas.height = 310 * window.devicePixelRatio;
-  newCanvas.width = 910 * window.devicePixelRatio;
+  newCanvas.height = 310;
+  newCanvas.width = 910;
+  // newCanvas.height = 310 * window.devicePixelRatio;
+  // newCanvas.width = 910 * window.devicePixelRatio;
   newContext.drawImage(canvas, 0, 0);
 }
 
