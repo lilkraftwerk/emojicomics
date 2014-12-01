@@ -91,11 +91,11 @@ function makeSpeechBubble(inputText){
   console.log(speechRaster.bounds)
   console.log(text.bounds)
   text.position.y -= 10
-  while(speechRaster.bounds.height < text.bounds.height+ 40){
+  while(speechRaster.bounds.height < text.bounds.height + 100){
     speechRaster.scale(1, 1.2)
-
+    text.position.y -= 12
   }
-    while(speechRaster.bounds.width < text.bounds.width + 20){
+    while(speechRaster.bounds.width < text.bounds.width + 40){
     speechRaster.scale(1.2, 1)
   }
 

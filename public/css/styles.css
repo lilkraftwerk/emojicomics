@@ -21,6 +21,11 @@ body, html {
   font-size: 1.5em;
 }
 
+#comic img {
+  height: 310px;
+  width: 910px;
+}
+
 #downloadlinks {
   width: 100%;
   text-align: center;
