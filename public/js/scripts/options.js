@@ -141,8 +141,8 @@ function trimCanvas(){
   var canvas = document.getElementById("myCanvas"), ctx = canvas.getContext("2d");
   var newCanvas = document.getElementById("newCanvas")
   var newContext = newCanvas.getContext("2d")
-  newCanvas.height = 310 * devicePixelRatio;
-  newCanvas.width = 910 * devicePixelRatio;
+  newCanvas.height = 310 * window.devicePixelRatio;
+  newCanvas.width = 910 * window.devicePixelRatio;
   newContext.drawImage(canvas, 0, 0);
 }
 
@@ -152,7 +152,7 @@ $(document).on('click', '.downloadbutton', function(e){
   $("#download").html('<img src="/img/moonspin.gif">')
   trimCanvas()
   sendCanvasToServer()
-  $("#optionsbar").html("<div class='optionicon'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'></div>")
+  $("#optionsbar").html("<div class='optionicon'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'></div>")
   } else
   {
     $("#authorname").attr("placeholder", "enter a name you big dummy")

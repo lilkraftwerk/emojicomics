@@ -19,10 +19,12 @@ $.ajax({
 
 $(document).on('click', '#anotherRandom', function(){
   $("#comic").html("<img src='/img/loadingcomic.png'>")
+  $("#anotherRandom").addClass('inactive')
 $.ajax({
    url: '/comics/randomcomic',
    type: 'GET'
  }).done(function(data){
+   $('#anotherRandom').removeClass('inactive')
    $('#comic').html('<img src="' + data.img + '" />');
    $("#author").html(data.author)
    $('.randomdeliverylink').val("http://localhost:3000/comics/" + data.shortid)

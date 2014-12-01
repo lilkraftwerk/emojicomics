@@ -5,7 +5,7 @@ var ShortId = require('mongoose-shortid');
 var bodyParser = require('body-parser')
 var comicController = require('./server/controllers/control')
 var Comic = require('./server/models/comic')
-
+var favicon = require('serve-favicon');
 
 var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/test'
 var theport = process.env.PORT || 3000;
@@ -16,6 +16,9 @@ console.log(!process.env.ON_HEROKU === undefined)
 mongoose.connect(uristring);
 
 app.use(express.static(__dirname + '/public'));
+
+app.use(favicon(__dirname + '/public/favicon.ico'));
+
 
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json({

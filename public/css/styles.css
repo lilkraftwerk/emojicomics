@@ -5,6 +5,10 @@ body, html {
   font-family: 'Inconsolata';
 }
 
+#moonspin {
+  margin: 0 auto;
+  display: inline-block;
+}
 
 #images {
   display: none;
@@ -58,6 +62,8 @@ body, html {
 }
 
 #anotherRandom {
+  font-family: 'Pacifico';
+  font-size: 3em;
   height: 100px;
   width: 40%;
   margin: 10px 30%;
@@ -180,6 +186,7 @@ body, html {
 
 #textGo {
   float: right;
+  height: 30px;
 }
 
 #emojiChooser img {
@@ -286,12 +293,14 @@ input[type=radio]{
 
 #theradio label {
   border: 1px solid black;
-  padding: 5px;
-  margin: 0 auto;
+  padding: 2px;
   display: inline-block;
   height: 30px;
-  width: 75px;
-  margin-top: 3px;
+  width: 80px;
+}
+
+#linkz {
+  text-align: center;
 }
 
 input[type="radio"]:checked + label {
