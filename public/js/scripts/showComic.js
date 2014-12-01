@@ -27,6 +27,6 @@ $.ajax({
    $('#anotherRandom').removeClass('inactive')
    $('#comic').html('<img src="' + data.img + '" />');
    $("#author").html(data.author)
-   $('.randomdeliverylink').val("http://localhost:3000/comics/" + data.shortid)
+   $('.randomdeliverylink').val("http://emojicomic.herokuapp.com/comics/" + data.shortid)
  })
 })

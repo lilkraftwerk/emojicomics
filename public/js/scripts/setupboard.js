@@ -24,18 +24,15 @@ clouds = []
 // background constants
 var BG_LOCATIONS = [[152, 155],[450, 155],[752, 155]]
 var BACKGROUNDS = [
-  {id: 'bgStatic', name: "Static"},
-  {id: 'bgSpace', name: "Space"},
-  {id: 'bgJungle', name: "Jungle"},
-  {id: 'bgWave', name: "Beach"},
-  {id: 'bgPinkBlue', name: "Cat Hate Monday"},
-  {id: 'bgBarbershop', name: "Barbershop"},
-  {id: 'bgTatooine', name: "Tatooine"},
-  {id: 'bgBridge', name: "The Bridge"}
-
-
-
-  ]
+{id: 'bgStatic', name: "Static"},
+{id: 'bgSpace', name: "Space"},
+{id: 'bgJungle', name: "Jungle"},
+{id: 'bgWave', name: "Beach"},
+{id: 'bgPinkBlue', name: "Cat Hate Monday"},
+{id: 'bgBarbershop', name: "Barbershop"},
+{id: 'bgTatooine', name: "Tatooine"},
+{id: 'bgBridge', name: "The Bridge"}
+]
 
 // set everything up
 setUpBoard()
@@ -55,8 +52,8 @@ function setUpBoard(){
 
 function setupRandomBackground(){
   var index = Math.floor(Math.random() * BACKGROUNDS.length)
-    thisBackground = BACKGROUNDS[index].id
- for(var i = 1; i < 4; i++){
+  thisBackground = BACKGROUNDS[index].id
+  for(var i = 1; i < 4; i++){
 
     makeBackground(i, thisBackground)
     $("#bg" + i).val(thisBackground)
@@ -66,12 +63,12 @@ function setupRandomBackground(){
 
 function loadMoreEmojis(){
   for(var i = 0; i < 50; i++){
-  if(emojiCount < 846){
-    var thisEmojiLocation = "/emojis/" + String(emojiCount) + ".png"
-    var thisImg = $('<img>').attr('src', thisEmojiLocation)
-    thisImg.attr('id', String(emojiCount))
-     $("#emojiChooser").append(thisImg)
-     emojiCount += 1
+    if(emojiCount < 846){
+      var thisEmojiLocation = "/emojis/" + String(emojiCount) + ".png"
+      var thisImg = $('<img>').attr('src', thisEmojiLocation)
+      thisImg.attr('id', String(emojiCount))
+      $("#emojiChooser").append(thisImg)
+      emojiCount += 1
     }
   }
   $("#loadButtons").append($("#moreEmojis"))
@@ -87,8 +84,8 @@ function loadRemainingEmojis(){
     var thisEmojiLocation = "/emojis/" + String(emojiCount) + ".png"
     var thisImg = $('<img>').attr('src', thisEmojiLocation)
     thisImg.attr('id', String(emojiCount))
-     $("#emojiChooser").append(thisImg)
-     emojiCount += 1
+    $("#emojiChooser").append(thisImg)
+    emojiCount += 1
   }
   $("#moreEmojis").hide()
   $("#allEmojis").hide()
@@ -102,48 +99,22 @@ $("#allEmojis").on("click", function(){
   loadRemainingEmojis()
 })
 
-function loadAllEmojis(){
-
-$.imgpreload(allImages,
-{
-    each: function()
-    {
-      var thisImage = $(this)
-      var number = thisImage.attr('src').split('.')[0].split("/")[1]
-      thisImage.addClass('emojiIcon').attr('id', number)
-      $("#emojiChooser").append(thisImage).hide().fadeIn()
-        // this = dom image object
-        // check for success with: $(this).data('loaded')
-        // callback executes on every image load
-
-
-    },
-    all: function()
-    {
-        // this = array of dom image objects
-        // check for success with: $(this[i]).data('loaded')
-        // callback executes when all images are loaded
-    }
-});
-}
-
-
 
 
 function makeLines(){
-var rect = new Path.Rectangle([5, 5], [900, 300])
-rect.strokeColor = 'black';
-rect.strokeWidth = 5;
-var from = new Point(300, 5);
-var to = new Point(300, 305);
-var path = new Path.Line(from, to);
-path.strokeColor = 'black';
-path.strokeWidth = 5;
-var from = new Point(600, 5);
-var to = new Point(600, 305);
-var path = new Path.Line(from, to);
-path.strokeColor = 'black';
-path.strokeWidth = 5;
+  var rect = new Path.Rectangle([5, 5], [900, 300])
+  rect.strokeColor = 'black';
+  rect.strokeWidth = 5;
+  var from = new Point(300, 5);
+  var to = new Point(300, 305);
+  var path = new Path.Line(from, to);
+  path.strokeColor = 'black';
+  path.strokeWidth = 5;
+  var from = new Point(600, 5);
+  var to = new Point(600, 305);
+  var path = new Path.Line(from, to);
+  path.strokeColor = 'black';
+  path.strokeWidth = 5;
 }
 
 
@@ -165,7 +136,7 @@ function makeRotate(){
 }
 
 function makeDown(){
-    utilities.activate()
+  utilities.activate()
   var raster = new Raster("down")
   raster.position = new Point(945, 147)
   emojiLayer.activate()
