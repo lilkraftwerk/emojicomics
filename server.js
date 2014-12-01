@@ -16,7 +16,6 @@ console.log(!process.env.ON_HEROKU === undefined)
 mongoose.connect(uristring);
 
 app.use(express.static(__dirname + '/public'));
-
 app.use(favicon(__dirname + '/public/favicon.ico'));
 
 
@@ -36,11 +35,6 @@ app.get('/comics/create', function(req, res){
   res.render('create')
 });
 
-app.get('/apitest', function(req, res){
-  Comic.find({shortID: 'X10AOBsg'}, function (err, docs) {
-        res.json(docs);
-  });
-});
 
 app.post('/comics', function(req, res){
   var body = comicController.createTwo(req)
@@ -73,13 +67,9 @@ app.get('/comics/:id', function(req, res){
   });
 });
 
-app.get('/weirdroute', function(req, res){
-    var searchedID = req.params.id
-    Comic.find({shortID: searchedID}, function (err, docs) {
-        res.json(docs);
-  });
+app.get('*', function(req, res){
+  res.render('index');
 });
-
 
 app.listen(theport, function(){
   console.log("listening on " + theport)
