@@ -186,9 +186,16 @@ body, html {
   height: 30px;
   margin-top: 10px;
   width: 120px;
+  line-height: 16px;
+  padding: 10px;
   margin-bottom: 10px;
+  text-align: center;
   margin-right: 10px;
   font-family: 'Inconsolata';
+}
+
+#flipEmojis {
+  width: 200px;
 }
 
 #emojiChooser {
@@ -199,6 +206,22 @@ body, html {
   background-color: white;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+#flipEmojis img {
+  height: 16px;
+  width: 16px;
+  float: left;
+  display: inline-block;
+}
+
+.flipped {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
 
 #options {
@@ -231,6 +254,7 @@ body, html {
   height: 32px;
   width: 32px;
   padding: 3px;
+
 }
 
 .about img {
@@ -240,9 +264,9 @@ body, html {
 
 
 .helpimg {
-   height: 20px;
-  display: inline-block;
-  margin-top: 10px;
+ height: 20px;
+ display: inline-block;
+ margin-top: 10px;
 }
 .options-container {
   margin-bottom: 10px;

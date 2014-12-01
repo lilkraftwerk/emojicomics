@@ -6,10 +6,11 @@ var boardLayer = new Layer();
 emojiLayer.activate()
 
 // global variables for board utilities
-var trash = makeTrash()
-var rotate = makeRotate()
-var up = makeUp()
-var down = makeDown()
+var trash = makeTrash();
+var rotate = makeRotate();
+var up = makeUp();
+var down = makeDown();
+var flipped = false;
 
 // global current emoji var
 var currentEmoji;
@@ -72,8 +73,6 @@ function loadMoreEmojis(){
       emojiCount += 1
     }
   }
-  $("#loadButtons").append($("#moreEmojis"))
-  $("#loadButtons").append($("#allEmojis"))
 }
 
 function showNumberOfLoadedEmojis(){
@@ -153,12 +152,12 @@ function makeUp(){
 }
 
 
-
-
-
 function makeEmoji(id){
   var raster = new Raster(id)
-  raster.position = [Math.floor(Math.random() * view.viewSize.width), Math.floor(Math.random() * view.viewSize.height), ];
+  raster.position = [Math.floor(Math.random() * view.viewSize.width), Math.floor(Math.random() * view.viewSize.height)];
+  console.log('hi')
+  raster.skew(180, 0)
+  raster.scale(2)
 }
 
 function randomEmojis(){

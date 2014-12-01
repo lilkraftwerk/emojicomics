@@ -21,7 +21,6 @@ function scaleEmoji(){
 }
 
 
-
 function makeBackground(panel, image){
   backgroundLayer.activate()
   var raster = new Raster(image)
@@ -228,10 +227,11 @@ var boardLayer = new Layer();
 emojiLayer.activate()
 
 // global variables for board utilities
-var trash = makeTrash()
-var rotate = makeRotate()
-var up = makeUp()
-var down = makeDown()
+var trash = makeTrash();
+var rotate = makeRotate();
+var up = makeUp();
+var down = makeDown();
+var flipped = false;
 
 // global current emoji var
 var currentEmoji;
@@ -294,8 +294,6 @@ function loadMoreEmojis(){
       emojiCount += 1
     }
   }
-  $("#loadButtons").append($("#moreEmojis"))
-  $("#loadButtons").append($("#allEmojis"))
 }
 
 function showNumberOfLoadedEmojis(){
@@ -375,12 +373,12 @@ function makeUp(){
 }
 
 
-
-
-
 function makeEmoji(id){
   var raster = new Raster(id)
-  raster.position = [Math.floor(Math.random() * view.viewSize.width), Math.floor(Math.random() * view.viewSize.height), ];
+  raster.position = [Math.floor(Math.random() * view.viewSize.width), Math.floor(Math.random() * view.viewSize.height)];
+  console.log('hi')
+  raster.skew(180, 0)
+  raster.scale(2)
 }
 
 function randomEmojis(){
@@ -489,15 +487,30 @@ function onFrame(event){
 
 
 
+$("#flipEmojis").on('click', function(){
+  if(flipped === false){
+    flipped = true;
+    $("#emojiChooser").children('img').addClass('flipped')
+    $("#flipEmojis").children('img').attr("src", "/emojis/leftarrow.png")
+  } else {
+    flipped = false;
+    $("#emojiChooser").children('img').removeClass('flipped')
+    $("#flipEmojis").children('img').attr("src", "/emojis/rightarrow.png")
+
+  }
+})
+
 
 
 $("#emojiChooser").on("click", 'img', function(){
   var thisID = $(this).attr('id')
   var raster = new Raster(thisID)
+  if(flipped === true){
+  raster.scale(-1, 1)
+  }
   raster.position = view.center
   addRecent(thisID)
   makeCloud(raster.position)
-
 })
 
 $("#recent").on("click", 'img', function(){

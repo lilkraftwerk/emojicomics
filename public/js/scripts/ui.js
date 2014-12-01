@@ -53,15 +53,30 @@ function onFrame(event){
 
 
 
+$("#flipEmojis").on('click', function(){
+  if(flipped === false){
+    flipped = true;
+    $("#emojiChooser").children('img').addClass('flipped')
+    $("#flipEmojis").children('img').attr("src", "/emojis/leftarrow.png")
+  } else {
+    flipped = false;
+    $("#emojiChooser").children('img').removeClass('flipped')
+    $("#flipEmojis").children('img').attr("src", "/emojis/rightarrow.png")
+
+  }
+})
+
 
 
 $("#emojiChooser").on("click", 'img', function(){
   var thisID = $(this).attr('id')
   var raster = new Raster(thisID)
+  if(flipped === true){
+  raster.scale(-1, 1)
+  }
   raster.position = view.center
   addRecent(thisID)
   makeCloud(raster.position)
-
 })
 
 $("#recent").on("click", 'img', function(){

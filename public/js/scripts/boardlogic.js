@@ -21,7 +21,6 @@ function scaleEmoji(){
 }
 
 
-
 function makeBackground(panel, image){
   backgroundLayer.activate()
   var raster = new Raster(image)
