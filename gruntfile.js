@@ -17,7 +17,7 @@ module.exports = function(grunt) {
         dest: 'public/js/vendor.js'
       },
       scripts: {
-        src: ['public/js/scripts/*.js'],
+        src: ['public/js/scripts/*.js', '!public/js/scripts/slickuser.js'],
         dest: 'public/js/scripts.js'
       },
       displaycomics: {

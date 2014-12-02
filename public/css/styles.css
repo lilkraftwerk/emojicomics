@@ -50,6 +50,7 @@ body, html {
 
 .mainpagelink {
   display: block;
+  font-family: 'Pacifico';
   font-size: 1.5em;
   text-align: center;
   margin-bottom: 10px;
