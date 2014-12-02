@@ -1,7 +1,7 @@
 body, html {
   margin: 0;
   padding: 0;
-  background: url('../img/giftly.png');
+  background: url('../img/paper_3.png');
   font-family: 'Inconsolata';
 }
 
@@ -82,8 +82,10 @@ body, html {
 }
 
 #maintitle {
-  font-size: 2em;
+  font-size: 5em;
   text-align: center;
+  font-family: 'Pacifico';
+  text-shadow: 2px 2px 1px white;
 }
 
 .indexbutton {
@@ -272,6 +274,28 @@ body, html {
   margin-bottom: 10px;
 }
 
+button {
+  outline: none;
+  background-color: #36D7B7;
+  box-shadow: 0px 2px 0px black;
+    display: inline-block;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+ button:hover,  button:focus,  button:active {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: white;
+}
+
 
 
 .bgbutton {
@@ -434,6 +458,12 @@ input[type="radio"]:checked + label {
 }
 
 .wrapper {
+  margin: 0 auto;
+}
+
+.carousel-container {
+  width: 910px;
+  height: 310px;
   margin: 0 auto;
 }
 
