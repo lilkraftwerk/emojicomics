@@ -129,10 +129,17 @@ body, html {
   font-family: 'Lato';
   margin-top: 10px;
   font-size: 1em;
+  text-transform: capitalize;
   position: relative;
   bottom: 10px;
   left: 5px;
 }
+
+#comicauthor img {
+  height: 10px;
+  display: inline-block;
+}
+
 
 .loadingscreen {
   width: 100%;

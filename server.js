@@ -6,6 +6,8 @@ var bodyParser = require('body-parser')
 var comicController = require('./server/controllers/control')
 var Comic = require('./server/models/comic')
 var favicon = require('serve-favicon');
+var dateFormat = require('dateformat');
+
 
 var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/test'
 var theport = process.env.PORT || 3000;
@@ -44,8 +46,9 @@ app.post('/comics', function(req, res){
 app.get('/comics/random', function(req, res){
       Comic.findOneRandom(function(err, docs) {
         if (!err) {
-          var thisComic = docs
-          res.render('random', {author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID})
+          var thisComic = docs;
+          var thisDate = dateFormat(thisComic.date, "longDate");
+          res.render('random', {author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID, date: thisDate})
         }
       });
 });
@@ -54,6 +57,7 @@ app.get('/comics/randomcomic', function(req, res){
       Comic.findOneRandom(function(err, docs) {
         if (!err) {
           var thisComic = docs
+          var thisDate = dateFormat(thisComic.date, "fullDate");
           res.send({author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID})
         }
       });
