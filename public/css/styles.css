@@ -1,8 +1,9 @@
 body, html {
   margin: 0;
   padding: 0;
-  background: url('../img/paper_3.png');
-  font-family: 'Inconsolata';
+  /*background: url('../img/paper_3.png');*/
+  background-color: #A2DED0;
+  font-family: 'Lato';
 }
 
 #moonspin {
@@ -16,7 +17,13 @@ body, html {
 
 
 #comic-container {
-  width: 100%;
+  width: 910px;
+  padding: 10px;
+  margin: 10px auto;
+  background-image: url('/img/ricepaper2.png');
+  background-color: white;
+  border: 2px solid black;
+
 }
 
 #authorname {
@@ -28,6 +35,7 @@ body, html {
 #comic img {
   height: 310px;
   width: 910px;
+  margin: 0 auto;
 }
 
 #downloadlinks {
@@ -48,17 +56,30 @@ body, html {
   font-size: 2em;
 }
 
-.mainpagelink {
-  display: block;
-  font-family: 'Pacifico';
-  font-size: 1.5em;
+.mainlinks {
   text-align: center;
-  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.mainlinks a {
+  color: black;
+  font-family: 'Lato';
+  font-size: 2.75em;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  text-decoration: underline;
+  text-shadow: 2px 2px 0px white;
+}
+
+.mainpagelink:hover {
+  color: white;
+  text-shadow: 2px 2px 0px black;
 }
 
 .randomdeliverylink {
   text-align: center;
-  margin: 20px 30%;
+  margin: 3px 30%;
   font-size: 1.1em;
   width: 40%;
 }
@@ -70,11 +91,12 @@ body, html {
 }
 
 #anotherRandom {
-  font-family: 'Pacifico';
+  font-family: 'Lato';
   font-size: 1.5em;
   height: 60px;
+  text-transform: uppercase;
   width: 40%;
-  margin: 10px 30%;
+  margin: 0 30%;
 }
 
 #randomlinks {
@@ -83,9 +105,14 @@ body, html {
 }
 
 #maintitle {
+  margin: 10px 0px;
+  width: 100%;
+  border-top: 7px solid black;
+  border-bottom: 7px solid black;
   font-size: 5em;
   text-align: center;
-  font-family: 'Pacifico';
+  font-family: 'Lato';
+  text-transform: uppercase;
   text-shadow: 2px 2px 1px white;
 }
 
@@ -97,17 +124,14 @@ body, html {
   margin: 0 auto;
 }
 
-#comic {
-  margin: 20px auto;
-  height: 300px;
-  width: 900px;
-}
 
 #comicauthor {
-  font-family: 'Pacifico';
-  text-align: center;
+  font-family: 'Lato';
   margin-top: 10px;
-  font-size: 2em;
+  font-size: 1em;
+  position: relative;
+  bottom: 10px;
+  left: 5px;
 }
 
 .loadingscreen {
@@ -275,6 +299,27 @@ body, html {
   margin-bottom: 10px;
 }
 
+#header {
+  /*background-color: black;*/
+  text-align: center;
+  color: black;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 7px;
+  margin: 0 auto;
+  padding-left: 20px;
+  width: 100%;
+}
+
+#header a {
+  display: inline-block;
+  color: black;
+}
+
+#header a:hover {
+  color: white;
+}
+
 button {
   outline: none;
   background-color: #36D7B7;
@@ -350,16 +395,17 @@ button:active {
 }
 
 .cursivefont {
-  font-family: 'Pacifico';
+  font-family: 'Lato';
 }
 
+text-transform: uppercase;
 .speechselect {
   height: 32px;
   margin-left: 15px;
 }
 
 .normalfont {
-  font-family: 'Open Sans';
+  font-family: 'Lato';
 }
 
 .optionicon {
@@ -459,7 +505,8 @@ input[type="radio"]:checked + label {
 }
 
 .wrapper {
-  margin: 0 auto;
+  /*width: 90%;*/
+  /*margin: 0 auto;*/
 }
 
 .carousel-container {
@@ -469,9 +516,10 @@ input[type="radio"]:checked + label {
 }
 
 #title {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Lato', cursive;
   font-size: 2em;
   margin-top: -10px;
+  text-transform: uppercase;
   text-align: center;
   padding: 0;
   margin: 0;

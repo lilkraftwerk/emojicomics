@@ -6,13 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <script type="text/paperscript" canvas="myCanvas" src="/js/scripts.js"></script>
 
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
 </head>
 <body>
+  <% include /partials/header %>
+
   <div id="container">
     <div class="wrapper">
       <canvas id="myCanvas" width="1000" height="310" keepalive="true"></canvas>
@@ -98,7 +102,7 @@
           <br>
           <input type="radio" id="radioFontRobot" name="fontface" value="Inconsolata">
           <label class="robotfont" for="radioFontRobot">robot</label>
-          <input type="radio" id="radioFontNormal" name="fontface" checked="checked" value="Open Sans">
+          <input type="radio" id="radioFontNormal" name="fontface" checked="checked" value="Lato">
           <label class="normalfont" for="radioFontNormal">normal</label>
           <input type="radio" id="radioFontCursive" name="fontface" value="Pacifico">
           <label class="cursivefont" for="radioFontCursive">cursive</label>

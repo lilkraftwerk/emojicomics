@@ -4,8 +4,8 @@ $(document).ready(function(){
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 5000,
-        prevArrow: '<img class="slick-button slick-prev" src="emojis/leftarrow.png">',
-        nextArrow: '<img class="slick-button slick-next" src="emojis/rightarrow.png">',
+        prevArrow: '<img class="slick-button slick-prev" src="img/bwarrowleft.png">',
+        nextArrow: '<img class="slick-button slick-next" src="img/bwarrowright.png">',
         speed: 1000,
         infinite: true
     });

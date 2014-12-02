@@ -29,6 +29,7 @@
 
   <meta name="description" content="Make comic strips with emojis. Extremely fun and excellent.">
 
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -38,16 +39,18 @@
 
 </head>
 <body>
+  <% include /partials/header %>
+
   <div id="comic-container">
   <div id="comic">
 <img src="<%= img %>"/>
   </div>
-  <div id="comicauthor">by <span id='author'><%= author %></span></div>
-  <input class="randomdeliverylink" type="text" value="https://emojicomic.herokuapp.com/comics/<%= shortid %>">
-  <button id="anotherRandom">another random comic</button>
-  <a class="mainpagelink" href="/comics/create">make a comic</a>
+  <div id="comicauthor">(C) 2014 <span id='author'><%= author %>.</span><br>Redistribution hella encouraged.</div>
+
   </div>
 </div>
+  <input class="randomdeliverylink" type="text" value="https://emojicomic.herokuapp.com/comics/<%= shortid %>">
+  <button id="anotherRandom">another random comic</button>
   <img id='loadingcomic' src="/img/loadingcomic.png">
 </body>
 </html>
