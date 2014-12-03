@@ -65,7 +65,7 @@ function splitTextIntoSmallerPieces(sentence){
     var thisWord = splitOrigSentence[i]
     newSentence.push(thisWord)
     timeSinceLineSplit += thisWord.length
-    if (timeSinceLineSplit > 15){
+    if (timeSinceLineSplit > 10){
       timeSinceLineSplit = 0
       newSentence.push('\n')
     }
@@ -77,7 +77,7 @@ function splitTextIntoSmallerPieces(sentence){
 function makeSpeechBubble(inputText){
   var speechDirection = $('input:radio[name=speechtype]:checked').val();
   var speechRaster = new Raster(speechDirection)
-  speechRaster.scale(2)
+  speechRaster.scale(1.5)
   var text = new PointText();
   text.justification = 'center';
   text.fontSize = getFontSize()
@@ -87,21 +87,14 @@ function makeSpeechBubble(inputText){
   text.content = newText;
   var group = new Group([speechRaster, text])
   group.position = view.center;
-  console.log(speechRaster.bounds)
-  console.log(text.bounds)
   while(speechRaster.bounds.height < text.bounds.height + 100){
-    speechRaster.scale(1, 1.2)
-    text.position.y -= 12
+    speechRaster.scale(1, 1.1)
   }
     while(speechRaster.bounds.width < text.bounds.width + 40){
-    speechRaster.scale(1.2, 1)
+    speechRaster.scale(1.1, 1)
   }
-  console.log('speech')
-  console.log(speechRaster.position)
-  console.log(speechRaster.bounds)
-  console.log('text')
-  console.log(text.position)
-  console.log(text.bounds)
+  speechRaster.position = view.center
+  text.position = view.center
 }
 
 
@@ -193,8 +186,6 @@ function trimCanvas(){
   var newContext = newCanvas.getContext("2d")
   newCanvas.height = 310;
   newCanvas.width = 910;
-  // newCanvas.height = 310 * window.devicePixelRatio;
-  // newCanvas.width = 910 * window.devicePixelRatio;
   newContext.drawImage(canvas, 0, 0);
 }
 

@@ -1,7 +1,10 @@
+$primary-color: #A2DED0;
+$button-color: #36D7B7;
+
 body, html {
   margin: 0;
   padding: 0;
-  background-color: #A2DED0;
+  background-color: $primary-color;
   font-family: 'Lato';
 }
 

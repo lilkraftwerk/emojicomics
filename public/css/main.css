@@ -34,6 +34,12 @@ label {
   text-align: center;
   line-height: 32px; }
 
+.lighter-label {
+  background-color: #12fbcd; }
+
+.darker-label {
+  background-color: #5ab3a1; }
+
 .label-4th {
   width: 75px;
   margin-right: 20px; }
@@ -399,18 +405,6 @@ input[type="radio"]:checked + label {
   margin-right: 30px;
   text-transform: none;
   float: right; }
-
-  .viewlink {
-    text-align: center;
-    font-size: 2em;
-
-  }
-
-  .viewtextbox {
-  display: block;
-  font-size: 1em;
-  width: 75%;
-  margin: 20px auto; }
 
 .randomdeliverylink a {
   text-decoration: underline;

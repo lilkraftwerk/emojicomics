@@ -1,9 +1,8 @@
 label {
   display: inline-block;
- // margin: 20px auto;
  color: #FFF;
  height: 32px;
- background-color: #36D7B7;
+ background-color: $button-color;
  -webkit-border-radius: 4px;
  -moz-border-radius: 4px;
  border-radius: 4px;
@@ -33,6 +32,13 @@ label {
   line-height: 32px;
 }
 
+.lighter-label {
+  background-color: saturate( $button-color, 30% );
+}
+
+.darker-label {
+  background-color: desaturate( $button-color, 30% );
+}
 
 .label-4th {
   width: 75px;
@@ -54,7 +60,7 @@ button {
  padding: 10px 30px;
  margin: 10px auto;
  color: #FFF;
- background-color: #36D7B7;
+ background-color: $button-color;
  -webkit-border-radius: 4px;
  -moz-border-radius: 4px;
  border-radius: 4px;
