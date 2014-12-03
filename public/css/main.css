@@ -28,18 +28,18 @@ label {
     margin: 0px 35%; }
 
 .label-3rd {
-  width: 110px;
-  margin-left: 20px;
+  width: 121px;
+  margin-right: 21px;
   text-align: center;
   line-height: 32px; }
 
 .label-4th {
-  width: 90px;
-  margin-left: 12px; }
+  width: 91px;
+  margin-right: 12px; }
 
 .labelrow {
   height: 45px;
-  margin: 0; }
+  margin-left: 12px; }
 
 input[type=radio] {
   display: none; }
@@ -290,8 +290,7 @@ input[type="radio"]:checked + label {
   margin-bottom: 10px;
   overflow: hidden;
   padding: 5px 5px;
-  height: 35px;
-  border-bottom: 2px solid black; }
+  height: 35px; }
 
 #comic-container {
   width: 910px;
