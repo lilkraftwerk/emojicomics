@@ -64,11 +64,15 @@ button {
   -moz-transition-duration: 0.2s;
   transition-duration: 0.2s;
   vertical-align: middle; }
-  button .flipbutton {
-    background-image: url("/emojis/rightarrow.png");
-    background-position: 4px 7px;
-    background-size: 20px 20px;
-    background-repeat: no-repeat; }
+
+#numberLoaded {
+  margin-right: 10px; }
+
+.flipbutton {
+  background-image: url("/emojis/rightarrow.png");
+  background-position: 4px 7px;
+  background-size: 20px 20px;
+  background-repeat: no-repeat; }
 
 .downloadbutton {
   width: 90%;
