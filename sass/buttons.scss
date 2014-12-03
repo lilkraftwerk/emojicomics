@@ -21,27 +21,28 @@ label {
   img {
     width: 30%;
     margin: 0px 35%;
+    margin-top: 2px;
   }
 }
 
 
 .label-3rd {
-  width: 121px;
-  margin-right: 21px;
+  width: 100px;
+  margin-right: 15px;
   text-align: center;
   line-height: 32px;
 }
 
 
 .label-4th {
-  width: 91px;
-  margin-right: 12px;
+  width: 75px;
+  margin-right: 20px;
 }
 
 .labelrow {
   height: 45px;
   overflow: hidden;
-  margin-left: 12px;
+  margin-left: 20px;
 }
 
 input[type=radio] {

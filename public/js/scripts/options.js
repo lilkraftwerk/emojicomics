@@ -119,8 +119,8 @@ function checkForHeroku(){
 function FormatShortUrl(data){
   var check = checkForHeroku()
   var url = checkForHeroku() + '/comics/' + data.shortID
-  var newURL = $("<a>Check Out Yr Comic</a>").attr("href", url).addClass('deliverylink')
-  var textURL = $("<input type='text'>").attr("value", url).addClass('deliverytextbox')
+  var newURL = $("<a>Check Out Yr Comic</a>").attr("href", url).addClass('viewlink')
+  var textURL = $("<input type='text'>").attr("value", url).addClass('viewtextbox')
   return [newURL, textURL]
 }
 
@@ -155,10 +155,10 @@ $(document).on('click', '.downloadbutton', function(e){
   $("#download").html('<div id="loadingscreen"><img src="/img/moonspin.gif"><p>LOADING...</p></div>')
   trimCanvas()
   sendCanvasToServer()
-  $("#optionsbar").html("<div class='optionicon'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'><img src='/emojis/656.png'></div>")
+  $("#optionsbar").html("<div class='optionicon'><img src='/emojis/656.png'></div><div class='optionicon'><img src='/emojis/656.png'></div><div class='optionicon'><img src='/emojis/656.png'></div><div class='optionicon'><img src='/emojis/656.png'></div>")
   } else
   {
-    $("#authorname").attr("placeholder", "enter a name you big dummy")
+    $("#authorname").attr("placeholder", "enter a name you jabroni")
   }
 })
 
