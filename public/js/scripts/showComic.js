@@ -27,6 +27,7 @@ $.ajax({
    $('#anotherRandom').removeClass('inactive')
    $('#comic').html('<img src="' + data.img + '" />');
    $("#author").html(data.author)
+   $("#date").html(data.date)
    $('.deliverylink').attr('href', "http://emojicomic.herokuapp.com/comics/" + data.shortid)
  })
 })

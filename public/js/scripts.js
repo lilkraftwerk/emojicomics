@@ -65,7 +65,7 @@ function splitTextIntoSmallerPieces(sentence){
     var thisWord = splitOrigSentence[i]
     newSentence.push(thisWord)
     timeSinceLineSplit += thisWord.length
-    if (timeSinceLineSplit > 6){
+    if (timeSinceLineSplit > 15){
       timeSinceLineSplit = 0
       newSentence.push('\n')
     }
@@ -89,7 +89,6 @@ function makeSpeechBubble(inputText){
   group.position = view.center;
   console.log(speechRaster.bounds)
   console.log(text.bounds)
-  text.position.y -= 10
   while(speechRaster.bounds.height < text.bounds.height + 100){
     speechRaster.scale(1, 1.2)
     text.position.y -= 12
@@ -97,8 +96,15 @@ function makeSpeechBubble(inputText){
     while(speechRaster.bounds.width < text.bounds.width + 40){
     speechRaster.scale(1.2, 1)
   }
-
+  console.log('speech')
+  console.log(speechRaster.position)
+  console.log(speechRaster.bounds)
+  console.log('text')
+  console.log(text.position)
+  console.log(text.bounds)
 }
+
+
 
 function getFontSize(){
   var fontSize = $('input[name=fontsize]:checked').val();
@@ -429,6 +435,7 @@ $.ajax({
    $('#anotherRandom').removeClass('inactive')
    $('#comic').html('<img src="' + data.img + '" />');
    $("#author").html(data.author)
+   $("#date").html(data.date)
    $('.deliverylink').attr('href', "http://emojicomic.herokuapp.com/comics/" + data.shortid)
  })
 })
