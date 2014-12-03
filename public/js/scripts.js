@@ -429,9 +429,20 @@ $.ajax({
    $('#anotherRandom').removeClass('inactive')
    $('#comic').html('<img src="' + data.img + '" />');
    $("#author").html(data.author)
-   $('.randomdeliverylink').val("http://emojicomic.herokuapp.com/comics/" + data.shortid)
+   $('.deliverylink').attr('href', "http://emojicomic.herokuapp.com/comics/" + data.shortid)
  })
 })
+
+
+$(document).ready(function(){
+    $('.speech-type').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true
+    });
+});
+
+
 $(document).on("click", '#textGo', function(){
   makeSpeechBubble($("#textInput").val())
 })
@@ -492,11 +503,12 @@ $("#flipEmojis").on('click', function(){
   if(flipped === false){
     flipped = true;
     $("#emojiChooser").children('img').addClass('flipped')
-    $("#flipEmojis").children('img').attr("src", "/emojis/leftarrow.png")
+    $("#flipEmojis").css("background-image", "url(/emojis/leftarrow.png)")
   } else {
     flipped = false;
     $("#emojiChooser").children('img').removeClass('flipped')
-    $("#flipEmojis").children('img').attr("src", "/emojis/rightarrow.png")
+    $("#flipEmojis").css("background-image", "url(/emojis/rightarrow.png)")
+
   }
 })
 

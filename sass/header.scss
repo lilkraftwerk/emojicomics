@@ -1,0 +1,21 @@
+
+#header {
+  color: black;
+  font-size: 3em;
+  height: 20px;
+  line-height: 20px;
+  margin: 20px 0;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+#header a {
+  display: inline-block;
+  color: black;
+}
+
+#header a:hover {
+  color: white;
+}
+

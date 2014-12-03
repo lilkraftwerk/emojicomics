@@ -3,19 +3,23 @@
 <head>
   <script type="text/javascript" src="/js/vendor/paper.js"></script>
   <script type="text/javascript" src="/js/vendor.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <script type="text/paperscript" canvas="myCanvas" src="/js/scripts.js"></script>
+  <script type="text/javascript" src="/js/slick.js"></script>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/slick.css">
+
 
 </head>
 <body>
-  <% include /partials/header %>
 
   <div id="container">
     <div class="wrapper">
@@ -28,7 +32,7 @@
           <span id="loadButtons">
             <button id="moreEmojis">load more</button>
             <button id="allEmojis">load all</button>
-            <button id="flipEmojis"> <img src="/emojis/rightarrow.png">flip emojis</button>
+            <button class='flipbutton' id="flipEmojis">flip emojis</button>
           </span>
           <span id="recent">recently used:</span>
 
@@ -43,13 +47,9 @@
         <div id="optionsbar">
           <div class="optionicon" data-click="speech">
             <img src='/emojis/speechleft.png'>
-            <img src='/emojis/speechleft.png'>
-            <img src='/emojis/speechleft.png'>
           </div>
           <div class="optionicon" data-click="backgroundsoption">
-            <img src='/emojis/backgroundicon1.png'>
             <img src='/emojis/backgroundicon2.png'>
-            <img src='/emojis/backgroundicon3.png'>
           </div>
           <div id="downloadtab" class="optionicon" data-click="save">
             <img src='/emojis/downloadicon2.png'>
@@ -121,14 +121,14 @@
           <select id="bg3">
           </select>
         </div>
-        <button class="bgbutton" id="randombg">randomize each background</button>
-        <button class="bgbutton" id="onerandombg">matching random background</button>
+        <button class="background-button" id="randombg">randomize each background</button>
+        <button class="background-button" id="onerandombg">matching random background</button>
 
       </div>
 
       <div id="save">
         <input id="authorname" type="text" maxlength="20" placeholder="artist name">
-        <a id="download"><button class="inactive downloadbutton">
+        <a id="download"><button class="inactive save-button">
           <img src='/emojis/722.png'>
           <img src='/emojis/downloadicon2.png'>
           <img src='/emojis/722.png'>
@@ -151,7 +151,6 @@
 
   <div id='images'>
     <img id='moonSpin' src='/img/moonspin.gif'>
-
 
     <img id='bgPinkBlue' src='/backgrounds/pinkblue.jpg'>
     <img id='bgBarbershop' src='/backgrounds/barbershop.jpg'>

@@ -1,0 +1,384 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #A2DED0;
+  font-family: 'Lato'; }
+
+input[type=radio] {
+  display: none; }
+
+button {
+  padding: 10px 30px;
+  margin: 10px auto;
+  color: #FFF;
+  background-color: #36D7B7;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: solid 1px #20538D;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  outline: none;
+  user-select: none;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  vertical-align: middle; }
+  button .flipbutton {
+    background-image: url("/emojis/rightarrow.png");
+    background-position: 4px 7px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat; }
+  button .downloadbutton {
+    width: 90%; }
+
+.background-button {
+  display: block;
+  width: 90%;
+  margin-left: 5%;
+  font-size: 1.2em; }
+
+.save-button {
+  display: block;
+  width: 90%;
+  margin-left: 5%;
+  font-size: 1.2em; }
+
+button:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05); }
+
+button:active {
+  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  background: #2E5481;
+  border: solid 1px #203E5F; }
+
+#header {
+  color: black;
+  font-size: 3em;
+  height: 20px;
+  line-height: 20px;
+  margin: 20px 0;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase; }
+
+#header a {
+  display: inline-block;
+  color: black; }
+
+#header a:hover {
+  color: white; }
+
+#moonspin {
+  margin: 0 auto;
+  display: inline-block; }
+
+#options p {
+  text-align: center;
+  font-size: 1.3em; }
+
+#options h3 {
+  text-align: center;
+  margin: 0;
+  font-family: 'Inconsolata';
+  font-size: 1.5em; }
+
+.about {
+  font-family: 'Inconsolata';
+  font-size: 1.5em;
+  padding: 10px;
+  text-align: center;
+  line-height: 1.7em; }
+
+.options-container select {
+  width: 30%;
+  margin-left: 1%;
+  font-family: 'Inconsolata';
+  text-align: center; }
+
+.options-container .subtitle {
+  display: inline-block;
+  width: 30%;
+  text-align: center; }
+
+.about img {
+  height: 20px;
+  display: inline-block; }
+
+#emojiChooser {
+  float: left;
+  width: 450px;
+  height: 240px;
+  border: 2px solid black;
+  background-color: white;
+  overflow-y: scroll;
+  overflow-x: hidden; }
+
+#emojiChooser img {
+  height: 32px;
+  width: 32px;
+  padding: 3px; }
+
+.flipped {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH"; }
+
+#stats {
+  display: inline-block;
+  border: 2px solid black;
+  width: 885px;
+  line-height: auto;
+  padding: 0px 10px;
+  background-color: white;
+  margin-bottom: 10px;
+  line-height: 50px; }
+
+#controls {
+  width: 910px; }
+
+#options {
+  background-color: white;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  float: right;
+  height: 190px;
+  padding-top: 10px;
+  overflow: hidden;
+  width: 450px; }
+
+#images {
+  display: none; }
+
+.emojiIcon {
+  height: 32px;
+  width: 32px;
+  padding: 3px; }
+
+#recent {
+  float: right; }
+
+.recentMoji {
+  height: 30px;
+  margin-top: 4px; }
+
+.robotfont {
+  font-family: 'Inconsolata'; }
+
+.cursivefont {
+  font-family: 'Pacifico'; }
+
+.normalfont {
+  font-family: "Open Sans"; }
+
+input[type="radio"]:checked + label {
+  background-color: gray;
+  font-size: 1.5em; }
+
+.optionicon {
+  width: 90px;
+  background-color: white;
+  background-image: url("../img/stripes.png");
+  border-left: 2px solid black;
+  border-radius: 10px 10px 0px 0px;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+  display: inline-block;
+  margin-left: 2px; }
+  .optionicon img {
+    height: 36px;
+    width: 36px;
+    margin: 0px 27px;
+    display: inline-block; }
+
+.moon {
+  width: 450px;
+  height: 50px;
+  display: inline; }
+  .moon img {
+    width: 36px;
+    height: 36px; }
+
+.active {
+  background-color: white;
+  background-image: none; }
+
+.inactive {
+  background-image: url("../img/stripes.png");
+  color: black; }
+
+#hiddenoptions {
+  display: none; }
+
+#textcontainer {
+  overflow: hidden;
+  padding: 0em .5em; }
+
+.helpimg {
+  height: 20px;
+  display: inline-block;
+  margin-top: 10px; }
+
+.options-container {
+  margin-bottom: 10px; }
+
+#comic-container {
+  width: 910px;
+  padding: 10px;
+  margin: 10px auto;
+  background-image: url("/img/ricepaper2.png");
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 120px 10px / 10px 120px; }
+
+#container {
+  width: 100%;
+  /* Firefox */
+  display: -moz-box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  /* Safari and Chrome */
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  /* W3C */
+  display: box;
+  box-pack: center;
+  box-align: center; }
+
+#anotherRandom {
+  font-family: 'Lato';
+  font-size: 1.5em;
+  height: 60px;
+  text-transform: uppercase;
+  width: 40%;
+  margin: 0 30%; }
+
+#createComic {
+  font-family: 'Lato';
+  font-size: 1.5em;
+  height: 60px;
+  text-transform: uppercase;
+  width: 40%;
+  margin: 10px 30%; }
+
+#authorname {
+  margin: 0 15%;
+  width: 70%;
+  font-size: 1.5em; }
+
+#comic img {
+  height: 310px;
+  width: 910px;
+  margin: 0 auto; }
+
+#comicauthor {
+  font-family: 'Lato';
+  margin-top: 10px;
+  font-size: 1em;
+  text-transform: capitalize;
+  position: relative;
+  bottom: 10px;
+  left: 5px; }
+
+#comicauthor img {
+  height: 10px;
+  display: inline-block; }
+
+.loadingscreen {
+  width: 100%;
+  text-align: center; }
+
+.loadingscreen img {
+  margin: 0 auto; }
+
+.loadingscreen p {
+  font-size: 3em; }
+
+#download {
+  width: 100%;
+  text-align: center; }
+
+#download p {
+  text-align: center; }
+
+#download img {
+  display: inline-block;
+  margin: auto; }
+
+#loadingcomic {
+  display: none; }
+
+.deliverytextbox {
+  display: block;
+  font-size: 1em;
+  width: 75%;
+  margin: 20px auto; }
+
+.deliverylink {
+  text-align: right;
+  width: auto;
+  margin-right: 30px;
+  text-transform: none;
+  float: right; }
+
+.randomdeliverylink a {
+  text-decoration: underline;
+  color: black; }
+
+.carousel-container {
+  width: 910px;
+  height: 310px;
+  margin: 0 auto; }
+
+.mainlinks {
+  text-align: center;
+  margin-top: 10px; }
+
+.mainlinks a {
+  color: black;
+  font-family: 'Lato';
+  font-size: 2.75em;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  text-decoration: underline;
+  text-shadow: 2px 2px 0px white; }
+
+.mainpagelink:hover {
+  color: white;
+  text-shadow: 2px 2px 0px black; }
+
+#maintitle {
+  margin: 10px auto;
+  width: 905px;
+  border-top: 7px solid black;
+  border-bottom: 7px solid black;
+  font-size: 5em;
+  text-align: center;
+  font-family: 'Lato';
+  text-transform: uppercase;
+  text-shadow: 2px 2px 1px white; }
+
+.creatorname {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+  font-size: .9em;
+  font-style: italic; }
+  .creatorname a {
+    text-decoration: underline;
+    color: black;
+    font-shadow: none; }
+
+/*# sourceMappingURL=main.css.map */

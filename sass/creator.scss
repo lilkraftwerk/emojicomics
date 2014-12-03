@@ -1,0 +1,208 @@
+#moonspin {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+#options p {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+#options h3 {
+  text-align: center;
+  margin: 0;
+  font-family: 'Inconsolata';
+  font-size: 1.5em;
+}
+
+
+.about {
+  font-family: 'Inconsolata';
+  font-size: 1.5em;
+  padding: 10px;
+  text-align: center;
+  line-height: 1.7em;
+}
+
+.options-container select{
+  width: 30%;
+  margin-left: 1%;
+  font-family: 'Inconsolata';
+  text-align: center;
+}
+
+.options-container .subtitle {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+}
+
+.about img {
+  height: 20px;
+  display: inline-block;
+}
+
+#emojiChooser {
+  float: left;
+  width: 450px;
+  height: 240px;
+  border: 2px solid black;
+  background-color: white;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#emojiChooser img {
+  height: 32px;
+  width: 32px;
+  padding: 3px;
+}
+
+
+
+.flipped {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+#stats {
+  display: inline-block;
+  border: 2px solid black;
+  width: 885px;
+  line-height: auto;
+  padding: 0px 10px;
+  background-color: white;
+  margin-bottom: 10px;
+  line-height: 50px;
+}
+
+#controls {
+  width: 910px;
+}
+
+
+
+#options {
+  background-color: white;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  float: right;
+  height: 190px;
+  padding-top: 10px;
+  overflow: hidden;
+  width: 450px;
+}
+
+
+
+#images {
+  display: none;
+}
+
+
+
+.emojiIcon {
+  height: 32px;
+  width: 32px;
+  padding: 3px;
+}
+
+#recent {
+  float: right;
+}
+
+.recentMoji {
+  height: 30px;
+  margin-top: 4px;
+}
+
+
+.robotfont {
+  font-family: 'Inconsolata';
+}
+
+.cursivefont {
+  font-family: 'Pacifico';
+}
+
+.normalfont {
+  font-family: "Open Sans";
+}
+
+
+
+input[type="radio"]:checked + label {
+  background-color: gray;
+  font-size: 1.5em;
+}
+
+.optionicon {
+  width: 90px;
+  background-color: white;
+  background-image: url('../img/stripes.png');
+  border-left: 2px solid black;
+  border-radius: 10px 10px 0px 0px;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+  display: inline-block;
+  margin-left: 2px;
+  img {
+  height: 36px;
+  width: 36px;
+  margin: 0px 27px;
+  display: inline-block;
+  }
+
+}
+
+  .moon {
+    width: 450px;
+    height: 50px;
+    display: inline;
+    img {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+
+ .active {
+  background-color: white;
+  background-image: none;
+  }
+
+.inactive {
+  background-image: url('../img/stripes.png');
+  color: black;
+}
+
+
+
+#hiddenoptions {
+  display:none;
+}
+
+#textcontainer {
+  overflow: hidden;
+  padding: 0em .5em;
+}
+
+
+
+
+
+
+
+.helpimg {
+ height: 20px;
+ display: inline-block;
+ margin-top: 10px;
+}
+.options-container {
+  margin-bottom: 10px;
+}

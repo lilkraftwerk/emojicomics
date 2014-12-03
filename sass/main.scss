@@ -1,0 +1,12 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #A2DED0;
+  font-family: 'Lato';
+}
+
+@import 'buttons';
+@import 'header';
+@import 'creator';
+@import 'comicdisplay';
+@import 'indexpage';

@@ -6,14 +6,26 @@ module.exports = function(grunt) {
     watch: {
       js:{
         files:'public/js/scripts/*.js',
-        tasks: ['concat']      }
+        tasks: ['concat']
+      },
+      sass: {
+        files: 'sass/*.scss',
+        tasks: ['sass']
+      }
+    },
+    sass: {
+      dist: {
+        files: {
+          'public/css/main.css': 'sass/main.scss'
+        }
+      }
     },
     concat: {
       options: {
         seperator: "\n; \n",
       },
       vendor: {
-        src: ['public/js/vendor/jquery.min.js', 'public/js/vendor/jquery.imgpreload.js', 'public/js/vendor/underscore.js', 'public/js/vendor/canvas2image.js'],
+        src: ['public/js/vendor/jquery.min.js', 'public/js/vendor/jquery.imgpreload.js', 'public/js/vendor/underscore.js', 'public/js/vendor/canvas2image.js', 'jquery.customSelect.min.js'],
         dest: 'public/js/vendor.js'
       },
       scripts: {
@@ -27,14 +39,15 @@ module.exports = function(grunt) {
     },
     jshint: {
       all: ['Gruntfile.js', 'public/js/scripts/*.js']
-  }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint', 'concat', 'watch']);
+  grunt.registerTask('default', ['concat', 'sass', 'watch']);
 };
