@@ -40,6 +40,7 @@ label {
 
 .labelrow {
   height: 45px;
+  overflow: hidden;
   margin-left: 12px;
 }
 
@@ -77,10 +78,13 @@ button {
     background-repeat: no-repeat;
 }
 
-.downloadbutton {
-  width: 90%;
+
+
 }
 
+.downloadbutton {
+  width: 90%;
+  margin-left: 5%;
 }
 
 
