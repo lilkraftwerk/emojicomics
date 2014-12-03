@@ -131,15 +131,16 @@
 }
 
 .normalfont {
-  font-family: "Open Sans";
+  font-family: 'Lato';
 }
 
 
 
 input[type="radio"]:checked + label {
-  background-color: gray;
-  font-size: 1.5em;
+  background-color: white;
+  color: black;
 }
+
 
 .optionicon {
   width: 90px;
@@ -187,10 +188,6 @@ input[type="radio"]:checked + label {
   display:none;
 }
 
-#textcontainer {
-  overflow: hidden;
-  padding: 0em .5em;
-}
 
 
 
@@ -205,4 +202,32 @@ input[type="radio"]:checked + label {
 }
 .options-container {
   margin-bottom: 10px;
+}
+
+
+#textGo {
+  display: inline;
+  margin: 0px auto;
+  float: right;
+  margin-right: 3px;
+  height: 35px;
+  width: 45%;
+}
+
+#textInput {
+  line-height: 30px;
+  font-size: 1.1em;
+  height: 30px;
+  width: 45%;
+  margin-left: 3px;
+  float: left;
+}
+
+
+#textcontainer {
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding: 5px 5px;
+  height: 35px;
+  border-bottom: 2px solid black;
 }

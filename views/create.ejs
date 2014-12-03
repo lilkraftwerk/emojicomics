@@ -20,6 +20,7 @@
 
 </head>
 <body>
+  <% include /partials/header %>
 
   <div id="container">
     <div class="wrapper">
@@ -70,42 +71,45 @@
 
      <div id="hiddenoptions">
       <div id="speech">
-        <button id="textGo">make speech bubble</button>
         <div id="textcontainer">
-          <input id="textInput" placeholder="text goes here" type="text"><br>
+          <input id="textInput" placeholder="text goes here" type="text">
+        <button id="textGo">make speech bubble</button>
         </div>
-        <hr>
-        <div id="theradio">
+        <div class="labelrow">
           <input type="radio" id="radioSpeechL" name="speechtype" checked="checked" value="speechleft">
-          <label for="radioSpeechL">
+          <label class="label-4th" for="radioSpeechL">
             <img class="speechselect" src='/emojis/speechleft.png'>
           </label>
           <input type="radio" id="radioSpeechR" name="speechtype" value="speechright">
-          <label for="radioSpeechR">
+          <label class="label-4th" for="radioSpeechR">
             <img class="speechselect" src='/emojis/speechright.png'>
           </label>
           <input type="radio" id="radioThoughtL" name="speechtype" value="thoughtleft">
-          <label for="radioThoughtL">
+          <label class="label-4th" for="radioThoughtL">
             <img class="speechselect" src='/emojis/thoughtleft.png'>
           </label>
           <input type="radio" id="radioThoughtR" name="speechtype" value="thoughtright">
-          <label for="radioThoughtR">
+          <label class="label-4th" for="radioThoughtR">
             <img class="speechselect" src='/emojis/thoughtright.png'>
           </label>
-          <br>
+        </div>
+        <div class="labelrow">
+
           <input type="radio" id="radioFontS" name="fontsize" value="10">
-          <label for="radioFontS">small</label>
+          <label class="fontsmall label-3rd" for="radioFontS">small</label>
           <input type="radio" id="radioFontM" name="fontsize" checked="checked" value="20">
-          <label for="radioFontM">medium</label>
+          <label class="fontmed label-3rd" for="radioFontM">medium</label>
           <input type="radio" id="radioFontL" name="fontsize" value="30">
-          <label for="radioFontL">big</label>
-          <br>
+          <label class="fontbig label-3rd" for="radioFontL">big</label>
+          </div>
+        <div class="labelrow">
+
           <input type="radio" id="radioFontRobot" name="fontface" value="Inconsolata">
-          <label class="robotfont" for="radioFontRobot">robot</label>
+          <label class="label-3rd robotfont" for="radioFontRobot">ROBOT</label>
           <input type="radio" id="radioFontNormal" name="fontface" checked="checked" value="Lato">
-          <label class="normalfont" for="radioFontNormal">normal</label>
+          <label class="label-3rd normalfont" for="radioFontNormal">Normal.</label>
           <input type="radio" id="radioFontCursive" name="fontface" value="Pacifico">
-          <label class="cursivefont" for="radioFontCursive">cursive</label>
+          <label class="label-3rd cursivefont" for="radioFontCursive">Cursive!</label>
         </div>
       </div>
 
@@ -121,14 +125,14 @@
           <select id="bg3">
           </select>
         </div>
-        <button class="background-button" id="randombg">randomize each background</button>
-        <button class="background-button" id="onerandombg">matching random background</button>
+        <button class="block" id="randombg">randomize each background</button>
+        <button class="block" id="onerandombg">matching random background</button>
 
       </div>
 
       <div id="save">
         <input id="authorname" type="text" maxlength="20" placeholder="artist name">
-        <a id="download"><button class="inactive save-button">
+        <a id="download"><button class="inactive downloadbutton">
           <img src='/emojis/722.png'>
           <img src='/emojis/downloadicon2.png'>
           <img src='/emojis/722.png'>
@@ -151,6 +155,7 @@
 
   <div id='images'>
     <img id='moonSpin' src='/img/moonspin.gif'>
+
 
     <img id='bgPinkBlue' src='/backgrounds/pinkblue.jpg'>
     <img id='bgBarbershop' src='/backgrounds/barbershop.jpg'>
