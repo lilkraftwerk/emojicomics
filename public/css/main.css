@@ -448,7 +448,7 @@ input[type="radio"]:checked + label {
   text-transform: uppercase; }
 
 #submaintitle {
-  font-size: 2em;
+  font-size: 1.5em;
   font-style: italic; }
 
 .creatorname {

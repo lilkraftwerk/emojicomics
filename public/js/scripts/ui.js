@@ -1,10 +1,4 @@
-$(document).ready(function(){
-    $('.speech-type').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true
-    });
-});
+
 
 
 $(document).on("click", '#textGo', function(){

@@ -387,6 +387,9 @@ function randomEmojis(){
 
 
 
+
+
+
 function populateBackgroundOptions(){
   for(var i = 1; i < 4; i++){
     var thisMenu = $("#bg" + String(i))
@@ -432,13 +435,7 @@ $.ajax({
 })
 
 
-$(document).ready(function(){
-    $('.speech-type').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true
-    });
-});
+
 
 
 $(document).on("click", '#textGo', function(){
