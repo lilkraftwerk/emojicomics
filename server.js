@@ -33,15 +33,25 @@ app.get('/', function(req, res){
   res.render('index')
 });
 
-app.get('/comics/create', function(req, res){
-  res.render('create')
-});
+app.get('/code', function(req, res){
+  res.render('codeindex')
+})
 
+
+app.get('/comics', function(req, res){
+  res.render('comicindex')
+})
 
 app.post('/comics', function(req, res){
   var body = comicController.createTwo(req)
   res.send(body)
 });
+
+
+app.get('/comics/create', function(req, res){
+  res.render('create')
+});
+
 
 app.get('/comics/random', function(req, res){
       Comic.findOneRandom(function(err, docs) {
