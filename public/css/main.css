@@ -433,16 +433,23 @@ input[type="radio"]:checked + label {
   color: white;
   text-shadow: 2px 2px 0px black; }
 
-#maintitle {
+#titlewrap {
   margin: 10px auto;
   width: 905px;
+  padding: 10px 0px;
   border-top: 7px solid black;
   border-bottom: 7px solid black;
-  font-size: 5em;
-  text-align: center;
   font-family: 'Lato';
-  text-transform: uppercase;
-  text-shadow: 2px 2px 1px white; }
+  text-align: center; }
+
+#maintitle {
+  text-shadow: 4px 4px 1px white;
+  font-size: 5em;
+  text-transform: uppercase; }
+
+#submaintitle {
+  font-size: 2em;
+  font-style: italic; }
 
 .creatorname {
   position: absolute;
