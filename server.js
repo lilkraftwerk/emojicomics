@@ -35,10 +35,6 @@ app.get('/code', function(req, res){
 })
 
 
-app.get('/comics', function(req, res){
-  res.render('comicindex')
-})
-
 app.post('/comics', function(req, res){
   var body = comicController.createTwo(req)
   res.send(body)
@@ -48,6 +44,12 @@ app.post('/comics', function(req, res){
 app.get('/comics/create', function(req, res){
   res.render('create')
 });
+
+
+
+app.get('/comics', function(req, res){
+  res.render('comicindex')
+})
 
 
 app.get('/comics/random', function(req, res){

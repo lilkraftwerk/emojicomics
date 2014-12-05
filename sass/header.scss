@@ -1,18 +1,28 @@
 
 #header {
-  color: black;
-  font-size: 3em;
+  background-color: black;
+  border-bottom: 2px solid white;
+  color: $button-color;
+  font-family: 'Lato';
   height: 20px;
-  line-height: 20px;
-  margin: 20px 0;
+  line-height: 25px;
+  margin-bottom: 5px;
+  padding: 10px;
   text-align: center;
   width: 100%;
-  text-transform: uppercase;
+  .title {
+  font-size: 1.5em;
+  font-family: 'Pacifico';
+  }
+}
+.subtitle {
+  padding-left: 20px;
 }
 
 #header a {
+  text-decoration: none;
   display: inline-block;
-  color: black;
+  color: $button-color;
 }
 
 #header a:hover {

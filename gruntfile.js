@@ -28,6 +28,10 @@ module.exports = function(grunt) {
         src: ['public/js/vendor/jquery.min.js', 'public/js/vendor/jquery.imgpreload.js', 'public/js/vendor/underscore.js', 'public/js/vendor/canvas2image.js', 'jquery.customSelect.min.js'],
         dest: 'public/js/vendor.js'
       },
+      code: {
+        src: [ 'public/emojicode/js/*.js' ],
+        dest: 'public/js/code.js'
+      },
       scripts: {
         src: ['public/js/scripts/*.js', '!public/js/scripts/slickuser.js'],
         dest: 'public/js/scripts.js'

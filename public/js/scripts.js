@@ -43,12 +43,11 @@ allImages = ["emojis/656.png", "emojis/1.png", "emojis/2.png", "emojis/3.png", "
 
 someImages = ["emojis/1.png", "emojis/2.png", "emojis/3.png", "emojis/4.png", "emojis/5.png", "emojis/6.png", "emojis/7.png", "emojis/8.png", "emojis/9.png", "emojis/10.png", "emojis/11.png", "emojis/12.png", "emojis/13.png", "emojis/14.png", "emojis/15.png"];
 var catchphrases = [
-    'to err is human; to emoji, divine',
-    'an unemoji\'d life is not worth living',
-    'fiat emojis',
-    'give me emojis or give me death',
-    'a man without emojis is a wild beast loosed upon this world',
-    'know thy emoji'
+    'Transforming Emoji Analytics For Web 4.0',
+    'Voted Emoji Thought Leaders 2013-2014',
+    'Emoji Solutions For An ASCII World',
+    'b2b Emoji Consultants Champions 2015',
+    'Enabling Emojitrepreneurs'
 ]
 
 $(document).ready(function(){

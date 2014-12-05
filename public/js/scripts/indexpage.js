@@ -1,10 +1,9 @@
 var catchphrases = [
-    'to err is human; to emoji, divine',
-    'an unemoji\'d life is not worth living',
-    'fiat emojis',
-    'give me emojis or give me death',
-    'a man without emojis is a wild beast loosed upon this world',
-    'know thy emoji'
+    'Transforming Emoji Analytics For Web 4.0',
+    'Voted Emoji Thought Leaders 2013-2014',
+    'Emoji Solutions For An ASCII World',
+    'b2b Emoji Consultants Champions 2015',
+    'Enabling Emojitrepreneurs'
 ]
 
 $(document).ready(function(){
