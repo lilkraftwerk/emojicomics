@@ -9,7 +9,7 @@ var favicon = require('serve-favicon');
 var dateFormat = require('dateformat');
 
 
-var uristring = process.env.MONGO_URI || process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/test'
+var uristring = process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/test'
 var theport = process.env.MONDODB_PORT || 3000;
 
 mongoose.connect(uristring);
