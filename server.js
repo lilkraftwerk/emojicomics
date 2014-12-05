@@ -10,7 +10,7 @@ var dateFormat = require('dateformat');
 
 
 var uristring = process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/test'
-var theport = process.env.MONGODB_PORT || 3000;
+var theport = process.env.PORT || 8080;
 
 mongoose.connect(uristring);
 
