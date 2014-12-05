@@ -1,4 +1,11 @@
 #landing {
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  a:hover {
+    color: white;
+  }
 #wrapper {
   width: 1000px;
   padding: 10px 0px;
@@ -21,6 +28,7 @@
     font-size: 2.5em;
     font-weight: bold;
     margin: 2px 15%;
+    text-decoration: underline;
   }
   img {
     margin-top: 20px;
