@@ -196,6 +196,9 @@ button:active {
   text-align: center;
   line-height: 1.7em; }
 
+.options-container {
+  width: 100%; }
+
 .options-container select {
   width: 30%;
   margin-left: 1%;
@@ -204,12 +207,17 @@ button:active {
 
 .options-container .subtitle {
   display: inline-block;
-  width: 30%;
+  width: 33%;
   text-align: center; }
 
 .about img {
   height: 20px;
   display: inline-block; }
+
+.panel-number {
+  display: inline-block;
+  width: 32%;
+  text-align: center; }
 
 #emojiChooser {
   float: left;
@@ -349,6 +357,20 @@ input[type="radio"]:checked + label {
   overflow: hidden;
   padding: 5px 5px;
   height: 35px; }
+
+.viewlink {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  font-size: 2em; }
+
+.viewtextbox {
+  height: 32px;
+  line-height: 32px;
+  width: 80%;
+  margin: 5px 10%;
+  font-size: 1.2em;
+  text-align: center; }
 
 #comic-container {
   width: 910px;

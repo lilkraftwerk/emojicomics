@@ -102,7 +102,7 @@ $("#allEmojis").on("click", function(){
 
 
 function makeLines(){
-  var rect = new Path.Rectangle([5, 5], [900, 300])
+  var rect = new Path.Rectangle([5, 5], [899, 300])
   rect.strokeColor = 'black';
   rect.strokeWidth = 5;
   var from = new Point(300, 5);

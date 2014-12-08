@@ -149,7 +149,7 @@ function trimCanvas(){
 $(document).on('click', '.downloadbutton', function(e){
   if (isArtistNameEmpty() === true){
   $("#authorname").hide()
-  $("#download").html('<div id="loadingscreen"><img src="/img/moonspin.gif"><p>LOADING...</p></div>')
+  $("#download").html('<div id="loadingscreen"><img src="/img/moonspin.gif"><p>UPLOADIN\'...</p></div>')
   trimCanvas()
   sendCanvasToServer()
   $("#optionsbar").html("<div class='optionicon'><img src='/emojis/656.png'></div><div class='optionicon'><img src='/emojis/656.png'></div><div class='optionicon'><img src='/emojis/656.png'></div><div class='optionicon'><img src='/emojis/656.png'></div>")

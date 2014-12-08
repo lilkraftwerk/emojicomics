@@ -211,7 +211,7 @@ function trimCanvas(){
 $(document).on('click', '.downloadbutton', function(e){
   if (isArtistNameEmpty() === true){
   $("#authorname").hide()
-  $("#download").html('<div id="loadingscreen"><img src="/img/moonspin.gif"><p>LOADING...</p></div>')
+  $("#download").html('<div id="loadingscreen"><img src="/img/moonspin.gif"><p>UPLOADIN\'...</p></div>')
   trimCanvas()
   sendCanvasToServer()
   $("#optionsbar").html("<div class='optionicon'><img src='/emojis/656.png'></div><div class='optionicon'><img src='/emojis/656.png'></div><div class='optionicon'><img src='/emojis/656.png'></div><div class='optionicon'><img src='/emojis/656.png'></div>")
@@ -338,7 +338,7 @@ $("#allEmojis").on("click", function(){
 
 
 function makeLines(){
-  var rect = new Path.Rectangle([5, 5], [900, 300])
+  var rect = new Path.Rectangle([5, 5], [899, 300])
   rect.strokeColor = 'black';
   rect.strokeWidth = 5;
   var from = new Point(300, 5);
