@@ -448,9 +448,10 @@ $.ajax({
    $('#comic').html('<img src="' + data.img + '" />');
    $("#author").html(data.author)
    $("#date").html(data.date)
-   $('.deliverylink').attr('href', "http://emojicomic.herokuapp.com/comics/" + data.shortid)
+   $('.deliverylink').attr('href', "http://emoji.vision/comics/" + data.shortid)
  })
 })
+
 
 
 

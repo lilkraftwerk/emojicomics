@@ -1,0 +1,278 @@
+#mainpage {
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Lato';
+
+  .container {
+    @media (min-width: 400px) {
+      width: 100%;
+      border: none;
+    }
+
+    @media (min-width: 750px) {
+      width: 80%;
+      margin: 10px 10%;
+    }
+
+    background-color: white;
+    border: 2px solid black;
+  }
+
+
+
+  #mainheader {
+    width: 100%;
+    margin: 0 auto;
+    img {
+      margin: 30px 25px;
+    }
+  }
+
+  #test {
+    width: 100%;
+    height: 200px;
+  }
+  #logo {
+    margin-top: 30px;
+  }
+
+  .headline {
+    font-family: 'Oswald';
+    img {
+      height: auto;
+      vertical-align: middle;
+      margin: 0 10px;
+      display: inline-block;
+
+      .flipped {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+      }
+    }
+
+
+
+    span {
+      margin-left: 20px;
+    }
+
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    width: 100%;
+    margin: 10px auto;
+    color: black;
+    background-color: $primary-color;
+    font-size: 2.5em;
+  }
+
+  .maintitle {
+    line-height: 120px;
+  }
+
+  .clearfix:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+
+
+
+  .bigbox {
+    width: 90%;
+    height: 300px;
+    background-color: pink;
+  }
+
+  .choice {
+    text-align: center;
+    line-height: 40px;
+    border-bottom: 4px solid white;
+  }
+
+  .portfolio-container {
+    width: 80%;
+    margin: 10px 10%;
+  }
+
+  .manyemojis {
+    background-image: url('../img/manyemojis.png');
+  }
+
+  .swag {
+    color: white;
+    font-size: 16px;
+    display: block;
+    box-sizing: border-box;
+    width: 50%;
+    height: 300px;
+    padding: 20px;
+    margin: 0 0 10px 0%;
+  }
+
+
+  .woop {
+    color: black;
+    font-size: 16px;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    margin: 10px 0;
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .primary-color-bg {
+    background: $primary-color;
+  }
+
+  .button-color-bg {
+    background: $button-color;
+  }
+
+  .yolo {
+      // background-color: lighten( $primary-color, 10% );
+      color: black;
+      font-size: 1.5em;
+      padding: 20px;
+    }
+
+    .center-img {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .credentials {
+      font-style: italic;
+      text-align: center;
+      font-size: .9em;
+    }
+    .containertainer {
+      width: 80%;
+      padding: 10%;
+    }
+
+    .front {
+      background-image: url('../img/fronter2.jpg');
+      background-position: center;
+      background-size: auto;
+      color: saturate( white, 60%);
+      height: 400px;
+      .catchphrase {
+        text-align: center;
+        margin: 25px 50px;
+        font-weight: bold;
+        font-size: 4em;
+        text-shadow: 0px 0px 5px black, -1px -1px black, 1px 1px black;
+        @media (min-width: 400px) {
+          font-size: 2.5em;
+        }
+        @media (min-width: 550px) {
+          font-size: 3em;
+        }
+        @media (min-width: 750px) {
+          font-size: 4em;
+        }
+      }
+    }
+
+
+
+    .choice:hover {
+      border-bottom: 4px solid black;
+    }
+
+    .subheader {
+      a {
+        color: black;
+        border-bottom: 5px solid $button-color;
+        text-decoration: none;
+      }
+
+      a:hover {
+        border-bottom: 5px solid black;
+      }
+      font-family: 'Oswald';
+      background-color: $button-color;
+      box-sizing: border-box;
+      color: black;
+      font-size: 1.8em;
+      font-weight: bold;
+      height: auto;
+      min-height: 100px;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+
+
+
+      em {
+        font-style: italic;}
+        img {
+          margin: 0 auto;
+          display: block;
+          height: 60px;
+        }
+        span {
+        // margin-left: 20px;
+      }
+    }
+
+
+  }
+
+  a {
+
+  }
+
+  .divider {
+    clear: both;
+    height: 1px;
+    width: 100%;
+    // margin: 10px 10%;
+    border-bottom: 5px solid black;
+    display: inline-block;
+  }
+
+  row {
+    p {
+      padding: 5px;
+    }
+  }
+
+  p {
+    padding: 5px; }
+
+    .description {
+    }
+
+    .column, .columns {
+      height: 100%;
+      img {
+        margin: 0 auto;
+      }
+    }
+
+
+    .emoji-middle {
+      margin: 0 auto;
+    }
+
+
+    .backgroundmoji  {
+      background-image: url('../img/manyemojis.jpg');
+      height: 300px;
+      width: 300px;
+    }
