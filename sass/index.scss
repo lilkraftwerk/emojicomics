@@ -3,6 +3,11 @@
   padding: 0;
   font-family: 'Lato';
 
+
+  p {
+    font-size: 1.2em;
+  }
+
   .container {
     @media (min-width: 400px) {
       width: 100%;
@@ -37,7 +42,17 @@
   }
 
   .headline {
+      text-transform: uppercase;
+    background-color: white;
+    color: black;
+    width: auto;
     font-family: 'Oswald';
+    font-size: 2.5em;
+    height: 80px;
+    line-height: 80px;
+    margin: 10px auto;
+    text-align: center;
+
     img {
       height: auto;
       vertical-align: middle;
@@ -60,14 +75,7 @@
       margin-left: 20px;
     }
 
-    height: 80px;
-    text-align: center;
-    line-height: 80px;
-    width: 100%;
-    margin: 10px auto;
-    color: black;
-    background-color: $primary-color;
-    font-size: 2.5em;
+
   }
 
   .maintitle {
@@ -89,6 +97,8 @@
   }
 
   .choice {
+    font-weight: bold;
+    font-size: 1.2em;
     text-align: center;
     line-height: 40px;
     border-bottom: 4px solid white;
@@ -165,11 +175,14 @@
     }
 
     .front {
-      background-image: url('../img/fronter2.jpg');
+      background-image: url('../img/fronter.jpg');
       background-position: center;
       background-size: auto;
       color: saturate( white, 60%);
       height: 400px;
+      position: relative;
+
+
       .catchphrase {
         text-align: center;
         margin: 25px 50px;
@@ -276,3 +289,4 @@
       height: 300px;
       width: 300px;
     }
+
