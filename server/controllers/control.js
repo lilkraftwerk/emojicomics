@@ -37,28 +37,8 @@ module.exports.list = function (req, res) {
   })
 }
 
-module.exports.getOne = function(searchedShortID){
-
-  // console.log(searchedShortID)
-  // var thisComic = Comic.find()
-  // console.log(thisComic)
-  // ({shortID: searchedShortID})
-  // return thisComic
-}
-
 module.exports.findLast = function(req, res){
-    // Comic.find().sort({ id: 1 }).limit(1, function(err, results){
-      // console.log(results)
-      // res.json(results);
-    // })
 Comic.find().sort({ id: 1 }).limit(1, function(error, data){
 
 })
-    // db.comics.find().sort({name:1}, function(error, tuples) { console.log(tuples) });
-
-
-
-  //   Comic.find.({}, function(err, results){
-  //   res.json(results);
-  // })
 }

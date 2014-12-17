@@ -205,7 +205,6 @@ function sendCanvasToServer(){
   var canvas = document.getElementById('newCanvas');
   var dataURL = canvas.toDataURL();
   var jsonData = JSON.stringify({author: $("#authorname").val(), img: dataURL});
-  console.log("here")
   $.ajax({
       url: '/comics',
       type: 'POST',
