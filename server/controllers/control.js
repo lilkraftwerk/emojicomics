@@ -23,7 +23,11 @@ module.exports.createTwo = function(request){
   body = request.body
   body.shortID = shortId.generate()
   var comic = new Comic(body)
-  comic.save()
+  comic.save(function(err, documentz){
+    console.log(err)
+    console.log('hi')
+    console.log(documentz)
+  })
   return body
 }
 
