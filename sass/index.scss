@@ -43,7 +43,7 @@
 
   .headline {
       text-transform: uppercase;
-    background-color: white;
+    background-color: $primary-color;
     color: black;
     width: auto;
     font-family: 'Oswald';
@@ -167,7 +167,8 @@
     .credentials {
       font-style: italic;
       text-align: center;
-      font-size: .9em;
+      font-size: 1.5em;
+      margin-bottom: 10px;
     }
     .containertainer {
       width: 80%;
@@ -218,11 +219,13 @@
         border-bottom: 5px solid black;
       }
       font-family: 'Oswald';
+      text-transform: uppercase;
       background-color: $button-color;
       box-sizing: border-box;
       color: black;
       font-size: 1.8em;
       font-weight: bold;
+      margin-bottom: 5px;
       height: auto;
       min-height: 100px;
       padding: 20px;
@@ -245,6 +248,7 @@
 
 
   }
+
 
   a {
 
@@ -269,11 +273,16 @@
     padding: 5px; }
 
     .description {
+
+      p {
+font-family: 'Lato';
+      }
     }
 
     .column, .columns {
       height: 100%;
       img {
+
         margin: 0 auto;
       }
     }
@@ -290,3 +299,17 @@
       width: 300px;
     }
 
+
+
+#twitbutt {
+  float: right;
+  padding: 3px;
+  margin-right: 10px;
+}
+
+.linkz span:hover {
+  cursor:pointer;
+}
+
+.business-img {
+}

@@ -1,18 +1,13 @@
-var catchphrases = [
-    'Transforming Emoji Analytics For Web 4.0',
-    'Voted Emoji Thought Leaders 2013-2014',
-    'Emoji Solutions For An ASCII World',
-    'b2b Emoji Consultants Champions 2015',
-    'Enabling Emojitrepreneurs'
-]
-
 $(document).ready(function(){
-    loadNewCatchphrase()
+  $('.linkz').on('click', 'span', function(){
+    var linkTo = $(this).html().toLowerCase()
+    $('html, body').animate({
+          scrollTop: $("#" + linkTo).offset().top
+      }, 2000);
+  })
 });
 
 
 
-function loadNewCatchphrase(){
-    var index = Math.floor(Math.random() * catchphrases.length)
-    $(".mainquote").text(catchphrases[index])
-}
+
+

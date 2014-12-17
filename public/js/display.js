@@ -28,7 +28,15 @@ $.ajax({
    $('#comic').html('<img src="' + data.img + '" />');
    $("#author").html(data.author)
    $("#date").html(data.date)
+   updateTwitterValues("http://emoji.vision/comics/" + data.shortid, 'Way Cool #EmojiComic')
    $('.deliverylink').attr('href', "http://emoji.vision/comics/" + data.shortid)
  })
 })
+
+function updateTwitterValues(share_url, title) {
+  $('#twitbutt').html('&nbsp;');
+  $('#twitbutt').html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + share_url +'" data-text="' + title + '" data-count="none">Tweet</a>');
+twttr.widgets.load();
+}
+
 

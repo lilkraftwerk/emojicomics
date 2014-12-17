@@ -57,7 +57,7 @@ app.get('/comics/random', function(req, res){
         if (!err) {
           var thisComic = docs;
           var thisDate = dateFormat(thisComic.date, "longDate");
-          res.render('random', {author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID, date: thisDate})
+          res.render('random', {author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID, date: thisDate, shortURL: 'http://emoji.vision/comics/' + thisComic.shortID})
         }
       });
 });
@@ -67,7 +67,7 @@ app.get('/comics/randomcomic', function(req, res){
         if (!err) {
           var thisComic = docs
           var thisDate = dateFormat(thisComic.date, "longDate");
-          res.send({author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID, date: thisDate})
+          res.send({author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID, date: thisDate, shortURL: 'http://emoji.vision/comics/' + thisComic.shortID})
         }
       });
 });

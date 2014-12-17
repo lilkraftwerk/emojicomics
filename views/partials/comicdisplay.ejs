@@ -4,7 +4,17 @@
   <div id="comic">
 <img src="<%= img %>"/>
   </div>
-  <div id="comicauthor"><img src='/emojis/tm.png'> <img src='/emojis/copyright.png'> <span id='author'><%= author %></span>, <span id='date'><%= date %></span> <span class="randomdeliverylink"><a class='deliverylink' href="http://emoji.vision/comics/<%= shortid %>">permalink</a></span>
+  <div id="comicauthor"><img src='/emojis/tm.png'> <img src='/emojis/copyright.png'> <span id='author'><%= author %></span>, <span id='date'><%= date %></span> <span class="randomdeliverylink"><a class='deliverylink' href="http://emoji.vision/comics/<%= shortid %>">permalink</a>
+
+
+  </span>
+  <div id="twitbutt"><a id="twitterbutton" data-url="" class="twitter-share-button"
+  href="https://twitter.com/share" data-count="none" data-via="nah_solo" data-text="Way Cool #EmojiComic">
+tweet this comic
+</a>
+<script type="text/javascript">
+window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+</script></div>
   <br>Redistribution Hella Encouraged
   </div>
   </div>
