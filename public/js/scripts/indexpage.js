@@ -1,10 +1,27 @@
 $(document).ready(function(){
-  $('.linkz').on('click', 'span', function(){
-    var linkTo = $(this).html().toLowerCase()
+  $("#moreinfo").click(function() {
     $('html, body').animate({
-          scrollTop: $("#" + linkTo).offset().top
-      }, 2000);
+        scrollTop: $("#visionpage").offset().top - 50
+    }, 2000);
+});
+
+  $('.navbar-nav').on('click', 'a', function(e){
+    e.preventDefault()
+    var scrollTo = "#" + $(this).attr('data-scroll')
+     $('html, body').animate({
+        scrollTop: $(scrollTo).offset().top - 50
+    }, 2000);
   })
+
+   $('#main-anchor').on('click', 'a', function(e){
+    e.preventDefault();
+     $('html, body').animate({
+        scrollTop: $("#splash").offset().top - 50
+    }, 2000);
+  })
+
+   $('body').scrollspy({ target: '.navbar-collapse' })
+
 });
 
 

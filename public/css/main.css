@@ -528,206 +528,83 @@ input[type="radio"]:checked + label {
     color: black;
     font-shadow: none; }
 
-#mainpage {
+#mainpage .page {
+  width: 100vh;
+  height: 100vh;
+  min-width: 100%;
+  padding-top: 50px; }
+#mainpage .vision {
+  background-color: white; }
+#mainpage #moreinfo {
   margin: 0 auto;
-  padding: 0;
-  font-family: 'Lato'; }
-  #mainpage p {
-    font-size: 1.2em; }
-  #mainpage .container {
-    background-color: white;
-    border: 2px solid black; }
-    @media (min-width: 400px) {
-      #mainpage .container {
-        width: 100%;
-        border: none; } }
-    @media (min-width: 750px) {
-      #mainpage .container {
-        width: 80%;
-        margin: 10px 10%; } }
-  #mainpage #mainheader {
-    width: 100%;
-    margin: 0 auto; }
-    #mainpage #mainheader img {
-      margin: 30px 25px; }
-  #mainpage #test {
-    width: 100%;
-    height: 200px; }
-  #mainpage #logo {
-    margin-top: 30px; }
-  #mainpage .headline {
-    text-transform: uppercase;
-    background-color: #A2DED0;
-    color: black;
-    width: auto;
-    font-family: 'Oswald';
-    font-size: 2.5em;
-    height: 80px;
-    line-height: 80px;
-    margin: 10px auto;
-    text-align: center; }
-    #mainpage .headline img {
-      height: auto;
-      vertical-align: middle;
-      margin: 0 10px;
-      display: inline-block; }
-      #mainpage .headline img .flipped {
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        filter: FlipH;
-        -ms-filter: "FlipH"; }
-    #mainpage .headline span {
-      margin-left: 20px; }
-  #mainpage .maintitle {
-    line-height: 120px; }
-  #mainpage .clearfix:after {
-    content: '';
-    clear: both;
-    display: table; }
-  #mainpage .bigbox {
-    width: 90%;
-    height: 300px;
-    background-color: pink; }
-  #mainpage .choice {
-    font-weight: bold;
-    font-size: 1.2em;
-    text-align: center;
-    line-height: 40px;
-    border-bottom: 4px solid white; }
-  #mainpage .portfolio-container {
-    width: 80%;
-    margin: 10px 10%; }
-  #mainpage .manyemojis {
-    background-image: url("../img/manyemojis.png"); }
-  #mainpage .swag {
-    color: white;
-    font-size: 16px;
-    display: block;
-    box-sizing: border-box;
-    width: 50%;
-    height: 300px;
-    padding: 20px;
-    margin: 0 0 10px 0%; }
-  #mainpage .woop {
-    color: black;
-    font-size: 16px;
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    height: auto;
-    padding: 20px;
-    margin: 10px 0; }
-  #mainpage .left {
-    float: left; }
-  #mainpage .right {
-    float: right; }
-  #mainpage .primary-color-bg {
-    background: #A2DED0; }
-  #mainpage .button-color-bg {
-    background: #36D7B7; }
-  #mainpage .yolo {
-    color: black;
-    font-size: 1.5em;
-    padding: 20px; }
-  #mainpage .center-img {
-    max-width: 500px;
-    margin: 0 auto; }
-  #mainpage .credentials {
-    font-style: italic;
-    text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 10px; }
-  #mainpage .containertainer {
-    width: 80%;
-    padding: 10%; }
-  #mainpage .front {
-    background-image: url("../img/fronter.jpg");
-    background-position: center;
-    background-size: auto;
-    color: white;
-    height: 400px;
-    position: relative; }
-    #mainpage .front .catchphrase {
-      text-align: center;
-      margin: 25px 50px;
-      font-weight: bold;
-      font-size: 4em;
-      text-shadow: 0px 0px 5px black, -1px -1px black, 1px 1px black; }
-      @media (min-width: 400px) {
-        #mainpage .front .catchphrase {
-          font-size: 2.5em; } }
-      @media (min-width: 550px) {
-        #mainpage .front .catchphrase {
-          font-size: 3em; } }
-      @media (min-width: 750px) {
-        #mainpage .front .catchphrase {
-          font-size: 4em; } }
-  #mainpage .choice:hover {
-    border-bottom: 4px solid black; }
-  #mainpage .subheader {
-    font-family: 'Oswald';
-    text-transform: uppercase;
-    background-color: #36D7B7;
-    box-sizing: border-box;
-    color: black;
-    font-size: 1.8em;
-    font-weight: bold;
-    margin-bottom: 5px;
-    height: auto;
-    min-height: 100px;
-    padding: 20px;
-    text-align: center;
+  margin-top: 45px;
+  animation-duration: 4s;
+  animation-name: bounce; }
+@keyframes bounce {
+  from {
     width: 100%; }
-    #mainpage .subheader a {
-      color: black;
-      border-bottom: 5px solid #36D7B7;
-      text-decoration: none; }
-    #mainpage .subheader a:hover {
-      border-bottom: 5px solid black; }
-    #mainpage .subheader em {
-      font-style: italic; }
-    #mainpage .subheader img {
-      margin: 0 auto;
-      display: block;
-      height: 60px; }
+  to {
+    width: 30%; } }
+#mainpage .products {
+  background-color: red; }
+#mainpage .pagetitle {
+  font-family: 'Lato';
+  font-size: 3em;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  background-color: black; }
+#mainpage .description {
+  padding: 30px; }
+  #mainpage .description h3 {
+    text-align: center;
+    padding: 10px;
+    padding-top: 0px;
+    margin-top: 5px;
+    border-bottom: 5px solid #36D7B7; }
+#mainpage .icon {
+  margin: 0 auto;
+  padding: 0px; }
+#mainpage .team {
+  background-color: yellow; }
+#mainpage .contact {
+  background-color: pink; }
+#mainpage .product {
+  background-color: white;
+  border: 1px solid black; }
+#mainpage #splash {
+  width: 100vh;
+  height: 100vh;
+  background: url(/img/emojifront.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+#mainpage .intro {
+  visibility: hidden;
+  border: 10px solid white;
+  color: black;
+  font-family: 'Lato';
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  font-size: 5em; }
+#mainpage .fill {
+  min-width: 100%;
+  width: 100%; }
 
-.divider {
-  clear: both;
-  height: 1px;
-  width: 100%;
-  border-bottom: 5px solid black;
-  display: inline-block; }
-
-row p {
-  padding: 5px; }
-
-p {
-  padding: 5px; }
-
-.description p {
-  font-family: 'Lato'; }
-
-.column, .columns {
+html, body {
+  position: relative;
   height: 100%; }
-  .column img, .columns img {
-    margin: 0 auto; }
 
-.emoji-middle {
-  margin: 0 auto; }
+.navbar {
+  color: white; }
 
-.backgroundmoji {
-  background-image: url("../img/manyemojis.jpg");
-  height: 300px;
-  width: 300px; }
-
-#twitbutt {
-  float: right;
-  padding: 3px;
-  margin-right: 10px; }
-
-.linkz span:hover {
-  cursor: pointer; }
+#vertical-center {
+  position: absolute;
+  top: 50%;
+  margin-top: -100px;
+  left: 0;
+  width: 100%; }
 
 /*# sourceMappingURL=main.css.map */

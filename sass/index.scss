@@ -1,315 +1,117 @@
 #mainpage {
-  margin: 0 auto;
-  padding: 0;
-  font-family: 'Lato';
-
-
-  p {
-    font-size: 1.2em;
+  .page {
+    width: 100vh;
+    height: 100vh;
+    min-width: 100%;
+    padding-top: 50px;
+    // background-color: white;
   }
 
-  .container {
-    @media (min-width: 400px) {
-      width: 100%;
-      border: none;
-    }
-
-    @media (min-width: 750px) {
-      width: 80%;
-      margin: 10px 10%;
-    }
-
+  .vision {
     background-color: white;
-    border: 2px solid black;
   }
 
-
-
-  #mainheader {
-    width: 100%;
+  #moreinfo {
     margin: 0 auto;
-    img {
-      margin: 30px 25px;
+    margin-top: 45px;
+    animation-duration: 4s;
+    animation-name: bounce;
+  }
+
+  @keyframes bounce {
+    from {
+      width: 100%;
+    }
+
+    to {
+      width: 30%;
     }
   }
 
-  #test {
-    width: 100%;
-    height: 200px;
-  }
-  #logo {
-    margin-top: 30px;
+  .products {
+    background-color: red;
   }
 
-  .headline {
-      text-transform: uppercase;
-    background-color: $primary-color;
-    color: black;
-    width: auto;
-    font-family: 'Oswald';
-    font-size: 2.5em;
-    height: 80px;
-    line-height: 80px;
-    margin: 10px auto;
+
+  .pagetitle {
+    font-family: 'Lato';
+    font-size: 3em;
+    color: white;
     text-align: center;
+    padding: 5px;
+    background-color: black;
+  }
 
-    img {
-      height: auto;
-      vertical-align: middle;
-      margin: 0 10px;
-      display: inline-block;
-
-      .flipped {
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        filter: FlipH;
-        -ms-filter: "FlipH";
-      }
+  .description {
+    h3 {
+      text-align: center;
+      padding: 10px;
+      padding-top: 0px;
+      margin-top: 5px;
+      border-bottom: 5px solid $button-color;
     }
 
-
-
-    span {
-      margin-left: 20px;
-    }
-
-
+    padding: 30px;
   }
 
-  .maintitle {
-    line-height: 120px;
+  .icon {
+    margin: 0 auto;
+    padding: 0px;
   }
 
-  .clearfix:after {
-    content: '';
-    clear: both;
-    display: table;
+  .team {
+    background-color: yellow;
   }
 
-
-
-  .bigbox {
-    width: 90%;
-    height: 300px;
+  .contact {
     background-color: pink;
   }
 
-  .choice {
-    font-weight: bold;
-    font-size: 1.2em;
-    text-align: center;
-    line-height: 40px;
-    border-bottom: 4px solid white;
+  .product {
+    background-color: white;
+    border: 1px solid black;
   }
-
-  .portfolio-container {
-    width: 80%;
-    margin: 10px 10%;
+  #splash {
+    width: 100vh;
+    height: 100vh;
+    background: url(/img/emojifront.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
-
-  .manyemojis {
-    background-image: url('../img/manyemojis.png');
-  }
-
-  .swag {
-    color: white;
-    font-size: 16px;
-    display: block;
-    box-sizing: border-box;
-    width: 50%;
-    height: 300px;
-    padding: 20px;
-    margin: 0 0 10px 0%;
-  }
-
-
-  .woop {
+  .intro {
+    visibility: hidden;
+    border: 10px solid white;
     color: black;
-    font-size: 16px;
-    display: block;
-    box-sizing: border-box;
+    font-family: 'Lato';
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    font-size: 5em;
+  }
+
+  .fill {
+    min-width: 100%;
     width: 100%;
-    height: auto;
-    padding: 20px;
-    margin: 10px 0;
   }
-
-  .left {
-    float: left;
-  }
-
-  .right {
-    float: right;
-  }
-
-  .primary-color-bg {
-    background: $primary-color;
-  }
-
-  .button-color-bg {
-    background: $button-color;
-  }
-
-  .yolo {
-      // background-color: lighten( $primary-color, 10% );
-      color: black;
-      font-size: 1.5em;
-      padding: 20px;
-    }
-
-    .center-img {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .credentials {
-      font-style: italic;
-      text-align: center;
-      font-size: 1.5em;
-      margin-bottom: 10px;
-    }
-    .containertainer {
-      width: 80%;
-      padding: 10%;
-    }
-
-    .front {
-      background-image: url('../img/fronter.jpg');
-      background-position: center;
-      background-size: auto;
-      color: saturate( white, 60%);
-      height: 400px;
-      position: relative;
-
-
-      .catchphrase {
-        text-align: center;
-        margin: 25px 50px;
-        font-weight: bold;
-        font-size: 4em;
-        text-shadow: 0px 0px 5px black, -1px -1px black, 1px 1px black;
-        @media (min-width: 400px) {
-          font-size: 2.5em;
-        }
-        @media (min-width: 550px) {
-          font-size: 3em;
-        }
-        @media (min-width: 750px) {
-          font-size: 4em;
-        }
-      }
-    }
-
-
-
-    .choice:hover {
-      border-bottom: 4px solid black;
-    }
-
-    .subheader {
-      a {
-        color: black;
-        border-bottom: 5px solid $button-color;
-        text-decoration: none;
-      }
-
-      a:hover {
-        border-bottom: 5px solid black;
-      }
-      font-family: 'Oswald';
-      text-transform: uppercase;
-      background-color: $button-color;
-      box-sizing: border-box;
-      color: black;
-      font-size: 1.8em;
-      font-weight: bold;
-      margin-bottom: 5px;
-      height: auto;
-      min-height: 100px;
-      padding: 20px;
-      text-align: center;
-      width: 100%;
-
-
-
-      em {
-        font-style: italic;}
-        img {
-          margin: 0 auto;
-          display: block;
-          height: 60px;
-        }
-        span {
-        // margin-left: 20px;
-      }
-    }
-
-
-  }
-
-
-  a {
-
-  }
-
-  .divider {
-    clear: both;
-    height: 1px;
-    width: 100%;
-    // margin: 10px 10%;
-    border-bottom: 5px solid black;
-    display: inline-block;
-  }
-
-  row {
-    p {
-      padding: 5px;
-    }
-  }
-
-  p {
-    padding: 5px; }
-
-    .description {
-
-      p {
-font-family: 'Lato';
-      }
-    }
-
-    .column, .columns {
-      height: 100%;
-      img {
-
-        margin: 0 auto;
-      }
-    }
-
-
-    .emoji-middle {
-      margin: 0 auto;
-    }
-
-
-    .backgroundmoji  {
-      background-image: url('../img/manyemojis.jpg');
-      height: 300px;
-      width: 300px;
-    }
-
-
-
-#twitbutt {
-  float: right;
-  padding: 3px;
-  margin-right: 10px;
 }
 
-.linkz span:hover {
-  cursor:pointer;
+html, body {
+  position: relative;
+  height: 100%;
+
 }
 
-.business-img {
+.navbar {
+  color: white;
+}
+
+
+#vertical-center{
+ position: absolute;
+ top: 50%;
+ margin-top: -100px;
+ left: 0;
+ width: 100%;
 }
