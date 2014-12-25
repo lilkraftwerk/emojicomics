@@ -43,36 +43,6 @@ allImages = ["emojis/656.png", "emojis/1.png", "emojis/2.png", "emojis/3.png", "
 
 someImages = ["emojis/1.png", "emojis/2.png", "emojis/3.png", "emojis/4.png", "emojis/5.png", "emojis/6.png", "emojis/7.png", "emojis/8.png", "emojis/9.png", "emojis/10.png", "emojis/11.png", "emojis/12.png", "emojis/13.png", "emojis/14.png", "emojis/15.png"];
 
-$(document).ready(function(){
-  $("#moreinfo").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#visionpage").offset().top - 50
-    }, 2000);
-});
-
-  $('.navbar-nav').on('click', 'a', function(e){
-    e.preventDefault()
-    var scrollTo = "#" + $(this).attr('data-scroll')
-     $('html, body').animate({
-        scrollTop: $(scrollTo).offset().top - 50
-    }, 2000);
-  })
-
-   $('#main-anchor').on('click', 'a', function(e){
-    e.preventDefault();
-     $('html, body').animate({
-        scrollTop: $("#splash").offset().top - 50
-    }, 2000);
-  })
-
-   $('body').scrollspy({ target: '.navbar-collapse' })
-
-});
-
-
-
-
-
 
 function translateEverythingToEmoji(){
   $("p, .choice, span, credentials").each(function(){

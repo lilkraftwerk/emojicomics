@@ -575,13 +575,13 @@ input[type="radio"]:checked + label {
   background-size: cover; }
 #mainpage .intro {
   visibility: hidden;
-  border: 10px solid white;
   color: black;
-  font-family: 'Lato';
-  padding: 25px;
-  background-color: rgba(255, 255, 255, 0.75);
+  font-family: 'Pacifico';
+  text-shadow: 2px 2px 2px #36D7B7, -2px -2px 2px #36D7B7;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.85);
   text-align: center;
-  font-size: 5em; }
+  font-size: 6em; }
 #mainpage .fill {
   min-width: 100%;
   width: 100%; }
