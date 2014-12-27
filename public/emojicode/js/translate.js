@@ -29,7 +29,7 @@ $(document).ready(function() {
     })
 
 
-    var clip = new ZeroClipboard($("#copy"))
+    var clip = new ZeroClipboard.$("#copy")
     clip.on("ready", function(readyEvent) {
         clip.on("copy", function(event) {
             var textToCopy = returnCopyText()

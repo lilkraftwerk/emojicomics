@@ -8,6 +8,10 @@ module.exports = function(grunt) {
         files:'public/js/scripts/*.js',
         tasks: ['concat']
       },
+      codejs:{
+        files: 'public/emojicode/js/*.js',
+        tasks: ['concat']
+      },
       sass: {
         files: 'sass/*.scss',
         tasks: ['sass']
@@ -29,7 +33,7 @@ module.exports = function(grunt) {
         dest: 'public/js/vendor.js'
       },
       code: {
-        src: [ 'public/emojicode/js/*.js' ],
+        src: [ 'public/emojicode/js/ZeroClipboard.js', 'public/emojicode/js/jquery.js', 'public/emojicode/js/jquery/zclip.js', 'public/emojicode/js/*.js' ],
         dest: 'public/js/code.js'
       },
       scripts: {

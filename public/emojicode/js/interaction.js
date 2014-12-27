@@ -27,7 +27,7 @@ var checkForChrome = function() {
     if (window.chrome) {
         var chromeMenuItem = "<li id='chrome-menu'><a href='#'> Not seeing emojis? </li>"
     }
-    $(chromeMenuItem).insertAfter($("#about-item"))
+    $("#chrome-warning").html(chromeMenuItem)
 }
 
 

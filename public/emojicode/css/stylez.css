@@ -1,7 +1,7 @@
 body {
   background-color: #0ABFBC;
-  background-image: url('background.png');
   font-family: 'Open Sans', sans-serif;
+  background-image: url('background.png');
 }
 
 html, button, input, select, textarea,
@@ -37,7 +37,7 @@ html, button, input, select, textarea,
   position: absolute;
   text-align: center;
   top: 5px;
-  left: 97%;
+  right: -35px;
   height: 40px;
   font-size: 2em;
   background-color: #0ABFBC;
@@ -100,7 +100,19 @@ html, button, input, select, textarea,
   color: black;
   font-size: 1em;
   color: black;
-  display: none;
+}
+
+#chrome-click {
+   width: 80%;
+  margin: 30px 10%;
+  background-color: white;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  color: black;
+  font-size: 1em;
+  color: black;
+  padding: 10px;
 }
 
 #mobile-footer a{
@@ -109,9 +121,8 @@ html, button, input, select, textarea,
 
 #title {
   font-family: 'Pacifico', cursive;
-  font-size: 4em;
+  font-size: 3em;
   text-align: center;
-  margin: 15px 0px;
   text-shadow: 2px 2px 0px white;
 }
 
@@ -255,7 +266,7 @@ button p  {
     display: block;
   }
   #title{
-    display:none;
+    font-size: 2em;
   }
   #mobile-footer {
     display: block;
@@ -324,3 +335,36 @@ button p  {
 text-align: center;
 font-size: 4em;
 }
+
+
+#header {
+  background-color: black;
+  border-bottom: 2px solid white;
+  color: #A2DED0;
+  height: 20px;
+  line-height: 25px;
+  margin-bottom: 5px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  .title {
+  font-size: 2em;
+  font-family: 'Pacifico';
+  }
+}
+.subtitle {
+  padding-left: 20px;
+}
+
+#header a {
+  text-decoration: none;
+  display: inline-block;
+  color: #A2DED0;
+  font-family: 'Pacifico';
+  font-size: 1.5em;
+}
+
+#header a:hover {
+  color: white;
+}
+
