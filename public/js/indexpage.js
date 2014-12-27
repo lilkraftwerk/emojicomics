@@ -7,6 +7,7 @@ $(document).ready(function(){
 
   $('.navbar-nav').on('click', 'a', function(e){
     e.preventDefault()
+    $(".navbar-nav").children('li').removeClass('active')
     var scrollTo = "#" + $(this).attr('data-scroll')
      $('html, body').animate({
         scrollTop: $(scrollTo).offset().top - 50
@@ -20,7 +21,10 @@ $(document).ready(function(){
     }, 2000);
   })
 
-   $('body').scrollspy({ target:'.navbar-collapse'})
+   $('body').scrollspy({
+      target:'.navbar-collapse',
+      offset: 60
+    })
 
 });
 

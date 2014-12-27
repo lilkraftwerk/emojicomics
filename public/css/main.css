@@ -532,7 +532,8 @@ input[type="radio"]:checked + label {
   min-width: 100%;
   padding-top: 50px;
   display: inline-block;
-  background-color: white; }
+  background-color: white;
+  margin: 0 auto; }
 #mainpage #moreinfo {
   margin: 0 auto;
   margin-top: 45px;
@@ -606,8 +607,18 @@ html, body {
   color: black;
   text-decoration: underline; }
 
+.prodlink:hover {
+  color: #36D7B7; }
+
 .presspic {
   height: 300px;
   padding: 20px; }
+
+.contactinfo {
+  font-size: 2em;
+  margin-top: 20px; }
+
+.footer {
+  background-color: white; }
 
 /*# sourceMappingURL=main.css.map */
