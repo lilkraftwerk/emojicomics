@@ -576,4 +576,8 @@ html, body {
   text-align: center;
   font-style: italic; }
 
+.prodlink {
+  color: black;
+  text-decoration: underline; }
+
 /*# sourceMappingURL=main.css.map */
