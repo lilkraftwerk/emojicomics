@@ -25,8 +25,9 @@ $(document).ready(function(){
       target:'.navbar-collapse',
       offset: 50
     })
-
-    $("#splash").backstretch("/img/emojifront.jpg");
+    if(screen.width < 767){
+     $("#splash").backstretch("/img/emojifront.jpg");
+    }
 
 });
 
