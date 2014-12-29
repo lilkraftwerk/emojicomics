@@ -26,7 +26,7 @@ $(document).ready(function(){
       offset: 50
     })
     if(screen.width < 767){
-     $("#splash").backstretch("/img/emojifront.jpg");
+     $("#splash").backstretch("/img/emojifrontsmall.jpg");
     }
 
 });
