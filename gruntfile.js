@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         seperator: "\n; \n",
       },
       vendor: {
-        src: ['public/js/vendor/jquery.min.js', 'public/js/vendor/jquery.imgpreload.js', 'public/js/vendor/underscore.js', 'public/js/vendor/canvas2image.js', 'jquery.customSelect.min.js'],
+        src: ['public/js/vendor/jquery.min.js', 'public/js/vendor/jquery.imgpreload.js', 'public/js/vendor/underscore.js', 'public/js/vendor/canvas2image.js', 'jquery.customSelect.min.js', 'public/js/jquery.backstretch.min.js'],
         dest: 'public/js/vendor.js'
       },
       code: {

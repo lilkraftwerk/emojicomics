@@ -26,6 +26,8 @@ $(document).ready(function(){
       offset: 50
     })
 
+    $("#splash").backstretch("/img/emojifront.jpg");
+
 });
 
 
