@@ -76,6 +76,9 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+       @media(max-width:767px) {
+      background-size: scroll;
+    }
   }
   .intro {
     visibility: hidden;
