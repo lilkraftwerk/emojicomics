@@ -25,7 +25,7 @@ $(document).ready(function(){
       target:'.navbar-collapse',
       offset: 50
     })
-    if(screen.width < 767){
+    if(screen.width < 1024){
      $("#splash").backstretch("/img/emojifrontsmall.jpg");
     }
 
