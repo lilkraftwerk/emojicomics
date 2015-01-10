@@ -75,14 +75,18 @@ app.get('/comics/randomcomic', function(req, res){
 app.get('/comics/:id', function(req, res){
     var searchedID = req.params.id
     Comic.find({shortID: searchedID}, function (err, docs) {
-      var thisComic = docs[0]
-      var thisDate = dateFormat(thisComic.date, "longDate");
-      res.render('comicshow', {author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID, date: thisDate})
+      if (docs.length === 0){
+        res.redirect('/comics')
+      } else if (docs.length === 1) {
+        var thisComic = docs[0]
+        var thisDate = dateFormat(thisComic.date, "longDate");
+        res.render('comicshow', {author: thisComic.author, img: thisComic.img, shortid: thisComic.shortID, date: thisDate})
+      }
   });
 });
 
 app.get('*', function(req, res){
-  res.render('index');
+  res.redirect('/');
 });
 
 app.listen(theport, function(){
