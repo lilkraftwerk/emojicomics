@@ -1,0 +1,31 @@
+#tweets {
+
+  .tweetdisplay {
+    background-color: $button-color;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid $primary-color;
+    height: 175px;
+    font-family: 'Lato';
+    p {
+      font-size: 1.2em;
+    }
+  }
+  .virgin {
+    background-image: url('/img/moon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .profile {
+    display: inline-block;
+    margin: 0 auto;
+  }
+  .screenname {
+    margin-bottom: 5px;
+  }
+
+  #mojis {
+    height: 1vh;
+    overflow: none;
+  }
+}

@@ -647,3 +647,6 @@ html, body {
   margin: 0 auto; }
 #tweets .screenname {
   margin-bottom: 5px; }
+#tweets #mojis {
+  height: 1vh;
+  overflow: none; }
