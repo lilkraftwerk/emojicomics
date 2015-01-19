@@ -1,14 +1,14 @@
 body, html {
   margin: 0;
   padding: 0;
-  background-color: #A2DED0;
+  background-color: #a2ded0;
   font-family: 'Lato'; }
 
 label {
   display: inline-block;
   color: #FFF;
   height: 32px;
-  background-color: #36D7B7;
+  background-color: #36d7b7;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -56,7 +56,7 @@ button {
   padding: 10px 30px;
   margin: 10px auto;
   color: #FFF;
-  background-color: #36D7B7;
+  background-color: #36d7b7;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -114,30 +114,29 @@ button:active {
 .fontbig {
   font-size: 1.4em; }
 
-#header {
+#emojiheader {
   background-color: black;
   border-bottom: 2px solid white;
-  color: #36D7B7;
+  color: #36d7b7;
   font-family: 'Lato';
-  height: 20px;
   line-height: 25px;
   margin-bottom: 5px;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   width: 100%; }
-  #header .title {
+  #emojiheader .title {
     font-size: 1.5em;
     font-family: 'Pacifico'; }
 
 .subtitle {
   padding-left: 20px; }
 
-#header a {
+#emojiheader a {
   text-decoration: none;
   display: inline-block;
-  color: #36D7B7; }
+  color: #36d7b7; }
 
-#header a:hover {
+#emojiheader a:hover {
   color: white; }
 
 #landing a {
@@ -558,7 +557,7 @@ input[type="radio"]:checked + label {
     padding: 10px;
     padding-top: 0px;
     margin-top: 5px;
-    border-bottom: 5px solid #36D7B7;
+    border-bottom: 5px solid #36d7b7;
     font-family: 'Oswald'; }
   #mainpage .description p {
     font-size: 1.2em;
@@ -581,7 +580,7 @@ input[type="radio"]:checked + label {
   visibility: hidden;
   color: black;
   font-family: 'Pacifico';
-  text-shadow: 2px 2px 2px #36D7B7, -2px -2px 2px #36D7B7;
+  text-shadow: 2px 2px 2px #36d7b7, -2px -2px 2px #36d7b7;
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.85);
   text-align: center;
@@ -616,7 +615,7 @@ html, body {
   text-decoration: underline; }
 
 .prodlink:hover {
-  color: #36D7B7; }
+  color: #36d7b7; }
 
 .presspic {
   height: 300px;
@@ -630,4 +629,21 @@ html, body {
 .footer {
   background-color: white; }
 
-/*# sourceMappingURL=main.css.map */
+#tweets .tweetdisplay {
+  background-color: #36d7b7;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #a2ded0;
+  height: 175px;
+  font-family: 'Lato'; }
+  #tweets .tweetdisplay p {
+    font-size: 1.2em; }
+#tweets .virgin {
+  background-image: url("/img/moon.png");
+  background-repeat: no-repeat;
+  background-position: center; }
+#tweets .profile {
+  display: inline-block;
+  margin: 0 auto; }
+#tweets .screenname {
+  margin-bottom: 5px; }
