@@ -52,6 +52,7 @@ var regex = new RegExp(ranges.join('|'), 'g')
 
 
 io.on('tweet', function(data) {
+
   var matches = data.tweet.text.match(regex)
   $('#mojis').append(matches.join(" "))
   if ($('#mojis').height() >  window.innerHeight - 100) {

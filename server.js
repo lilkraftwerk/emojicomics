@@ -21,9 +21,7 @@ consumer_key: process.env.TWITTER_KEY,
   access_token_secret: process.env.TOKEN_SECRET
     });
 
-
-
-
+console.log(client)
 var uristring = process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/test'
 var theport = process.env.PORT || 3004;
 
@@ -117,9 +115,9 @@ da_emojis = ["😄", "😃", "😀", "😊", "☺", "😉", "😍", "😘", "�
 var joined = da_emojis.join(',')
 
 
-client.stream('statuses/filter', {track: joined}, function(stream) {
-    stream.on('data', function(tweet) {
-          app.io.broadcast('tweet', {tweet: tweet});
-    });
-});
+// client.stream('statuses/filter', {track: joined}, function(stream) {
+    // stream.on('data', function(tweet) {
+          // app.io.broadcast('tweet', {tweet: tweet});
+    // });
+// });
 
