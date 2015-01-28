@@ -34,51 +34,16 @@ vision lol
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 
-<script src="/socket.io/socket.io.js"></script>
-<script>
-
-io = io.connect()
-
-
-var ranges = [
-  '\ud83c[\udf00-\udfff]', // U+1F300 to U+1F3FF
-  '\ud83d[\udc00-\ude4f]', // U+1F400 to U+1F64F
-  '\ud83d[\ude80-\udeff]'  // U+1F680 to U+1F6FF
-];
-
-var regex = new RegExp(ranges.join('|'), 'g')
-
-
-
-
-io.on('tweet', function(data) {
-
-  var matches = data.tweet.text.match(regex)
-  $('#mojis').append(matches.join(" "))
-  if ($('#mojis').height() >  window.innerHeight - 100) {
-    $('#mojis').html('')
-}
-
-})
-
-function formatTweet(data){
-  return '<img class="profile" src="' + data.user.profile_image_url + '"><span class="screenname">@' + data.user.screen_name +
-  '</span><p>' + data.text + '</p>'
-}
-</script>
-
-
 <title>EmojiVision</title>
 </head>
 
 <body>
   <% include /partials/header %>
-
-  <div class="container" id="tweets">
-    <h3>Realtime Emoji Visualization Module (use Safari or Firefox)</h3>
-    <div id="mojis"></div>
+  <div class="container">
+  <canvas id="canvas"></canvas>
 
   </div>
 
+<script type="text/javascript" src="/js/canvas.js"></script>
 </body>
 </html>

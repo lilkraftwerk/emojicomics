@@ -115,9 +115,9 @@ da_emojis = ["😄", "😃", "😀", "😊", "☺", "😉", "😍", "😘", "�
 var joined = da_emojis.join(',')
 
 
-// client.stream('statuses/filter', {track: joined}, function(stream) {
-    // stream.on('data', function(tweet) {
-          // app.io.broadcast('tweet', {tweet: tweet});
-    // });
-// });
+client.stream('statuses/filter', {track: joined}, function(stream) {
+    stream.on('data', function(tweet) {
+          app.io.broadcast('tweet', {tweet: tweet});
+    });
+});
 
